@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import yoon.util.DBUtil;
+import util.DBUtil;
 
 
 public class DeptDAO {
