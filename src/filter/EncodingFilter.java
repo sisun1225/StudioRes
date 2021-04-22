@@ -1,4 +1,4 @@
-package yoon.filter;
+package filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -33,13 +33,13 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		//ê°€ê¸°ì „ì— í• ì¼ì´ìˆìœ¼ë©´ ìš”ê¸°ì— ì½”ë”©, ëª¨ë“  ì„œë¸”ë¦¿ì€ ì´ê³³ì„ ì§€ë‚˜ê°€ì•¼í•¨.
+		//ê°?ê¸°ì „?— ?• ?¼?´?ˆ?œ¼ë©? ?š”ê¸°ì— ì½”ë”©, ëª¨ë“  ?„œë¸”ë¦¿?? ?´ê³³ì„ ì§??‚˜ê°??•¼?•¨.
 		request.setCharacterEncoding("utf-8");
 
 		// pass the request along the filter chain
-		//ì„œë¸”ë¦¿ìœ¼ë¡œ ê°€ê¸°
+		//?„œë¸”ë¦¿?œ¼ë¡? ê°?ê¸?
 		long start = System.currentTimeMillis();
-		chain.doFilter(request, response);	//ì§€ìš°ë©´ ì ˆëŒ€ ì•ˆë¨
+		chain.doFilter(request, response);	//ì§??š°ë©? ? ˆ?? ?•ˆ?¨
 		long end = System.currentTimeMillis();
 	}
 
