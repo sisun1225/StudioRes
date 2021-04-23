@@ -14,8 +14,8 @@ public class StudioResDAO {
 
 
 	//메인페이지 조건별조회
-	public List<StudioVO> selectStudioByOption(String[] locOption, String[] detailOption){
-		List<StudioVO> studioList = null;
+	public List<StudioVO> selectStudioByOption(String subOption, String locOption, String[] detailOption){
+		List<StudioVO> studioList = new ArrayList<StudioVO>();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null; 
 		ResultSet rs = null;
@@ -23,11 +23,16 @@ public class StudioResDAO {
 
 		String sqlResult ="select * from studios where 1=1";
 		String sqlLoc="";
-		String sqlOption="";
+		String sqlSub="";
+		String sqlopt="";
 
-		for(int k=0; k<locOption.length; k++) {
-			if(locOption[k]==null) {break;} 	
-			sqlLoc +=" and (loc="+"'"+locOption[k]+"'"+" or subway="+"'"+locOption[k]+"')";	
+
+		if(locOption!=null) { 
+			sqlLoc +=" and (studio_address like "+"'"+"%"+locOption+"%"+"')";
+		}
+
+		if(subOption!=null) { 
+			sqlSub +=" and (studio_subway like "+"'"+"%"+subOption+"%"+"')";
 		}
 
 		for(int i=0; i<detailOption.length; i++) {
@@ -35,19 +40,19 @@ public class StudioResDAO {
 			int j = Integer.parseInt(detailOption[i]);
 
 			switch (j) {
-			case 0: sqlOption += " and studio_have_mic=1"; break;
-			case 1:	sqlOption += " and studio_have_park=1"; break;
-			case 2:	sqlOption += " and studio_have_shower=1"; break;
-			case 3:	sqlOption += " and studio_have_water=1"; break;
-			case 4:	sqlOption += " and studio_have_aircon=1"; break;
-			case 5:	sqlOption += " and studio_have_heater=1"; break;
-			case 6:	sqlOption += " and studio_have_toilet=1"; break;
+			case 0: sqlopt += " and studio_have_mic=1"; break;
+			case 1:	sqlopt += " and studio_have_park=1"; break;
+			case 2:	sqlopt += " and studio_have_shower=1"; break;
+			case 3:	sqlopt += " and studio_have_water=1"; break;
+			case 4:	sqlopt += " and studio_have_aircon=1"; break;
+			case 5:	sqlopt += " and studio_have_heater=1"; break;
+			case 6:	sqlopt += " and studio_have_toilet=1"; break;
 			default: break;
 			}
 		}
 
 
-		String sql = sqlResult + sqlOption + sqlLoc;
+		String sql = sqlResult + sqlopt +sqlSub + sqlLoc;
 		try {
 			st = conn.prepareStatement(sql);
 			rs = st.executeQuery(); 
@@ -125,16 +130,18 @@ public class StudioResDAO {
 		Connection conn = DBUtil.getConnection();
 		Statement st = null; 
 		ResultSet rs = null;
-		String sql = "select resv_date, room_no, resv_time from reservations where resv_check=0 or resv_check=1";
+		String sql = "select * from reservations where resv_check=0 or resv_check=1";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql); 
 			while(rs.next()) { 
 				ReservationsVO rv = new ReservationsVO();
-				rv.setResv_date(rs.getDate("resv_date"));
-				rv.setResv_no(rs.getInt("room_no")); 
-				rv.setResv_time(rs.getInt("resv_time"));
-
+				rv.setGuest_no(rs.getInt("Guest_no"));
+				rv.setResv_check(rs.getString("Resv_check"));
+				rv.setResv_date(rs.getDate("Resv_date"));
+				rv.setResv_no(rs.getInt("Resv_no"));
+				rv.setResv_time(rs.getInt("Resv_time"));
+				rv.setRoom_no(rs.getInt("Room_no"));
 				reservation.add(rv);
 			}
 		} catch (SQLException e) {
@@ -160,10 +167,10 @@ public class StudioResDAO {
 		try {
 			st = conn.prepareStatement(sql);
 
-			st.setInt(2, rv.getGuset_no());
-			st.setInt(3, rv.getRoom_no());
-			st.setDate(4, rv.getResv_date());
-			st.setInt(5, rv.getResv_time());
+			st.setInt(1, rv.getGuest_no());
+			st.setInt(2, rv.getRoom_no());
+			st.setDate(3, rv.getResv_date());
+			st.setInt(4, rv.getResv_time());
 
 			result = st.executeUpdate();  
 
@@ -256,7 +263,6 @@ public class StudioResDAO {
 	}
 
 	//회원 정보 조회
-	//select * from guests where guest_id = ?
 	public GuestVO selectGuestById(String id) {
 		GuestVO guest = null;
 		Connection conn = null;
@@ -297,7 +303,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = " select * from reservation where guest_no = ? ";
+		String sql = " select * from reservations where guest_no = ? ";
 		conn = DBUtil.getConnection();
 
 		try {
@@ -320,17 +326,20 @@ public class StudioResDAO {
 	}
 
 	//예약 취소
-	public int deleteResv(int guest_no) {
+	public int deleteResv(int guest_no, int room_no, String date, int resv_time) {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement st = null;
-		String sql = "delete from reservations where guest_no = ?";
+		String sql = "delete from reservations where guest_no = ? and room_no = ? and resv_date = ? and resv_time = ?";
 
 		conn = DBUtil.getConnection();
 
 		try {
 			st = conn.prepareStatement(sql);
 			st.setInt(1, guest_no);
+			st.setInt(2, room_no);
+			st.setString(3, date);
+			st.setInt(4, resv_time);
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -483,7 +492,7 @@ public class StudioResDAO {
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
 				ReservationsVO vo = new ReservationsVO();
-				vo.setGuset_no(rs.getInt("Guset_no"));
+				vo.setGuest_no(rs.getInt("Guset_no"));
 				vo.setResv_check("Resv_check");
 				vo.setResv_date(rs.getDate("Resv_date"));
 				vo.setResv_no(rs.getInt("Resv_no"));
@@ -501,7 +510,7 @@ public class StudioResDAO {
 
 	//연습실상세내역조회 - by id
 	public StudioVO selectStudioByNo(int studioNo) {
-		StudioVO vo = null;
+		StudioVO vo = new StudioVO();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -607,11 +616,11 @@ public class StudioResDAO {
 	//		호스트수정
 	public int updateHost(HostVO host) {
 		String sql = "update hosts set "
-				+ " HOST_PW=?"
-				+ " HOST_NAME =?"
-				+ " HOST_PHONE=?"
+				+ " HOST_PW=?,"
+				+ " HOST_NAME =?,"
+				+ " HOST_PHONE=?,"
 				+ " HOST_EMAIL=?"
-				+ " where host_id = ?";
+				+ " where host_id=? ";
 		int result=0;
 		Connection conn;
 		PreparedStatement st = null;
@@ -633,7 +642,7 @@ public class StudioResDAO {
 		}
 		return result;
 	}
-	//		호스트탈퇴
+	//      호스트탈퇴
 	public int deleteHost(String hostId) {
 		String sql = "delete from hosts where host_id= ?";
 		int result = 0;
@@ -668,7 +677,7 @@ public class StudioResDAO {
 			while(rs.next()) {
 				host.setHost_no(rs.getInt("host_no"));
 				host.setHost_id(rs.getString("host_id"));
-				host.setHost_email(rs.getString("Host_emai"));
+				host.setHost_email(rs.getString("Host_email"));
 				host.setHost_name(rs.getString("Host_name"));
 				host.setHost_phone(rs.getString("Host_phone"));
 				host.setHost_pw(rs.getString("Host_pw"));
@@ -682,9 +691,9 @@ public class StudioResDAO {
 		return host;
 	}
 
-	//		연습실 등록  insert/s
+	//      연습실 등록  insert/s
 	public int insertStudio(StudioVO studio) {
-		String sql = "insert into studios values(studio_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into studios values(studio_seq.nextval,?,?,?,?,?,?,?,?,0,?,?,?,?,?,?,?)";
 		int result=0;
 		Connection conn;
 		PreparedStatement st = null;
@@ -700,14 +709,13 @@ public class StudioResDAO {
 			st.setString(6, studio.getStudio_notice());
 			st.setString(7, studio.getStudio_subway());
 			st.setString(8, studio.getStudio_address());
-			st.setString(9, studio.getStudio_check());
-			st.setString(10, studio.getStudio_have_mic());
-			st.setString(11, studio.getStudio_have_park());
-			st.setString(12, studio.getStudio_have_shower());
-			st.setString(13, studio.getStudio_have_water());
-			st.setString(14, studio.getStudio_have_aircon());
-			st.setString(15, studio.getStudio_have_heater());
-			st.setString(16, studio.getStudio_have_toilet());
+			st.setString(9, studio.getStudio_have_mic());
+			st.setString(10, studio.getStudio_have_park());
+			st.setString(11, studio.getStudio_have_shower());
+			st.setString(12, studio.getStudio_have_water());
+			st.setString(13, studio.getStudio_have_aircon());
+			st.setString(14, studio.getStudio_have_heater());
+			st.setString(15, studio.getStudio_have_toilet());
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -717,26 +725,26 @@ public class StudioResDAO {
 		}
 		return result;
 	}
-	//		연습실수정 update/s/s_no
+	//      연습실수정 update/s/s_no
 	public int updateStudio(StudioVO studio) {
+		// 호스트는 check수정못하게 하고 관리자는 check수정할 수 있어야함
 		String sql = "update studios set "
-				+ " HOST_NO=?"
-				+ " STUDIO_DESC=?"
-				+ " STUDIO_NAME=?"
-				+ " STUDIO_PICTURE=?"
-				+ " STUDIO_DAYS=?"
-				+ " STUDIO_NOTICE=?"
-				+ " STUDIO_SUBWAY=?"
-				+ " STUDIO_ADDRESS=?"
-				+ " STUDIO_CHECK=?"
-				+ " STUDIO_HAVE_MIC=?"
-				+ " STUDIO_HAVE_PARK=?"
-				+ " STUDIO_HAVE_SHOWER=?"
-				+ " STUDIO_HAVE_WATER=?"
-				+ " STUDIO_HAVE_AIRCON=?"
-				+ " STUDIO_HAVE_HEATER=?"
+				+ " STUDIO_DESC=?,"
+				+ " STUDIO_NAME=?,"
+				+ " STUDIO_PICTURE=?,"
+				+ " STUDIO_DAYS=?,"
+				+ " STUDIO_NOTICE=?,"
+				+ " STUDIO_SUBWAY=?,"
+				+ " STUDIO_ADDRESS=?,"
+				+ " STUDIO_CHECK=?,"
+				+ " STUDIO_HAVE_MIC=?,"
+				+ " STUDIO_HAVE_PARK=?,"
+				+ " STUDIO_HAVE_SHOWER=?,"
+				+ " STUDIO_HAVE_WATER=?,"
+				+ " STUDIO_HAVE_AIRCON=?,"
+				+ " STUDIO_HAVE_HEATER=?,"
 				+ " STUDIO_HAVE_TOILET=?"
-				+ " where studio_id=?";
+				+ " where studio_no=?";
 
 		int result=0;
 		Connection conn;
@@ -745,23 +753,22 @@ public class StudioResDAO {
 
 		try {
 			st = conn.prepareStatement(sql);
-			st.setInt(1, studio.getHost_no());
-			st.setString(2, studio.getStudio_desc());
-			st.setString(3, studio.getStudio_name());
-			st.setString(4, studio.getStudio_picture());
-			st.setString(5, studio.getStudio_days());
-			st.setString(6, studio.getStudio_notice());
-			st.setString(7, studio.getStudio_subway());
-			st.setString(8, studio.getStudio_address());
-			st.setString(9, studio.getStudio_check());
-			st.setString(10, studio.getStudio_have_mic());
-			st.setString(11, studio.getStudio_have_park());
-			st.setString(12, studio.getStudio_have_shower());
-			st.setString(13, studio.getStudio_have_water());
-			st.setString(14, studio.getStudio_have_aircon());
-			st.setString(15, studio.getStudio_have_heater());
-			st.setString(16, studio.getStudio_have_toilet());
-			st.setInt(17, studio.getStudio_no());
+			st.setString(1, studio.getStudio_desc());
+			st.setString(2, studio.getStudio_name());
+			st.setString(3, studio.getStudio_picture());
+			st.setString(4, studio.getStudio_days());
+			st.setString(5, studio.getStudio_notice());
+			st.setString(6, studio.getStudio_subway());
+			st.setString(7, studio.getStudio_address());
+			st.setString(8, studio.getStudio_check());
+			st.setString(9, studio.getStudio_have_mic());
+			st.setString(10, studio.getStudio_have_park());
+			st.setString(11, studio.getStudio_have_shower());
+			st.setString(12, studio.getStudio_have_water());
+			st.setString(13, studio.getStudio_have_aircon());
+			st.setString(14, studio.getStudio_have_heater());
+			st.setString(15, studio.getStudio_have_toilet());
+			st.setInt(16, studio.getStudio_no());
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -771,16 +778,16 @@ public class StudioResDAO {
 		}
 		return result;
 	}
-	//		연습실 정보 (호스트가 가진)
-	public List<StudioVO> selectStudioByHostId(String hostId) {
-		String sql = "select * from studios where host_id=?";
+	//      연습실 정보 (호스트가 가진)
+	public List<StudioVO> selectStudioByHostId(String hostNo) {
+		String sql = "select * from studios where host_no=?";
 		List<StudioVO> studioList = new ArrayList<StudioVO>();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
 			st = conn.prepareStatement(sql);
-			st.setString(1, hostId);
+			st.setString(1, hostNo);
 			rs = st.executeQuery();
 			while(rs.next()) {
 				StudioVO studio = new StudioVO();
@@ -840,7 +847,7 @@ public class StudioResDAO {
 		}
 		return room;
 	}
-	//		결제 check->1
+	//      결제 check->1
 	public int updateReservationPay(int resvNo) {
 		String sql = "update reservations set RESV_CHECK=1 where resv_No=?" ;
 		int result=0;
@@ -865,12 +872,12 @@ public class StudioResDAO {
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
 		ReservationsVO resv = new ReservationsVO();
 		resv.setResv_no(rs.getInt("resv_no"));
-		resv.setGuset_no(rs.getInt("guest_no"));
+		resv.setGuest_no(rs.getInt("guest_no"));
 		resv.setRoom_no(rs.getInt("room_no"));
 		resv.setResv_date(rs.getDate("resv_date"));
 		resv.setResv_time(rs.getInt("resv_time"));
 		resv.setResv_check(rs.getString("resv_check"));
-		return null;
+		return resv;
 	}
 
 

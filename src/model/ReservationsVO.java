@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ReservationsVO {
 
 	private int resv_no;
-	private int guset_no;
+	private int guest_no;
 	private int room_no;
 	private Date resv_date;
 	private int resv_time;
@@ -13,10 +13,10 @@ public class ReservationsVO {
 	
 	public ReservationsVO(){}
 	
-	public ReservationsVO(int resv_no, int guset_no, int room_no, Date resv_date, int resv_time, String resv_check) {
+	public ReservationsVO(int resv_no, int guest_no, int room_no, Date resv_date, int resv_time, String resv_check) {
 		super();
 		this.resv_no = resv_no;
-		this.guset_no = guset_no;
+		this.guest_no = guest_no;
 		this.room_no = room_no;
 		this.resv_date = resv_date;
 		this.resv_time = resv_time;
@@ -31,12 +31,12 @@ public class ReservationsVO {
 		this.resv_no = resv_no;
 	}
 
-	public int getGuset_no() {
-		return guset_no;
+	public int getGuest_no() {
+		return guest_no;
 	}
 
-	public void setGuset_no(int guset_no) {
-		this.guset_no = guset_no;
+	public void setGuest_no(int guest_no) {
+		this.guest_no = guest_no;
 	}
 
 	public int getRoom_no() {
@@ -74,7 +74,7 @@ public class ReservationsVO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("ReservationsVO [resv_no=").append(resv_no).append(", guset_no=").append(guset_no)
+		builder.append("ReservationsVO [resv_no=").append(resv_no).append(", guest_no=").append(guest_no)
 				.append(", room_no=").append(room_no).append(", resv_date=").append(resv_date).append(", resv_time=")
 				.append(resv_time).append(", resv_check=").append(resv_check).append("]");
 		return builder.toString();
