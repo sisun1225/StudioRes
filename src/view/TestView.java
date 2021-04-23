@@ -10,11 +10,19 @@ import model.StudioVO;
 
 public class TestView {
 	
-	public static void view(List<Object> list) {
-		System.out.println("list");
-		for(Object obj:list) {
-			System.out.println(obj);
-		}
+	public static void view(List list) {
+		for(Object obj : list) {
+	         if(obj instanceof StudioVO)
+	            System.out.println((StudioVO)obj);
+	         else if (obj instanceof GuestVO)
+	            System.out.println((GuestVO) obj);
+	         else if (obj instanceof HostVO)
+	            System.out.println((HostVO) obj);
+	         else if (obj instanceof RoomVO)
+	            System.out.println((RoomVO) obj);
+	         else if (obj instanceof ReservationsVO)
+	            System.out.println((ReservationsVO) obj);
+	      }
 	}
 	
 	public static void view(HostVO hostVO) {

@@ -21,7 +21,7 @@ public class StudioResDAO {
 		ResultSet rs = null;
 
 
-		String sqlResult ="select * from tabel where 1=1";
+		String sqlResult ="select * from studios where 1=1";
 		String sqlLoc="";
 		String sqlOption="";
 
@@ -262,7 +262,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = "select * from geusts where guest_id = ? ";
+		String sql = "select * from guests where guest_id = ? ";
 
 		conn = DBUtil.getConnection();
 
@@ -407,7 +407,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from guests";
+				" select * from rooms";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
