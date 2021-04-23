@@ -413,6 +413,288 @@ public class StudioResDAO {
 
 	}
 
+	//호스트 회원가입
+	public int insertHost(HostVO host) {
+		String sql = "insert into hosts values(host_seq.nextval,?,?,?,?,?)";
+		int result=0;
+		Connection conn;
+		PreparedStatement st = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, host.getHost_id());
+			st.setString(2, host.getHost_pw());
+			st.setString(3, host.getHost_name());
+			st.setString(4, host.getHost_phone());
+			st.setString(5, host.getHost_email());
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+
+	//		호스트수정
+	public int updateHost(HostVO host) {
+		String sql = "update hosts set "
+				+ " HOST_PW=?"
+				+ " HOST_NAME =?"
+				+ " HOST_PHONE=?"
+				+ " HOST_EMAIL=?"
+				+ " where host_id = ?";
+		int result=0;
+		Connection conn;
+		PreparedStatement st = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, host.getHost_pw());
+			st.setString(2, host.getHost_name());
+			st.setString(3, host.getHost_phone());
+			st.setString(4, host.getHost_email());
+			st.setString(5, host.getHost_id());
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+	//		호스트탈퇴
+	public int deleteHost(String hostId) {
+		String sql = "delete from hosts where host_id= ?";
+		int result = 0;
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, hostId);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+
+	//호스트 상세내역 
+	public HostVO selectHostById(String hostId) {
+		String sql = "select * from hosts where host_id=?";
+		HostVO host = new HostVO();
+
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, hostId);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				host.setHost_no(rs.getInt("host_no"));
+				host.setHost_id(rs.getString("host_id"));
+				host.setHost_email(rs.getString("Host_emai"));
+				host.setHost_name(rs.getString("Host_name"));
+				host.setHost_phone(rs.getString("Host_phone"));
+				host.setHost_pw(rs.getString("Host_pw"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return host;
+	}
+
+	//		연습실 등록  insert/s
+	public int insertStudio(StudioVO studio) {
+		String sql = "insert into studios values(studio_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int result=0;
+		Connection conn;
+		PreparedStatement st = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, studio.getHost_no());
+			st.setString(2, studio.getStudio_desc());
+			st.setString(3, studio.getStudio_name());
+			st.setString(4, studio.getStudio_picture());
+			st.setString(5, studio.getStudio_days());
+			st.setString(6, studio.getStudio_notice());
+			st.setString(7, studio.getStudio_subway());
+			st.setString(8, studio.getStudio_address());
+			st.setString(9, studio.getStudio_check());
+			st.setString(10, studio.getStudio_have_mic());
+			st.setString(11, studio.getStudio_have_park());
+			st.setString(12, studio.getStudio_have_shower());
+			st.setString(13, studio.getStudio_have_water());
+			st.setString(14, studio.getStudio_have_aircon());
+			st.setString(15, studio.getStudio_have_heater());
+			st.setString(16, studio.getStudio_have_toilet());
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+	//		연습실수정 update/s/s_no
+	public int updateStudio(StudioVO studio) {
+		String sql = "update studios set "
+				+ " HOST_NO=?"
+				+ " STUDIO_DESC=?"
+				+ " STUDIO_NAME=?"
+				+ " STUDIO_PICTURE=?"
+				+ " STUDIO_DAYS=?"
+				+ " STUDIO_NOTICE=?"
+				+ " STUDIO_SUBWAY=?"
+				+ " STUDIO_ADDRESS=?"
+				+ " STUDIO_CHECK=?"
+				+ " STUDIO_HAVE_MIC=?"
+				+ " STUDIO_HAVE_PARK=?"
+				+ " STUDIO_HAVE_SHOWER=?"
+				+ " STUDIO_HAVE_WATER=?"
+				+ " STUDIO_HAVE_AIRCON=?"
+				+ " STUDIO_HAVE_HEATER=?"
+				+ " STUDIO_HAVE_TOILET=?"
+				+ " where studio_id=?";
+
+		int result=0;
+		Connection conn;
+		PreparedStatement st = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, studio.getHost_no());
+			st.setString(2, studio.getStudio_desc());
+			st.setString(3, studio.getStudio_name());
+			st.setString(4, studio.getStudio_picture());
+			st.setString(5, studio.getStudio_days());
+			st.setString(6, studio.getStudio_notice());
+			st.setString(7, studio.getStudio_subway());
+			st.setString(8, studio.getStudio_address());
+			st.setString(9, studio.getStudio_check());
+			st.setString(10, studio.getStudio_have_mic());
+			st.setString(11, studio.getStudio_have_park());
+			st.setString(12, studio.getStudio_have_shower());
+			st.setString(13, studio.getStudio_have_water());
+			st.setString(14, studio.getStudio_have_aircon());
+			st.setString(15, studio.getStudio_have_heater());
+			st.setString(16, studio.getStudio_have_toilet());
+			st.setInt(17, studio.getStudio_no());
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+	//		연습실 정보 (호스트가 가진)
+	public List<StudioVO> selectStudioByHostId(String hostId) {
+		String sql = "select * from studios where host_id=?";
+		List<StudioVO> studioList = new ArrayList<StudioVO>();
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, hostId);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				StudioVO studio = new StudioVO();
+				studio.setStudio_no(rs.getInt(1));
+				studio.setHost_no(rs.getInt(2));
+				studio.setStudio_desc(rs.getString(3));
+				studio.setStudio_name(rs.getString(4));
+				studio.setStudio_picture(rs.getString(5));
+				studio.setStudio_days(rs.getString(6));
+				studio.setStudio_notice(rs.getString(7));
+				studio.setStudio_subway(rs.getString(8));
+				studio.setStudio_address(rs.getString(9));
+				studio.setStudio_check(rs.getString(10));
+				studio.setStudio_have_mic(rs.getString(11));
+				studio.setStudio_have_park(rs.getString(12));
+				studio.setStudio_have_shower(rs.getString(13));
+				studio.setStudio_have_water(rs.getString(14));
+				studio.setStudio_have_aircon(rs.getString(15));
+				studio.setStudio_have_heater(rs.getString(16));
+				studio.setStudio_have_toilet(rs.getString(17));
+				studioList.add(studio);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return studioList;
+	}
+	//예약내역 정보(select /rooms /by room_id)
+	public RoomVO selectRoomByRoomNo(int roomNo){
+		String sql = "select * from rooms where room_no=?";
+		RoomVO room = new RoomVO();
+
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, roomNo);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				room.setRoom_capacity(rs.getInt("room_capacity"));
+				room.setRoom_intro(rs.getString("Room_intro"));
+				room.setRoom_name(rs.getString("Room_name"));
+				room.setRoom_no(rs.getInt("Room_no"));
+				room.setRoom_picture(rs.getString("Room_picture"));
+				room.setRoom_price(rs.getInt("Room_price"));
+				room.setStudio_no(rs.getInt("Studio_no"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, st, conn);
+		}
+		return room;
+	}
+	//		결제 check->1
+	public int updateReservationPay(int resvNo) {
+		String sql = "update reservations set RESV_CHECK=1 where resv_No=?" ;
+		int result=0;
+		Connection conn;
+		PreparedStatement st = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, resvNo);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+	}
+	//		스케쥴러 check->2
 
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
 		ReservationsVO resv = new ReservationsVO();
