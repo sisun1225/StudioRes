@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -297,7 +298,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = " select * from reservation where guest_no = ? ";
+		String sql = " select * from reservations where guest_no = ? ";
 		conn = DBUtil.getConnection();
 
 		try {
@@ -320,17 +321,20 @@ public class StudioResDAO {
 	}
 
 	//예약 취소
-	public int deleteResv(int guest_no) {
+	public int deleteResv(int guest_no, int room_no, String date, int resv_time) {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement st = null;
-		String sql = "delete from reservations where guest_no = ?";
+		String sql = "delete from reservations where guest_no = ? and room_no = ? and resv_date = ? and resv_time = ?";
 
 		conn = DBUtil.getConnection();
 
 		try {
 			st = conn.prepareStatement(sql);
 			st.setInt(1, guest_no);
+			st.setInt(2, room_no);
+			st.setString(3, date);
+			st.setInt(4, resv_time);
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -870,7 +874,7 @@ public class StudioResDAO {
 		resv.setResv_date(rs.getDate("resv_date"));
 		resv.setResv_time(rs.getInt("resv_time"));
 		resv.setResv_check(rs.getString("resv_check"));
-		return null;
+		return resv;
 	}
 
 
