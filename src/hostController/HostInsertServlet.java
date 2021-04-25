@@ -16,13 +16,17 @@ import model.StudioResDAO;
  * Servlet implementation class HostInsert
  */
 @WebServlet("/host/hostInsert")
-public class HostInsert extends HttpServlet {
+public class HostInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//호스트 회원가입 페이지
+		RequestDispatcher rd = request.getRequestDispatcher("hostInsert.jsp");
+		rd.forward(request, response);
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//호스트 회원등록 후 메인페이지?
 		HostVO host = new HostVO();
 		StudioResDAO dao = new StudioResDAO();
 		host.setHost_id(request.getParameter("host_id"));
@@ -30,8 +34,9 @@ public class HostInsert extends HttpServlet {
 		host.setHost_name(request.getParameter("host_name"));
 		host.setHost_phone(request.getParameter("host_phone"));
 		host.setHost_email(request.getParameter("host_email"));
-		dao.insertHost(host);
-		RequestDispatcher rd = request.getRequestDispatcher("hostdetail");
+		int result = dao.insertHost(host);
+		System.out.println(result>0?"입력성공":"입력실패");
+		RequestDispatcher rd = request.getRequestDispatcher("hostMain");
 		rd.forward(request, response);
 	}
 }

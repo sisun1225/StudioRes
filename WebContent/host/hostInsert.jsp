@@ -14,6 +14,8 @@
     이름<input type="text" name="host_name"><br>
     핸드폰<input type="text" name="host_phone"><br>
     이메일<input type="text" name="host_email"><br>
+    <input type="submit" value="회원가입">
+    <input type="reset" value="취소">
   </form>
 </body>
 </html>
