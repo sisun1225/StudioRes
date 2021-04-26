@@ -3,8 +3,11 @@ package test;
 import java.util.List;
 
 import model.GuestVO;
+import model.HostVO;
 import model.ReservationsVO;
+import model.RoomVO;
 import model.StudioResDAO;
+import model.StudioVO;
 import view.TestView;
 
 public class Test_chg {
@@ -19,8 +22,15 @@ public class Test_chg {
 		test_select_resv_by_guest_no();
 		test_delete_resv();
 		*/
+		test1();
 		
-		
+	}
+
+	private static void test1() {
+		StudioResDAO dao = new StudioResDAO();
+//		List<StudioVO> slist = dao.selectStudioByHostId("host5");
+		HostVO s = dao.loginChk("host1","pw1");
+		TestView.view(s);
 	}
 
 	private static void test_delete_resv() {
