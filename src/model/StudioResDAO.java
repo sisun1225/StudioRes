@@ -12,8 +12,6 @@ import java.util.List;
 import util.DBUtil;
 
 public class StudioResDAO {
-
-
 	//메인페이지 조건별조회
 	public List<StudioVO> selectStudioByOption(String subOption, String locOption, String[] detailOption){
 		List<StudioVO> studioList = new ArrayList<StudioVO>();
@@ -21,64 +19,41 @@ public class StudioResDAO {
 		PreparedStatement st = null; 
 		ResultSet rs = null;
 
-
-		String sqlResult ="select * from studios where 1=1";
+		String sqlResult ="select * from studios join hosts using (host_no) where 1=1";
 		String sqlLoc="";
 		String sqlSub="";
 		String sqlopt="";
 
-
-		if(locOption!=null) { 
+		if(!locOption.equals("")) { 
 			sqlLoc +=" and (studio_address like "+"'"+"%"+locOption+"%"+"')";
 		}
 
-		if(subOption!=null) { 
+		if(!subOption.equals("")) { 
 			sqlSub +=" and (studio_subway like "+"'"+"%"+subOption+"%"+"')";
 		}
 
 		for(int i=0; i<detailOption.length; i++) {
-			if(detailOption[i]==null) {break;} 
 			int j = Integer.parseInt(detailOption[i]);
 
 			switch (j) {
-			case 0: sqlopt += " and studio_have_mic=1"; break;
-			case 1:	sqlopt += " and studio_have_park=1"; break;
-			case 2:	sqlopt += " and studio_have_shower=1"; break;
-			case 3:	sqlopt += " and studio_have_water=1"; break;
-			case 4:	sqlopt += " and studio_have_aircon=1"; break;
-			case 5:	sqlopt += " and studio_have_heater=1"; break;
-			case 6:	sqlopt += " and studio_have_toilet=1"; break;
+			case 1: sqlopt += " and studio_have_mic=1"; break;
+			case 2:	sqlopt += " and studio_have_park=1"; break;
+			case 3:	sqlopt += " and studio_have_shower=1"; break;
+			case 4:	sqlopt += " and studio_have_water=1"; break;
+			case 5:	sqlopt += " and studio_have_aircon=1"; break;
+			case 6:	sqlopt += " and studio_have_heater=1"; break;
+			case 7:	sqlopt += " and studio_have_toilet=1"; break;
 			default: break;
 			}
 		}
-
 
 		String sql = sqlResult + sqlopt +sqlSub + sqlLoc;
 		try {
 			st = conn.prepareStatement(sql);
 			rs = st.executeQuery(); 
 			while(rs.next()) { 
-				StudioVO studio = new StudioVO();
-				studio.setStudio_no(rs.getInt(1));
-				studio.setHost_no(rs.getInt(2));
-				studio.setStudio_desc(rs.getString(3));
-				studio.setStudio_name(rs.getString(4));
-				studio.setStudio_picture(rs.getString(5));
-				studio.setStudio_days(rs.getString(6));
-				studio.setStudio_notice(rs.getString(7));
-				studio.setStudio_subway(rs.getString(8));
-				studio.setStudio_address(rs.getString(9));
-				studio.setStudio_check(rs.getString(10));
-				studio.setStudio_have_mic(rs.getString(11));
-				studio.setStudio_have_park(rs.getString(12));
-				studio.setStudio_have_shower(rs.getString(13));
-				studio.setStudio_have_water(rs.getString(14));
-				studio.setStudio_have_aircon(rs.getString(15));
-				studio.setStudio_have_heater(rs.getString(16));
-				studio.setStudio_have_toilet(rs.getString(17));
-
+				StudioVO studio = makeStudio(rs);
 				studioList.add(studio);
-
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -89,29 +64,19 @@ public class StudioResDAO {
 		return studioList;
 	}
 
-
-
 	//방 조회 : select * from rooms where studio_no=?
 	public List<RoomVO> selectRoomById(int studioNo) {
 		List<RoomVO> roomList = new ArrayList<RoomVO>();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null; // 변수가 try문 밖으로 못나오니 밖에서 한번 선언해준다.
 		ResultSet rs = null;
-		String sql = "select * from rooms where studio_no=?";
+		String sql = "select * from rooms join studios using (studio_no) join hosts using (host_no) where studio_no=?";
 		try {
 			st = conn.prepareStatement(sql);
 			st.setInt(1, studioNo);
 			rs = st.executeQuery(); 
 			while(rs.next()) { //있을때까지 돌아라
-				RoomVO room = new RoomVO();
-				room.setRoom_no(rs.getInt("room_no"));
-				room.setStudio_no(rs.getInt("studio_no")); 
-				room.setRoom_name(rs.getString("room_name"));
-				room.setRoom_capacity(rs.getInt("room_capacity"));
-				room.setRoom_intro(rs.getString("room_intro"));
-				room.setRoom_price(rs.getInt("room_price"));
-				room.setRoom_picture(rs.getString("room_picture"));		
-
+				RoomVO room = makeRoom(rs);
 				roomList.add(room);
 			}
 		} catch (SQLException e) {
@@ -123,26 +88,18 @@ public class StudioResDAO {
 		return roomList;
 	}
 
-
-
 	//시간선택(예약된거 불러와서 막아야함) select date, room_no, resv_time /reservation
-	public List<ReservationsVO> selectRoomByChk() {
+	public List<ReservationsVO> selectResvByChk() {
 		List<ReservationsVO> reservation = new ArrayList<>();
 		Connection conn = DBUtil.getConnection();
 		Statement st = null; 
 		ResultSet rs = null;
-		String sql = "select * from reservations where resv_check=0 or resv_check=1";
+		String sql = "select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where resv_check=0 or resv_check=1";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql); 
 			while(rs.next()) { 
-				ReservationsVO rv = new ReservationsVO();
-				rv.setGuest_no(rs.getInt("Guest_no"));
-				rv.setResv_check(rs.getString("Resv_check"));
-				rv.setResv_date(rs.getDate("Resv_date"));
-				rv.setResv_no(rs.getInt("Resv_no"));
-				rv.setResv_time(rs.getInt("Resv_time"));
-				rv.setRoom_no(rs.getInt("Room_no"));
+				ReservationsVO rv = makeReservation(rs);
 				reservation.add(rv);
 			}
 		} catch (SQLException e) {
@@ -153,8 +110,6 @@ public class StudioResDAO {
 		}
 		return reservation;
 	}
-
-
 
 	//예약하기 insert/reservation	
 	public int insertReservation(ReservationsVO rv){ 
@@ -183,7 +138,6 @@ public class StudioResDAO {
 		}
 		return result;
 	}
-
 
 	//게스트 회원 가입
 	public int insertGuest(GuestVO guest) {
@@ -304,7 +258,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = " select * from reservations where guest_no = ? ";
+		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? ";
 		conn = DBUtil.getConnection();
 
 		try {
@@ -417,19 +371,12 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from rooms";
+				" select * from rooms join studios using (studio_no)  join hosts using (host_no)";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				RoomVO vo = new RoomVO();
-				vo.setRoom_capacity(rs.getInt("Room_capacity"));
-				vo.setRoom_intro(rs.getString("Room_intro"));
-				vo.setRoom_name(rs.getString("Room_name"));
-				vo.setRoom_no(rs.getInt("Room_no"));
-				vo.setRoom_picture(rs.getString("Room_picture"));
-				vo.setRoom_price(rs.getInt("Room_price"));
-				vo.setStudio_no(rs.getInt("Studio_no"));
+				RoomVO vo = makeRoom(rs);
 				roomlist.add(vo);
 			}
 		} catch (SQLException e) {
@@ -447,29 +394,12 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from studios order by studio_check,studio_no";
+				" select * from studios join hosts using (host_no) order by studio_check,studio_no";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				StudioVO vo = new StudioVO();
-				vo.setHost_no(rs.getInt("Host_no"));
-				vo.setStudio_address(rs.getString("Studio_address"));
-				vo.setStudio_check(rs.getString("Studio_check"));
-				vo.setStudio_days(rs.getString("Studio_days"));
-				vo.setStudio_desc(rs.getString("Studio_desc"));
-				vo.setStudio_have_aircon(rs.getString("Studio_have_aircon"));
-				vo.setStudio_have_heater(rs.getString("Studio_have_heater"));
-				vo.setStudio_have_mic(rs.getString("Studio_have_mic"));
-				vo.setStudio_have_park(rs.getString("Studio_have_park"));
-				vo.setStudio_have_shower(rs.getString("Studio_have_shower"));
-				vo.setStudio_have_toilet(rs.getString("Studio_have_toilet"));
-				vo.setStudio_have_water(rs.getString("Studio_have_water"));
-				vo.setStudio_name(rs.getString("Studio_name"));
-				vo.setStudio_no(rs.getInt("Studio_no"));
-				vo.setStudio_notice(rs.getString("Studio_notice"));
-				vo.setStudio_picture(rs.getString("Studio_picture"));
-				vo.setStudio_subway(rs.getString("Studio_subway"));
+				StudioVO vo = makeStudio(rs);
 				studiolist.add(vo);
 			}
 		} catch (SQLException e) {
@@ -487,18 +417,12 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from reservations";
+				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no)";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				ReservationsVO vo = new ReservationsVO();
-				vo.setGuest_no(rs.getInt("Guset_no"));
-				vo.setResv_check("Resv_check");
-				vo.setResv_date(rs.getDate("Resv_date"));
-				vo.setResv_no(rs.getInt("Resv_no"));
-				vo.setResv_time(rs.getInt("Resv_time"));
-				vo.setRoom_no(rs.getInt("Room_no"));
+				ReservationsVO vo = makeReservation(rs);
 				reservationlist.add(vo);
 			}
 		} catch (SQLException e) {
@@ -516,29 +440,13 @@ public class StudioResDAO {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		String sql = 
-				"select * from studios where studio_no = ?";
+				"select * from studios join hosts using (host_no) where studio_no = ?";
 		try {
 			st = conn.prepareStatement(sql);
 			st.setInt(1, studioNo);
 			rs = st.executeQuery();
 			while(rs.next()) {
-				vo.setHost_no(rs.getInt("Host_no"));
-				vo.setStudio_address(rs.getString("Studio_address"));
-				vo.setStudio_check(rs.getString("Studio_check"));
-				vo.setStudio_days(rs.getString("Studio_days"));
-				vo.setStudio_desc(rs.getString("Studio_desc"));
-				vo.setStudio_have_aircon(rs.getString("Studio_have_aircon"));
-				vo.setStudio_have_heater(rs.getString("Studio_have_heater"));
-				vo.setStudio_have_mic(rs.getString("Studio_have_mic"));
-				vo.setStudio_have_park(rs.getString("Studio_have_park"));
-				vo.setStudio_have_shower(rs.getString("Studio_have_shower"));
-				vo.setStudio_have_toilet(rs.getString("Studio_have_toilet"));
-				vo.setStudio_have_water(rs.getString("Studio_have_water"));
-				vo.setStudio_name(rs.getString("Studio_name"));
-				vo.setStudio_no(rs.getInt("Studio_no"));
-				vo.setStudio_notice(rs.getString("Studio_notice"));
-				vo.setStudio_picture(rs.getString("Studio_picture"));
-				vo.setStudio_subway(rs.getString("Studio_subway"));
+				vo = makeStudio(rs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -726,6 +634,7 @@ public class StudioResDAO {
 		}
 		return result;
 	}
+
 	//      연습실수정 update/s/s_no
 	public int updateStudio(StudioVO studio) {
 		// 호스트는 check수정못하게 하고 관리자는 check수정할 수 있어야함
@@ -779,36 +688,20 @@ public class StudioResDAO {
 		}
 		return result;
 	}
+
 	//      연습실 정보 (호스트가 가진)
-	public List<StudioVO> selectStudioByHostId(String hostNo) {
-		String sql = "select * from studios where host_no=?";
+	public List<StudioVO> selectStudioByHostId(String hostId) {
+		String sql = "select * from studios join hosts using (host_no) where host_id=?";
 		List<StudioVO> studioList = new ArrayList<StudioVO>();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
 			st = conn.prepareStatement(sql);
-			st.setString(1, hostNo);
+			st.setString(1, hostId);
 			rs = st.executeQuery();
 			while(rs.next()) {
-				StudioVO studio = new StudioVO();
-				studio.setStudio_no(rs.getInt(1));
-				studio.setHost_no(rs.getInt(2));
-				studio.setStudio_desc(rs.getString(3));
-				studio.setStudio_name(rs.getString(4));
-				studio.setStudio_picture(rs.getString(5));
-				studio.setStudio_days(rs.getString(6));
-				studio.setStudio_notice(rs.getString(7));
-				studio.setStudio_subway(rs.getString(8));
-				studio.setStudio_address(rs.getString(9));
-				studio.setStudio_check(rs.getString(10));
-				studio.setStudio_have_mic(rs.getString(11));
-				studio.setStudio_have_park(rs.getString(12));
-				studio.setStudio_have_shower(rs.getString(13));
-				studio.setStudio_have_water(rs.getString(14));
-				studio.setStudio_have_aircon(rs.getString(15));
-				studio.setStudio_have_heater(rs.getString(16));
-				studio.setStudio_have_toilet(rs.getString(17));
+				StudioVO studio = makeStudio(rs);
 				studioList.add(studio);
 			}
 		} catch (SQLException e) {
@@ -819,10 +712,11 @@ public class StudioResDAO {
 		}
 		return studioList;
 	}
+
 	//예약내역 정보(select /rooms /by room_id)
 	public RoomVO selectRoomByRoomNo(int roomNo){
-		String sql = "select * from rooms where room_no=?";
-		RoomVO room = new RoomVO();
+		String sql = "select * from rooms join studios using (studio_no) join hosts using (host_no) where room_no=?";
+		RoomVO room = null;
 
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
@@ -832,13 +726,7 @@ public class StudioResDAO {
 			st.setInt(1, roomNo);
 			rs = st.executeQuery();
 			while(rs.next()) {
-				room.setRoom_capacity(rs.getInt("room_capacity"));
-				room.setRoom_intro(rs.getString("Room_intro"));
-				room.setRoom_name(rs.getString("Room_name"));
-				room.setRoom_no(rs.getInt("Room_no"));
-				room.setRoom_picture(rs.getString("Room_picture"));
-				room.setRoom_price(rs.getInt("Room_price"));
-				room.setStudio_no(rs.getInt("Studio_no"));
+				room = makeRoom(rs);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -848,6 +736,7 @@ public class StudioResDAO {
 		}
 		return room;
 	}
+
 	//      결제 check->1
 	public int updateReservationPay(int resvNo) {
 		String sql = "update reservations set RESV_CHECK=1 where resv_No=?" ;
@@ -870,6 +759,36 @@ public class StudioResDAO {
 	}
 	//		스케쥴러 check->2
 
+	public HostVO loginChk(String host_id, String host_pw) {
+		HostVO host = null;
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select * from hosts where host_id=? and host_pw=?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, host_id);
+			pst.setString(2, host_pw);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				host = new HostVO();
+				host.setHost_no(rs.getInt("host_no"));
+				host.setHost_id(rs.getString("host_id"));
+				host.setHost_email(rs.getString("Host_email"));
+				host.setHost_name(rs.getString("Host_name"));
+				host.setHost_phone(rs.getString("Host_phone"));
+				host.setHost_pw(rs.getString("Host_pw"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return host;
+	}
+
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
 		ReservationsVO resv = new ReservationsVO();
 		resv.setResv_no(rs.getInt("resv_no"));
@@ -878,7 +797,48 @@ public class StudioResDAO {
 		resv.setResv_date(rs.getDate("resv_date"));
 		resv.setResv_time(rs.getInt("resv_time"));
 		resv.setResv_check(rs.getString("resv_check"));
+		resv.setGuest_id(rs.getString("guest_id"));
+		resv.setHost_id(rs.getString("host_id"));
+		resv.setStudio_name(rs.getString("studio_name"));
+		resv.setRoom_name(rs.getString("room_name"));
 		return resv;
+	}
+
+	private StudioVO makeStudio(ResultSet rs) throws SQLException{
+		StudioVO studio = new StudioVO();
+		studio.setStudio_no(rs.getInt("studio_no"));
+		studio.setHost_no(rs.getInt("host_no"));
+		studio.setHost_id(rs.getString("host_id"));
+		studio.setStudio_desc(rs.getString("studio_desc"));
+		studio.setStudio_name(rs.getString("Studio_name"));
+		studio.setStudio_picture(rs.getString("Studio_picture"));
+		studio.setStudio_days(rs.getString("Studio_days"));
+		studio.setStudio_notice(rs.getString("Studio_notice"));
+		studio.setStudio_subway(rs.getString("Studio_subway"));
+		studio.setStudio_address(rs.getString("Studio_address"));
+		studio.setStudio_check(rs.getString("Studio_check"));
+		studio.setStudio_have_mic(rs.getString("Studio_have_mic"));
+		studio.setStudio_have_park(rs.getString("Studio_have_park"));
+		studio.setStudio_have_shower(rs.getString("Studio_have_shower"));
+		studio.setStudio_have_water(rs.getString("Studio_have_water"));
+		studio.setStudio_have_aircon(rs.getString("Studio_have_aircon"));
+		studio.setStudio_have_heater(rs.getString("Studio_have_heater"));
+		studio.setStudio_have_toilet(rs.getString("Studio_have_toilet"));
+		return studio;
+	}
+
+	private RoomVO makeRoom(ResultSet rs) throws SQLException {
+		RoomVO room = new RoomVO();
+		room.setRoom_no(rs.getInt("room_no"));
+		room.setHost_id(rs.getString("host_id"));
+		room.setStudio_name(rs.getString("studio_name"));
+		room.setStudio_no(rs.getInt("studio_no"));
+		room.setRoom_name(rs.getString("room_name"));
+		room.setRoom_capacity(rs.getInt("room_capacity"));
+		room.setRoom_intro(rs.getString("room_intro"));
+		room.setRoom_price(rs.getInt("room_price"));
+		room.setRoom_picture(rs.getString("room_picture"));
+		return room;
 	}
 
 
