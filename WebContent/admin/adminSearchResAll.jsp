@@ -7,9 +7,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+$(function(){
+	$("table,td").css({
+		"border":"2px solid black", 
+		"border-collapse":"collapse"
+	})
+})
+</script>
 </head>
 <body>
-<h1>안녕하세요res</h1>
 	<table>
 	<tr>
 		<td>예약번호</td>
@@ -23,7 +30,6 @@
 		<c:forEach var="reservation" items="${reservationlist}">
 		<tr>
 		 <td><a href="reservationDetail?reservation_id=${reservation.resv_no}">${reservation.resv_no}</a></td>
-		 <td>${reservation.resv_no}</td>
 		 <td>${reservation.guest_no}</td>
 		 <td>${reservation.room_no}</td>
 		 <td>${reservation.resv_date}</td>

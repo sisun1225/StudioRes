@@ -7,9 +7,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+$(function(){
+	$("table,td").css({
+		"border":"2px solid black", 
+		"border-collapse":"collapse"
+	})
+})
+</script>
 </head>
 <body>
-<h1>안녕하세요studio</h1>
 <table>
 	<tr>
 		<td>번호</td>
@@ -22,8 +29,7 @@
 	</tr>
 		<c:forEach var="studio" items="${studiolist}">
 		<tr>
-		 <td><a href="studioDetail?studio_id=${studio.studio_id}">${studio.studio_no}</a></td>
-		 <td>${studio.studio_no}</td>
+		 <td><a href="studioDetail?studio_id=${studio.studio_no}">${studio.studio_no}</a></td>
 		 <td>${studio.host_no}</td>
 		 <td>${studio.studio_name}</td>
 		 <td>${studio.studio_days}</td>

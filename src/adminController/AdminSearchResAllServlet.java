@@ -22,7 +22,8 @@ public class AdminSearchResAllServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
 		List<ReservationsVO> reservationlist = dao.selectReservationsAll();
-		request.setAttribute("reservationlist", reservationlist);	
+		request.setAttribute("reservationlist", reservationlist);
+		
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("adminSearchResAll.jsp");
 		rd.forward(request, response);

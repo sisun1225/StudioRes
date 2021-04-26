@@ -7,9 +7,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+$(function(){
+	$("table,td").css({
+		"border":"2px solid black", 
+		"border-collapse":"collapse"
+	})
+
+})
+</script>
 </head>
 <body>
-<h1>안녕하세요guest</h1>
 	<table>
 	<tr>
 		<td>번호</td>
@@ -23,7 +31,6 @@
 		<c:forEach var="guest" items="${guestlist}">
 		<tr>
 		 <td><a href="guestDetail?guest_id=${guest.guest_id}">${guest.guest_no}</a></td>
-		 <td>${guest.guest_no}</td>
 		 <td>${guest.guest_id}</td>
 		 <td>${guest.guest_pw}</td>
 		 <td>${guest.guest_name}</td>

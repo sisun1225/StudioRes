@@ -10,8 +10,30 @@
 <script>
 $(function(){
 	$("#hostAll").on("click",function(){
-		$("#content").load(".jsp");
+		$("#content").load("adminSearchHostAll");
 	});
+	$("#guestAll").on("click",function(){
+		$("#content").load("adminSearchGuestAll");
+	});
+	$("#roomAll").on("click",function(){
+		$("#content").load("adminSearchRoomAll");
+	});
+	$("#studioAll").on("click",function(){
+		$("#content").load("adminSearchStudioAll");
+	});
+	$("#resvAll").on("click",function(){
+		$("#content").load("adminSearchResAll");
+	});
+	$("ul").css({
+		"list-style":"none"
+	})
+	$("li").css({
+		"float":"left",
+		"border":"1px solid red",
+		"margin":"0 20px",
+		"padding":"5px"
+	})
+	
 })
 </script>
 </head>
@@ -24,6 +46,9 @@ $(function(){
   <li id="studioAll">전체연습실조회</li>
   <li id="resvAll">전체예약조회</li>
 </ul>
+<br>
+<br>
+<hr>
 <div id="content"></div>
 </body>
 </html>
