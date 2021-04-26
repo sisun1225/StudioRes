@@ -24,7 +24,12 @@ public class HostLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("hostLogin.jsp");
+		HttpSession session = request.getSession();
+		String page = "hostLogin.jsp";
+		if(session.getAttribute("host_id")!=null) {
+			page = "hostMain.jsp";
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
 	
@@ -33,19 +38,16 @@ public class HostLoginServlet extends HttpServlet {
 		
 		String host_id = request.getParameter("host_id");
 		String host_pw = request.getParameter("host_pw");
-		HostVO host = dao.selectHostById(host_id);
+		HostVO host = dao.loginChk(host_id,host_pw);
+		String page = "hostLogin.jsp";
 		HttpSession session = request.getSession();
-		if(host_pw.equals(host.getHost_pw())) {
+		if(host != null) {
 			session.setAttribute("host_id", host_id);
 			session.setAttribute("host_pw", host_pw);
 			session.setAttribute("host_name",host.getHost_name());
-		}else {
-			RequestDispatcher rd = request.getRequestDispatcher("loginForm.html");
-			rd.forward(request, response);
+			page = "hostMain.jsp";
 		}
-		
-		
-		
-		
+		RequestDispatcher rd = request.getRequestDispatcher(page);
+		rd.forward(request, response);
 	}
 }
