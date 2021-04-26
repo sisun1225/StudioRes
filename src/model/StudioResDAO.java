@@ -788,6 +788,36 @@ public class StudioResDAO {
 		}
 		return host;
 	}
+	
+	public GuestVO guestLoginChk(String guest_id, String guest_pw) {
+		GuestVO guest = null;
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select * from guests where guest_id=? and guest_pw=?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, guest_id);
+			pst.setString(2, guest_pw);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				guest = new GuestVO();
+				guest.setGuest_no(rs.getInt("guest_no"));
+				guest.setGuest_id(rs.getString("guest_id"));
+				guest.setGuest_email(rs.getString("guest_email"));
+				guest.setGuest_name(rs.getString("guest_name"));
+				guest.setGuest_phone(rs.getString("guest_phone"));
+				guest.setGuest_pw(rs.getString("guest_pw"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return guest;
+	}
 
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
 		ReservationsVO resv = new ReservationsVO();
