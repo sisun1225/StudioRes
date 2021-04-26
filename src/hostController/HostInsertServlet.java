@@ -35,7 +35,7 @@ public class HostInsertServlet extends HttpServlet {
 		host.setHost_phone(request.getParameter("host_phone"));
 		host.setHost_email(request.getParameter("host_email"));
 		int result = dao.insertHost(host);
-		System.out.println(result>0?"입력성공":"입력실패");
+		//System.out.println(result>0?"입력성공":"입력실패");
 		RequestDispatcher rd = request.getRequestDispatcher("hostLogin");
 		rd.forward(request, response);
 	}
