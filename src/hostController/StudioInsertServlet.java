@@ -46,7 +46,8 @@ public class StudioInsertServlet extends HttpServlet {
 				facilityChk.replace(s, "1");
 			}
 		}
-		for(Map)
+		System.out.println(facilityChk.keySet());
+		System.out.println(facilityChk.values());
 	}
 
 }
