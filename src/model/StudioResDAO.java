@@ -72,7 +72,7 @@ public class StudioResDAO {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null; // 변수가 try문 밖으로 못나오니 밖에서 한번 선언해준다.
 		ResultSet rs = null;
-		String sql = "select * from rooms join studios using (studio_no) join hosts using (host_no) where studio_no=?";
+		String sql = "select * from rooms join studios using (studio_no) join hosts using (host_no) where studio_no=? order by room_no";
 		try {
 			st = conn.prepareStatement(sql);
 			st.setInt(1, studioNo);
@@ -260,7 +260,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? ";
+		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? order by resv_no desc";
 		conn = DBUtil.getConnection();
 
 		try {
@@ -315,7 +315,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from hosts";
+				" select * from hosts order by host_no";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -344,7 +344,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from guests";
+				"select * from guests order by guest_no";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -373,7 +373,8 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from rooms join studios using (studio_no)  join hosts using (host_no)";
+				" select * from rooms join studios using (studio_no)  join hosts using (host_no) order by room_no";
+		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -396,7 +397,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from studios join hosts using (host_no) order by studio_check,studio_no";
+				" select * from studios join hosts using (host_no) order by studio_check,studio_no desc";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -419,7 +420,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no)";
+				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) order by resv_no desc";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -693,7 +694,7 @@ public class StudioResDAO {
 
 	//      연습실 정보 (호스트가 가진)
 	public List<StudioVO> selectStudioByHostId(String hostId) {
-		String sql = "select * from studios join hosts using (host_no) where host_id=?";
+		String sql = "select * from studios join hosts using (host_no) where host_id=? order by studio_no";
 		List<StudioVO> studioList = new ArrayList<StudioVO>();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
