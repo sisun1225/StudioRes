@@ -283,20 +283,17 @@ public class StudioResDAO {
 	}
 
 	//예약 취소
-	public int deleteResv(int guest_no, int room_no, String date, int resv_time) {
+	public int deleteResv(int resv_no) {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement st = null;
-		String sql = "delete from reservations where guest_no = ? and room_no = ? and resv_date = ? and resv_time = ?";
+		String sql = "delete from reservations where resv_no = ?";
 
 		conn = DBUtil.getConnection();
 
 		try {
 			st = conn.prepareStatement(sql);
-			st.setInt(1, guest_no);
-			st.setInt(2, room_no);
-			st.setString(3, date);
-			st.setInt(4, resv_time);
+			st.setInt(1, resv_no);
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
