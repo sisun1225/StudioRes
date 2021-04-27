@@ -32,18 +32,20 @@ public class StudioResDAO {
 			sqlSub +=" and (studio_subway like "+"'"+"%"+subOption+"%"+"')";
 		}
 
-		for(int i=0; i<detailOption.length; i++) {
-			int j = Integer.parseInt(detailOption[i]);
-
-			switch (j) {
-			case 1: sqlopt += " and studio_have_mic=1"; break;
-			case 2:	sqlopt += " and studio_have_park=1"; break;
-			case 3:	sqlopt += " and studio_have_shower=1"; break;
-			case 4:	sqlopt += " and studio_have_water=1"; break;
-			case 5:	sqlopt += " and studio_have_aircon=1"; break;
-			case 6:	sqlopt += " and studio_have_heater=1"; break;
-			case 7:	sqlopt += " and studio_have_toilet=1"; break;
-			default: break;
+		if(detailOption != null) {
+			for(int i=0; i<detailOption.length; i++) {
+				int j = Integer.parseInt(detailOption[i]);
+	
+				switch (j) {
+				case 1: sqlopt += " and studio_have_mic=1"; break;
+				case 2:	sqlopt += " and studio_have_park=1"; break;
+				case 3:	sqlopt += " and studio_have_shower=1"; break;
+				case 4:	sqlopt += " and studio_have_water=1"; break;
+				case 5:	sqlopt += " and studio_have_aircon=1"; break;
+				case 6:	sqlopt += " and studio_have_heater=1"; break;
+				case 7:	sqlopt += " and studio_have_toilet=1"; break;
+				default: break;
+				}
 			}
 		}
 
@@ -787,6 +789,36 @@ public class StudioResDAO {
 			DBUtil.dbClose(rs, pst, conn);
 		}
 		return host;
+	}
+	
+	public GuestVO guestLoginChk(String guest_id, String guest_pw) {
+		GuestVO guest = null;
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String sql = "select * from guests where guest_id=? and guest_pw=?";
+
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, guest_id);
+			pst.setString(2, guest_pw);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				guest = new GuestVO();
+				guest.setGuest_no(rs.getInt("guest_no"));
+				guest.setGuest_id(rs.getString("guest_id"));
+				guest.setGuest_email(rs.getString("guest_email"));
+				guest.setGuest_name(rs.getString("guest_name"));
+				guest.setGuest_phone(rs.getString("guest_phone"));
+				guest.setGuest_pw(rs.getString("guest_pw"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(rs, pst, conn);
+		}
+		return guest;
 	}
 
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
