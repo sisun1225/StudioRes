@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 public class DBUtil {
 
-	//console test용
+//	console test용
 //	public static Connection getConnection() {
 //		Connection conn = null;
 //		String driverName = "oracle.jdbc.driver.OracleDriver";
@@ -31,7 +31,7 @@ public class DBUtil {
 //	}
 	
 
-	//ConnectionPool ?��?��
+//	ConnectionPool 연결
 	public static Connection getConnection() {
 		Connection conn = null;
 		Context initContext;
