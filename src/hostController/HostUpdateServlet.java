@@ -33,13 +33,19 @@ public class HostUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
 		HostVO host = new HostVO();
+		
 		host.setHost_id(request.getParameter("host_id"));
 		host.setHost_pw(request.getParameter("host_pw"));
 		host.setHost_name(request.getParameter("host_name"));
 		host.setHost_phone(request.getParameter("host_phone"));
 		host.setHost_email(request.getParameter("host_email"));
 		int result = dao.updateHost(host);
-		System.out.println(result>0?"수정성공":"수정실패");
+		HttpSession session = request.getSession();
+		session.removeAttribute("host_pw");
+		session.setAttribute("host_pw", host.getHost_pw());
+		session.removeAttribute("host_name");
+		session.setAttribute("host_name",host.getHost_name());
+		//System.out.println(result>0?"수정성공":"수정실패");
 		RequestDispatcher rd = request.getRequestDispatcher("hostDetail");
 		rd.forward(request, response);
 	}

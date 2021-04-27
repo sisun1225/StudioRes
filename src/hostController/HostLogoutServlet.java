@@ -23,6 +23,7 @@ public class HostLogoutServlet extends HttpServlet {
 		session.removeAttribute("host_id");
 		session.removeAttribute("host_pw");
 		session.removeAttribute("host_name");
+		session.removeAttribute("host_no");
 		
 		response.sendRedirect("hostLogin");
 	}

@@ -21,31 +21,52 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     document.form.zipNo.value = zipNo;
 }
 </script>
+<script>
+	$(function(){
+		$("input[name=have]:checked").each(function(){
+			$(this).val().replace("1");
+			console.log($(this).val());
+		})
+		
+	});
+</script>
+<style>
+  textarea{
+    width:780px;
+    height:160px;
+  }
+</style>
 </head>
 <body>
     <h1>연습실 등록</h1>
     
     <form name="form" id="form" method="post">
       HOST_NO
-      STUDIO_DESC
-      STUDIO_NAME
-      STUDIO_PICTURE
-      STUDIO_DAYS
-      STUDIO_NOTICE
-      STUDIO_SUBWAY
-      STUDIO_ADDRESS
-      STUDIO_CHECK
-      STUDIO_HAVE_MIC
-      STUDIO_HAVE_PARK
-      STUDIO_HAVE_SHOWER
-      STUDIO_HAVE_WATER
-      STUDIO_HAVE_AIRCON
-      STUDIO_HAVE_HEATER
-      STUDIO_HAVE_TOILET
+      연습실 명<input type="text" name="studio_name"><br>
+      연습실 소개<textarea col="60", row="20" name="studio_desc" wrap="hard"></textarea><br>
+      핸드폰<input type="text" name="host_phone"><br>
+   	  이메일<input type="text" name="host_email"><br>
+      마이크<input type="checkbox" name="have" value="0">
+      주차장<input type="checkbox" name="have" value="0">
+      샤워실<input type="checkbox" name="have" value="0">
+      
+      <!-- studio_picture
+      studio_days
+      studio_notice
+      studio_subway
+      studio_address
+      studio_check
+      studio_have_mic
+      studio_have_park
+      studio_have_shower
+      studio_have_water
+      studio_have_aircon
+      studio_have_heater
+      studio_have_toilet -->
       우편번호<input type="text"  style="width:100px;" id="zipNo"  name="zipNo" readonly="readonly"/> 
       <input type="button" onClick="goPopup();" value="칮아보기"/> <br>
       주소 <input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" readonly="readonly"/>
-      
+      <input type="submit" value="등록하기">
     </form>
     
 </body>

@@ -12,21 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import model.StudioResDAO;
 
 /**
- * Servlet implementation class HostDeleteServlet
+ * Servlet implementation class StudioInsertServlet
  */
-@WebServlet("/host/hostDelete")
-public class HostDeleteServlet extends HttpServlet {
+@WebServlet("/host/studioInsert")
+public class StudioInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String host_id = request.getParameter("host_id");
-		System.out.println(host_id);
-		if(host_id==null||host_id=="") throw new ServletException("아이디를 찾을 수 없습니다");
-		StudioResDAO dao = new StudioResDAO();
-		int result = dao.deleteHost(host_id);
-		System.out.println(result>0?"삭제성공":"삭제실패");
-		RequestDispatcher rd = request.getRequestDispatcher("hostLogout");
+		RequestDispatcher rd = request.getRequestDispatcher("studioInsert.jsp");
 		rd.forward(request, response);
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		StudioResDAO dao = new StudioResDAO();
+		
+		
+	}
+
 }

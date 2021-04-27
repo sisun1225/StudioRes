@@ -8,10 +8,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	$(function(){
-		$("#deleteBtn").on("click",function(){
-			location.href="hostDelete";
+		$("#updateBtn").on("click",function(){
+			location.href="hostUpdate";
 		});
-	};);
+		$("#deleteBtn").on("click",function(){
+			location.href="hostDelete?host_id="+"${host.host_id}";	 
+		});
+	});
 </script>
 </head>
 <body>
@@ -34,7 +37,7 @@
       <td>${host.host_email }</td>
     </tr>
   </table>
-  <button id="updateBtn"><a href="hostUpdate">수정하기</a></button>
-  <input type="button" id="deleteBtn" name="host_id" value="${host.host_id }">
+  <button id="updateBtn">수정하기</button>
+  <button id="deleteBtn" name="host_id" value="${host.host_id }">삭제</button>
 </body>
 </html>

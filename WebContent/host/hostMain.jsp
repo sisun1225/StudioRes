@@ -16,7 +16,7 @@
   <div>
     <a href="hostLogin">로그인</a>
     <a href="hostDetail">마이페이지</a>
-    
+    <a href="studioInsert">연습실등록</a>
   </div>
 </body>
 </html>
