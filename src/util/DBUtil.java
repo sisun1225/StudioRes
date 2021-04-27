@@ -13,41 +13,41 @@ import javax.sql.DataSource;
 
 public class DBUtil {
 
-	//console test용
-	public static Connection getConnection() {
-		Connection conn = null;
-		String driverName = "oracle.jdbc.driver.OracleDriver";
-		String url ="jdbc:oracle:thin:@192.168.0.165:1521:xe"; //192.168.0.172
-		String userid = "bob", password = "bob";
-		
-		try {
-			Class.forName(driverName);
-			conn = DriverManager.getConnection(url,userid,password);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return conn;
-	}
-	
-//
-//	//ConnectionPool ?��?��
+//	console test용
 //	public static Connection getConnection() {
 //		Connection conn = null;
-//		Context initContext;
-//		try {
-//			initContext = new InitialContext();
-//			Context envContext  = (Context)initContext.lookup("java:/comp/env");
-//			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
-//			conn = ds.getConnection();
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} 
-//		return conn;
+//		String driverName = "oracle.jdbc.driver.OracleDriver";
+//		String url ="jdbc:oracle:thin:@192.168.0.165:1521:xe"; //192.168.0.172
+//		String userid = "bob", password = "bob";
 //		
+//		try {
+//			Class.forName(driverName);
+//			conn = DriverManager.getConnection(url,userid,password);
+//		} catch (ClassNotFoundException | SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return conn;
 //	}
+	
+
+//	ConnectionPool 연결
+	public static Connection getConnection() {
+		Connection conn = null;
+		Context initContext;
+		try {
+			initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+			conn = ds.getConnection();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return conn;
+		
+	}
 	//2.자원반납
 	
 	public static void dbClose(ResultSet rs, Statement st, Connection conn) {

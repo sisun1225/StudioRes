@@ -72,7 +72,7 @@ public class StudioResDAO {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null; // 변수가 try문 밖으로 못나오니 밖에서 한번 선언해준다.
 		ResultSet rs = null;
-		String sql = "select * from rooms join studios using (studio_no) join hosts using (host_no) where studio_no=?";
+		String sql = "select * from rooms join studios using (studio_no) join hosts using (host_no) where studio_no=? order by room_no";
 		try {
 			st = conn.prepareStatement(sql);
 			st.setInt(1, studioNo);
@@ -260,7 +260,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? ";
+		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? order by resv_no desc";
 		conn = DBUtil.getConnection();
 
 		try {
@@ -283,20 +283,17 @@ public class StudioResDAO {
 	}
 
 	//예약 취소
-	public int deleteResv(int guest_no, int room_no, String date, int resv_time) {
+	public int deleteResv(int resv_no) {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement st = null;
-		String sql = "delete from reservations where guest_no = ? and room_no = ? and resv_date = ? and resv_time = ?";
+		String sql = "delete from reservations where resv_no = ?";
 
 		conn = DBUtil.getConnection();
 
 		try {
 			st = conn.prepareStatement(sql);
-			st.setInt(1, guest_no);
-			st.setInt(2, room_no);
-			st.setString(3, date);
-			st.setInt(4, resv_time);
+			st.setInt(1, resv_no);
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -315,7 +312,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from hosts";
+				" select * from hosts order by host_no";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -344,7 +341,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from guests";
+				"select * from guests order by guest_no";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -373,7 +370,8 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from rooms join studios using (studio_no)  join hosts using (host_no)";
+				" select * from rooms join studios using (studio_no)  join hosts using (host_no) order by room_no";
+		
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -396,7 +394,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from studios join hosts using (host_no) order by studio_check,studio_no";
+				" select * from studios join hosts using (host_no) order by studio_check,studio_no desc";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -419,7 +417,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no)";
+				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) order by resv_no desc";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -693,7 +691,7 @@ public class StudioResDAO {
 
 	//      연습실 정보 (호스트가 가진)
 	public List<StudioVO> selectStudioByHostId(String hostId) {
-		String sql = "select * from studios join hosts using (host_no) where host_id=?";
+		String sql = "select * from studios join hosts using (host_no) where host_id=? order by studio_no";
 		List<StudioVO> studioList = new ArrayList<StudioVO>();
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement st = null;
@@ -819,6 +817,19 @@ public class StudioResDAO {
 			DBUtil.dbClose(rs, pst, conn);
 		}
 		return guest;
+	}
+	
+	public List<String> StudioOption(StudioVO studio){
+		List<String> optlist = new ArrayList<String>();
+		if(studio.getStudio_have_mic().equals("1")) optlist.add("마이크");
+		if(studio.getStudio_have_park().equals("1")) optlist.add("주차가능");
+		if(studio.getStudio_have_shower().equals("1")) optlist.add("샤워가능");
+		if(studio.getStudio_have_water().equals("1")) optlist.add("정수기");
+		if(studio.getStudio_have_aircon().equals("1")) optlist.add("에어컨");
+		if(studio.getStudio_have_heater().equals("1")) optlist.add("난방기");
+		if(studio.getStudio_have_toilet().equals("1")) optlist.add("독립화장실");
+		
+		return optlist;
 	}
 
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
