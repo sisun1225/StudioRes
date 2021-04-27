@@ -38,7 +38,7 @@ public class Test_khy {
 
 	private static void TestselectRoomByChk() {
 		StudioResDAO dao = new StudioResDAO();
-		List<ReservationsVO> reservationlist = dao.selectRoomByChk();
+		List<ReservationsVO> reservationlist = dao.selectResvByChk();
 		TestView.view(reservationlist);
 	}
 
