@@ -13,36 +13,6 @@ import javax.servlet.http.HttpSession;
 import model.GuestVO;
 import model.StudioResDAO;
 
-/*
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      HttpSession session = request.getSession();
-      String page = "hostLogin.jsp";
-      if(session.getAttribute("host_id")!=null) {
-         page = "hostMain.jsp";
-      }
-      RequestDispatcher rd = request.getRequestDispatcher(page);
-      rd.forward(request, response);
-   }
-
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      StudioResDAO dao = new StudioResDAO();
-
-      String host_id = request.getParameter("host_id");
-      String host_pw = request.getParameter("host_pw");
-      HostVO host = dao.loginChk(host_id,host_pw);
-      String page = "hostLogin.jsp";
-      HttpSession session = request.getSession();
-      if(host != null) {
-         session.setAttribute("host_id", host_id);
-         session.setAttribute("host_pw", host_pw);
-         session.setAttribute("host_name",host.getHost_name());
-         page = "hostMain.jsp";
-      }
-      RequestDispatcher rd = request.getRequestDispatcher(page);
-      rd.forward(request, response);
-   }
- */
-
 
 @WebServlet("/guest/login")
 public class GuestLoginServlet extends HttpServlet {
@@ -69,7 +39,7 @@ public class GuestLoginServlet extends HttpServlet {
 		if(guest != null) {
 			session.setAttribute("guest_id", guest_id);
 			session.setAttribute("guest_pw", guest_pw);
-			session.setAttribute("guest_name",guest.getGuest_name());
+			session.setAttribute("guest_name", guest.getGuest_name());
 			page = "guestMain.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(page);
