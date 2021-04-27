@@ -39,10 +39,10 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 <body>
     <h1>연습실 등록</h1>
     
-    <form name="form" id="form" method="post">
-      HOST_NO
+    <form name="form" id="form" method="post" enctype="multipart/form-data">
       연습실 명<input type="text" name="studio_name"><br>
       연습실 소개<textarea cols="60" rows="20" name="studio_desc" wrap="hard"></textarea><br>
+      연습실 사진<input type="file" name="image">
       핸드폰<input type="text" name="host_phone"><br>
    	  이메일<input type="text" name="host_email"><br>
       마이크<input type="checkbox" name="have" value="studio_have_mic">
