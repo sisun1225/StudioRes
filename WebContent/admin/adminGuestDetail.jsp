@@ -7,39 +7,29 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<script>
-$(function(){
-	$("table,td").css({
-		"border":"2px solid black", 
-		"border-collapse":"collapse"
-	})
-})
-</script>
 </head>
 <body>
 	<table>
 	<tr>
 		<td>예약번호</td>
-		<td>방번호</td>
-		<td>방이름</td>
-		<td>연습실이름</td>
 		<td>게스트id</td>
+		<td>방번호</td>
+		<td>연습실이름</td>
+		<td>방이름</td>
 		<td>예약일</td>
 		<td>예약시간</td>
+		<td>예약현황</td>
 		<td>호스트id</td>
-		<td>현재상태</td>
 	</tr>
 		<c:forEach var="reservation" items="${reservationlist}">
 		<tr>
 		 <td>${reservation.resv_no}</td>
-		 <td><a href="adminResvDetailByRoom?room_no=${reservation.room_no}">${reservation.room_no}</a></td>
+		 <td>${reservation.guest_id}</td>
+		 <td>${reservation.room_no}</td>
+		 <td>${reservation.studio_name}</td>
 		 <td>${reservation.room_name}</td>
-		 <td><a href="adminResvDetailByStudio?studio_no=${reservation.studio_no}">${reservation.studio_name}</a></td>
-		 <td><a href="adminGuestDetail?guest_no=${reservation.guest_no}">${reservation.guest_id}</a></td>
 		 <td>${reservation.resv_date}</td>
 		 <td>${reservation.resv_time}</td>
-		 <td><a href="adminHostDetail?host_id=${reservation.host_id}">${reservation.host_id}</a></td>
 		 <c:choose>
 			<c:when test="${reservation.resv_check==0}">
 			 <td>예약</td>
@@ -52,6 +42,15 @@ $(function(){
 			</c:when>
 			<c:when test="${reservation.resv_check==3}">
 			 <td>예약취소</td>
+			</c:when>
+		 </c:choose>
+		 <td>${reservation.host_id}</td>
+		 <c:choose>
+			<c:when test="${studio.studio_check==0}">
+			 <td>신청중</td>
+			</c:when>
+			<c:when test="${studio.studio_check==1}">
+			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
 		</tr>

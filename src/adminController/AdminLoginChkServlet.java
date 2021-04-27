@@ -26,14 +26,9 @@ public class AdminLoginChkServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String adminid = request.getParameter("adminid");
 		String adminpw = request.getParameter("adminpw");
-		if(adminid == null || adminpw == null) {
-			RequestDispatcher rd = request.getRequestDispatcher("adminLoginChk.jsp");
-			rd.forward(request, response);
-			return;
-		}
+
 		if(adminid.equals("admin") && adminpw.equals("1234")) {
-			RequestDispatcher rd = request.getRequestDispatcher("adminMain.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("adminMain");
 			return;
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("adminLoginChk.jsp");

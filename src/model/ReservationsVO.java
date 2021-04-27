@@ -14,11 +14,12 @@ public class ReservationsVO {
 	private String host_id;
 	private String studio_name;
 	private String room_name;
+	private int studio_no;
 	
 	public ReservationsVO(){}
 
 	public ReservationsVO(int resv_no, int guest_no, int room_no, Date resv_date, int resv_time, String resv_check,
-			String guest_id, String host_id, String studio_name, String room_name) {
+			String guest_id, String host_id, String studio_name, String room_name, int studio_no) {
 		super();
 		this.resv_no = resv_no;
 		this.guest_no = guest_no;
@@ -30,6 +31,7 @@ public class ReservationsVO {
 		this.host_id = host_id;
 		this.studio_name = studio_name;
 		this.room_name = room_name;
+		this.studio_no = studio_no;
 	}
 
 	public int getResv_no() {
@@ -100,9 +102,11 @@ public class ReservationsVO {
 		return studio_name;
 	}
 
+
 	public void setStudio_name(String studio_name) {
 		this.studio_name = studio_name;
 	}
+
 
 	public String getRoom_name() {
 		return room_name;
@@ -112,11 +116,23 @@ public class ReservationsVO {
 		this.room_name = room_name;
 	}
 
+	public int getStudio_no() {
+		return studio_no;
+	}
+
+	public void setStudio_no(int studio_no) {
+		this.studio_no = studio_no;
+	}
+
 	@Override
 	public String toString() {
-		return "ReservationsVO [resv_no=" + resv_no + ", guest_no=" + guest_no + ", room_no=" + room_no + ", resv_date="
-				+ resv_date + ", resv_time=" + resv_time + ", resv_check=" + resv_check + ", guest_id=" + guest_id
-				+ ", host_id=" + host_id + ", studio_name=" + studio_name + ", room_name=" + room_name + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("ReservationsVO [resv_no=").append(resv_no).append(", guest_no=").append(guest_no)
+				.append(", room_no=").append(room_no).append(", resv_date=").append(resv_date).append(", resv_time=")
+				.append(resv_time).append(", resv_check=").append(resv_check).append(", guest_id=").append(guest_id)
+				.append(", host_id=").append(host_id).append(", studio_name=").append(studio_name)
+				.append(", room_name=").append(room_name).append(", studio_no=").append(studio_no).append("]");
+		return builder.toString();
 	}
-	
+
 }

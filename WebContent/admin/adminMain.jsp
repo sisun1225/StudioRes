@@ -33,8 +33,13 @@ $(function(){
 		"margin":"0 20px",
 		"padding":"5px"
 	})
+	var work = "${work}";
+	if(work=="approve"){
+		$("#studioAll").trigger("click");
+		work="";
+	}
 	
-})
+});
 </script>
 </head>
 <body>

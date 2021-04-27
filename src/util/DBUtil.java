@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 public class DBUtil {
 
+/*
 	//console test용
 	public static Connection getConnection() {
 		Connection conn = null;
@@ -29,25 +30,26 @@ public class DBUtil {
 		
 		return conn;
 	}
-	
-//
-//	//ConnectionPool ?��?��
-//	public static Connection getConnection() {
-//		Connection conn = null;
-//		Context initContext;
-//		try {
-//			initContext = new InitialContext();
-//			Context envContext  = (Context)initContext.lookup("java:/comp/env");
-//			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
-//			conn = ds.getConnection();
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} 
-//		return conn;
-//		
-//	}
+*/
+
+	//ConnectionPool
+	public static Connection getConnection() {
+		Connection conn = null;
+		Context initContext;
+		try {
+			initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
+			conn = ds.getConnection();
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return conn;
+		
+	}
+
 	//2.자원반납
 	
 	public static void dbClose(ResultSet rs, Statement st, Connection conn) {

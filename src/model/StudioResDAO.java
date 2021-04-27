@@ -801,6 +801,7 @@ public class StudioResDAO {
 		resv.setHost_id(rs.getString("host_id"));
 		resv.setStudio_name(rs.getString("studio_name"));
 		resv.setRoom_name(rs.getString("room_name"));
+		resv.setStudio_no(rs.getInt("studio_no"));
 		return resv;
 	}
 

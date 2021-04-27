@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script>
 $(function(){
 	$("table,td").css({
@@ -26,17 +27,15 @@ $(function(){
 		<td>이름</td>
 		<td>전화번호</td>
 		<td>이메일</td>
-		<td></td>
 	</tr>
 		<c:forEach var="guest" items="${guestlist}">
 		<tr>
-		 <td><a href="guestDetail?guest_id=${guest.guest_id}">${guest.guest_no}</a></td>
-		 <td>${guest.guest_id}</td>
+		 <td>${guest.guest_no}</td>
+		 <td><a href="adminGuestDetail?guest_no=${guest.guest_no}">${guest.guest_id}</a></td>
 		 <td>${guest.guest_pw}</td>
 		 <td>${guest.guest_name}</td>
 		 <td>${guest.guest_phone}</td>
 		 <td>${guest.guest_email}</td>
-		 <td><button onclick="location.href='deptDelete?deptid=${dept.department_id}'">삭제</button></td>
 		</tr>
 		</c:forEach>
 	</table>

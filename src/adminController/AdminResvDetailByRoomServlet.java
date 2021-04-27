@@ -1,6 +1,7 @@
 package adminController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,32 +10,34 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import model.GuestVO;
 import model.ReservationsVO;
-import model.RoomVO;
 import model.StudioResDAO;
+import model.StudioVO;
 
-/**
- * Servlet implementation class AdminSearchRoomAllServlet
- */
-@WebServlet("/admin/adminSearchRoomAll")
-public class AdminSearchRoomAllServlet extends HttpServlet {
+@WebServlet("/admin/adminResvDetailByRoom")
+public class AdminResvDetailByRoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
-		List<RoomVO> roomlist = dao.selectRoomsAll();
-		request.setAttribute("roomlist", roomlist);	
+		int room_no = Integer.parseInt(request.getParameter("room_no"));
+		List<ReservationsVO> originReslist = dao.selectReservationsAll();
+		List<ReservationsVO> filteredReslist = new ArrayList<ReservationsVO>();
+		for(ReservationsVO vo:originReslist) {
+			if(vo.getRoom_no()==room_no) {
+				filteredReslist.add(vo);
+			}
+		}
+		request.setAttribute("reservationlist", filteredReslist);
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("adminSearchRoomAll.jsp");
+		rd = request.getRequestDispatcher("adminSearchResAll.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.setAttribute("work", "room"); 
-		response.sendRedirect("adminMain");
+
 	}
 
 }

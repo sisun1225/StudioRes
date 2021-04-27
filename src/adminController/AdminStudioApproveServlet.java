@@ -1,7 +1,6 @@
 package adminController;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,30 +10,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.ReservationsVO;
-import model.RoomVO;
 import model.StudioResDAO;
 
 /**
- * Servlet implementation class AdminSearchRoomAllServlet
+ * Servlet implementation class AdminStudioApproveServlet
  */
-@WebServlet("/admin/adminSearchRoomAll")
-public class AdminSearchRoomAllServlet extends HttpServlet {
+@WebServlet("/admin/adminStudioApprove")
+public class AdminStudioApproveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
-		List<RoomVO> roomlist = dao.selectRoomsAll();
-		request.setAttribute("roomlist", roomlist);	
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("adminSearchRoomAll.jsp");
-		rd.forward(request, response);
+		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
+		dao.updateStudioChkByNo(studio_no);
+		HttpSession session = request.getSession();
+		session.setAttribute("work", "approve"); 
+		response.sendRedirect("adminMain");
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.setAttribute("work", "room"); 
-		response.sendRedirect("adminMain");
+		
 	}
 
 }

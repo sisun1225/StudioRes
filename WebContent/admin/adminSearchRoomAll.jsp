@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script>
 $(function(){
 	$("table,td").css({
@@ -21,19 +22,19 @@ $(function(){
 	<tr>
 		<td>방번호</td>
 		<td>방이름</td>
-		<td>연습실번호</td>
 		<td>수용가능인원</td>
 		<td>가격</td>
-		<td></td>
+		<td>연습실이름</td>
+		<td>호스트id</td>
 	</tr>
 		<c:forEach var="room" items="${roomlist}">
 		<tr>
-		 <td><a href="roomDetail?room_id=${room.room_no}">${room.room_no}</a></td>
+		 <td>${room.room_no}</td>
 		 <td>${room.room_name}</td>
-		 <td>${room.studio_no}</td>
 		 <td>${room.room_capacity}</td>
 		 <td>${room.room_price}</td>
-		 <td><button onclick="location.href='deptDelete?deptid=${dept.department_id}'">삭제</button></td>
+		 <td><a href="adminRoomDetail?studio_no=${room.studio_no}">${room.studio_name}</a></td>
+		 <td>${room.host_id}</td>
 		</tr>
 		</c:forEach>
 	</table>

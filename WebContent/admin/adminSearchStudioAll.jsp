@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -15,27 +15,60 @@ $(function(){
 	})
 })
 </script>
+<script>
+	  function approve(studio_no){
+		  $.ajax({
+			  url:"adminStudioApprove",
+			  data:{"studio_no":studio_no},
+			  success:function(){
+				  location.reload();
+				  //$("#studioAll").trigger("click");
+				  //$("#content").load("adminSearchStudioAll");
+			  }
+		  });
+	  }
+	  function disapprove(studio_no){
+		  $.ajax({
+			  url:"adminStudioDisapprove",
+			  data:{"studio_no":studio_no},
+			  success:function(){
+				  location.reload();
+				  //$("#studioAll").trigger("click");
+				  //$("#content").load("adminSearchStudioAll");
+			  }
+		  });
+	  }
+</script>
 </head>
 <body>
 <table>
 	<tr>
 		<td>번호</td>
-		<td>호스트번호</td>
-		<td>이름</td>
+		<td>연습실이름</td>
 		<td>영업요일</td>
 		<td>주소</td>
+		<td>호스트아이디</td>
 		<td>승인여부</td>
+		<td></td>
 		<td></td>
 	</tr>
 		<c:forEach var="studio" items="${studiolist}">
 		<tr>
-		 <td><a href="studioDetail?studio_id=${studio.studio_no}">${studio.studio_no}</a></td>
-		 <td>${studio.host_no}</td>
-		 <td>${studio.studio_name}</td>
+		 <td>${studio.studio_no}</td>
+		 <td><a href="adminRoomDetail?studio_no=${studio.studio_no}">${studio.studio_name}</a></td>
 		 <td>${studio.studio_days}</td>
 		 <td>${studio.studio_address}</td>
-		 <td>${studio.studio_check}</td>
-		 <td><button onclick="location.href='deptDelete?deptid=${dept.department_id}'">삭제</button></td>
+		 <td><a href="adminHostDetail?host_id=${studio.host_id}">${studio.host_id}</a></td>
+		 <c:choose>
+			<c:when test="${studio.studio_check==0}">
+			 <td>신청중</td>
+			</c:when>
+			<c:when test="${studio.studio_check==1}">
+			 <td>승인완료</td>
+			</c:when>
+		 </c:choose>
+		 <td><button onclick='approve("${studio.studio_no}");'>승인</button></td>
+		 <td><button onclick='disapprove("${studio.studio_no}");'>승인거부</button></td>
 		</tr>
 		</c:forEach>
 	</table>

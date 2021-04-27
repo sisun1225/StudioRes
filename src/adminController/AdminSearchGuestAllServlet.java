@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.GuestVO;
 import model.StudioResDAO;
@@ -30,7 +31,12 @@ public class AdminSearchGuestAllServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("work", "guest"); 
+		request.setAttribute("count", 0);
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("adminMain");
+		rd.forward(request, response);
 	}
 
 }
