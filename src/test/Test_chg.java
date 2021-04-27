@@ -28,9 +28,11 @@ public class Test_chg {
 
 	private static void test1() {
 		StudioResDAO dao = new StudioResDAO();
-//		List<StudioVO> slist = dao.selectStudioByHostId("host5");
-		HostVO s = dao.loginChk("host1","pw1");
-		TestView.view(s);
+		StudioVO st = dao.selectStudioByNo(2);
+		List<String> slist = dao.StudioOption(st);
+		for(String s:slist) {
+			System.out.println(s);
+		}
 	}
 
 	private static void test_delete_resv() {

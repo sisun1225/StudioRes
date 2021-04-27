@@ -818,6 +818,19 @@ public class StudioResDAO {
 		}
 		return guest;
 	}
+	
+	public List<String> StudioOption(StudioVO studio){
+		List<String> optlist = new ArrayList<String>();
+		if(studio.getStudio_have_mic().equals("1")) optlist.add("마이크");
+		if(studio.getStudio_have_park().equals("1")) optlist.add("주차가능");
+		if(studio.getStudio_have_shower().equals("1")) optlist.add("샤워가능");
+		if(studio.getStudio_have_water().equals("1")) optlist.add("정수기");
+		if(studio.getStudio_have_aircon().equals("1")) optlist.add("에어컨");
+		if(studio.getStudio_have_heater().equals("1")) optlist.add("난방기");
+		if(studio.getStudio_have_toilet().equals("1")) optlist.add("독립화장실");
+		
+		return optlist;
+	}
 
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
 		ReservationsVO resv = new ReservationsVO();
