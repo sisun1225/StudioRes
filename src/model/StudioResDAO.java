@@ -32,18 +32,20 @@ public class StudioResDAO {
 			sqlSub +=" and (studio_subway like "+"'"+"%"+subOption+"%"+"')";
 		}
 
-		for(int i=0; i<detailOption.length; i++) {
-			int j = Integer.parseInt(detailOption[i]);
-
-			switch (j) {
-			case 1: sqlopt += " and studio_have_mic=1"; break;
-			case 2:	sqlopt += " and studio_have_park=1"; break;
-			case 3:	sqlopt += " and studio_have_shower=1"; break;
-			case 4:	sqlopt += " and studio_have_water=1"; break;
-			case 5:	sqlopt += " and studio_have_aircon=1"; break;
-			case 6:	sqlopt += " and studio_have_heater=1"; break;
-			case 7:	sqlopt += " and studio_have_toilet=1"; break;
-			default: break;
+		if(detailOption != null) {
+			for(int i=0; i<detailOption.length; i++) {
+				int j = Integer.parseInt(detailOption[i]);
+	
+				switch (j) {
+				case 1: sqlopt += " and studio_have_mic=1"; break;
+				case 2:	sqlopt += " and studio_have_park=1"; break;
+				case 3:	sqlopt += " and studio_have_shower=1"; break;
+				case 4:	sqlopt += " and studio_have_water=1"; break;
+				case 5:	sqlopt += " and studio_have_aircon=1"; break;
+				case 6:	sqlopt += " and studio_have_heater=1"; break;
+				case 7:	sqlopt += " and studio_have_toilet=1"; break;
+				default: break;
+				}
 			}
 		}
 
