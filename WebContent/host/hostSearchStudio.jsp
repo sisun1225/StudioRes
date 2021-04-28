@@ -19,20 +19,18 @@ $(function(){
 <body>
 <table>
 	<tr>
-		<td>번호</td>
+		<td>연습실번호</td>
 		<td>연습실이름</td>
 		<td>영업요일</td>
 		<td>주소</td>
-		<td>호스트아이디</td>
 		<td>승인여부</td>
 	</tr>
 		<c:forEach var="studio" items="${studiolist}">
 		<tr>
 		 <td>${studio.studio_no}</td>
-		 <td><a href="javascript:roomDetail(${studio.studio_no})">${studio.studio_name}</a></td>
+		 <td><a href="javascript:studioDetail(${studio.studio_no})">${studio.studio_name}</a></td>
 		 <td>${studio.studio_days}</td>
 		 <td>${studio.studio_address}</td>
-		 <td>${studio.host_id}</td>
 		 <c:choose>
 			<c:when test="${studio.studio_check==0}">
 			 <td>신청중</td>
@@ -41,26 +39,28 @@ $(function(){
 			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
+		 <td><button onclick='searchResv("${studio.studio_no}");'>예약현황</button></td>
+		 <td><button>방추가</button></td>
 		</tr>
 		</c:forEach>
 	</table>
 	<script>
-	function roomDetail(studio_no){
+	function searchResv(studio_no){
 		$.ajax({
-			url:"adminRoomDetail",
+			url:"hostSearchResByStudio",
 			data:{"studio_no":studio_no},
 			success:function(responsedata){
-				$("#content").html(responsedata);
+				$("body").html(responsedata);
 			}
 		});
 	}
 	
-	function hostDetail(host_id){
+	function studioDetail(studio_no){
 		$.ajax({
-			url:"adminHostDetail",
-			data:{"host_id":host_id},
+			url:"hostStudioDetail",
+			data:{"studio_no":studio_no},
 			success:function(responsedata){
-				$("#content").html(responsedata);
+				$("body").html(responsedata);
 			}
 		});
 	}

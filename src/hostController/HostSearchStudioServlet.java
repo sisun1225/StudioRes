@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import model.StudioResDAO;
 import model.StudioVO;
 
-@WebServlet("/host/HostStudio")
-public class HostStudioServlet extends HttpServlet {
+@WebServlet("/host/hostSearchStudio")
+public class HostSearchStudioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class HostStudioServlet extends HttpServlet {
 		List<StudioVO> studiolist = dao.selectStudioByHostId(String.valueOf(session.getAttribute("host_id")));
 		request.setAttribute("studiolist", studiolist);	
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("hostStudio.jsp");
+		rd = request.getRequestDispatcher("hostSearchStudio.jsp");
 		rd.forward(request, response);
 	}
 
