@@ -39,16 +39,18 @@ public class HostLoginServlet extends HttpServlet {
 		String host_id = request.getParameter("host_id");
 		String host_pw = request.getParameter("host_pw");
 		HostVO host = dao.loginChk(host_id,host_pw);
-		String page = "hostLogin.jsp";
+		
 		HttpSession session = request.getSession();
 		if(host != null) {
 			session.setAttribute("host_no", host.getHost_no());
 			session.setAttribute("host_id", host.getHost_id());
 			session.setAttribute("host_pw", host.getHost_pw());
 			session.setAttribute("host_name",host.getHost_name());
-			page = "hostMain.jsp";
+			response.sendRedirect("hostMain");
+			return;
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(page);
+		RequestDispatcher rd = request.getRequestDispatcher("hostLogin.jsp");
 		rd.forward(request, response);
+		return;
 	}
 }
