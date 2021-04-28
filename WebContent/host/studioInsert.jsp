@@ -6,10 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
- <script>
- $(function(){
- });
- </script>
  <script language="javascript">
 
 function goPopup(){
@@ -21,14 +17,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     document.form.zipNo.value = zipNo;
 }
 </script>
-<script>
-	$(function(){
-		$("input[name=have]:checked").each(function(){
-			$(this).val().replace("0","1");
-		})
-		
-	});
-</script>
 <style>
   textarea{
     width:780px;
@@ -38,8 +26,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </head>
 <body>
     <h1>연습실 등록</h1>
-    
-    <form name="form" id="form" method="post" enctype="multipart/form-data">
+    <form action="studioInsert" name="form" id="form" method="post" enctype="multipart/form-data">
       연습실 명<input type="text" name="studio_name"><br>
       연습실 사진<input type="file" name="studio_picture"><br>
       연습실 소개<textarea cols="60" rows="20" name="studio_desc" wrap="hard"></textarea><br>
