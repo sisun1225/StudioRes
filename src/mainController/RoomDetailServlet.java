@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.HostVO;
+import model.ReservationsVO;
 import model.RoomVO;
 import model.StudioResDAO;
 import model.StudioVO;
