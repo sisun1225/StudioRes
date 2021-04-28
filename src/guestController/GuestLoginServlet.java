@@ -43,6 +43,7 @@ public class GuestLoginServlet extends HttpServlet {
 			session.setAttribute("guest_id", guest_id);
 			session.setAttribute("guest_pw", guest_pw);
 			session.setAttribute("guest_name", guest.getGuest_name());
+			session.setAttribute("guest_no", guest.getGuest_no());
 			response.sendRedirect("main");
 			return;
 		}

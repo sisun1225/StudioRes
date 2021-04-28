@@ -19,6 +19,7 @@ public class GuestLogoutServlet extends HttpServlet {
 		session.removeAttribute("guest_id");
 		session.removeAttribute("guest_pw");
 		session.removeAttribute("guest_name");
+		session.removeAttribute("guest_no");
 		
 		response.sendRedirect("login");
 	}

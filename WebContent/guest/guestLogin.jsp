@@ -9,14 +9,19 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
-
+<div id="container">
 <form action=login method="post">
-아이디 : <input type="text" name="guest_id"><br>
-비밀번호 : <input type="password" name="guest_pw"><br>
+<fieldset>
+<legend>로그인</legend>
+<label>아이디</label>
+<input type="text" name="guest_id"><br>
+<label>비밀번호</label>
+<input type="password" name="guest_pw"><br>
 <input type="submit" value="로그인">
-<br>
 <button type="button" onclick="location.href='insert'">회원가입</button>
+</fieldset>
 </form>
+</div>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

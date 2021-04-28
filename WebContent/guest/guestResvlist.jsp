@@ -11,6 +11,8 @@
 
 </head>
 <body>
+<div id="here">
+<br>
 <h3>예약정보</h3>
 <table>
 	<tr>
@@ -35,5 +37,6 @@
 	</tr>
 	</c:forEach>
 </table>
+</div>
 </body>
 </html>

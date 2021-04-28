@@ -22,16 +22,24 @@ $(function(){
 </head>
 <body>
 
-<h3>회원정보</h3>
-<br>
+<div id="here">
 <form id="myfrm" action="update" method="post">
-ID : <input type="text" value="${guest.guest_id}" name="guest_id" readonly><br>
-PW : <input type="text" value="${guest.guest_pw}" name="guest_pw" ><br>
-이름 : <input type="text" value="${guest.guest_name}" name="guest_name" ><br>
-이메일 : <input type="text" value="${guest.guest_email}" name="guest_email"><br>
-연락처 : <input type="text" value="${guest.guest_phone}" name="guest_phone"><br>
+<fieldset>
+<legend>회원정보</legend>
+<label>ID</label>
+<input type="text" value="${guest.guest_id}" name="guest_id" readonly><br>
+<label>PW</label>
+<input type="text" value="${guest.guest_pw}" name="guest_pw" ><br>
+<label>이름</label>
+<input type="text" value="${guest.guest_name}" name="guest_name" ><br>
+<label>이메일</label>
+<input type="text" value="${guest.guest_email}" name="guest_email"><br>
+<label>연락처</label>
+<input type="text" value="${guest.guest_phone}" name="guest_phone"><br>
 <input type="button" id="update" value="수정하기">
 <input type="button" id="delete" value="탈퇴하기" mydata="${guest.guest_id}">
+</fieldset>
 </form>
+</div>
 </body>
 </html>

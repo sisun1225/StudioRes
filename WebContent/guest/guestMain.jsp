@@ -10,23 +10,27 @@
 <script>
 $(function(){
 	$("#mypage").on("click", function(){
-		$("#here").load("info");
+		$("#container").load("info");
 	});
 	$("#resvlist").on("click", function(){
-		$("#here").load("resvlist");
+		$("#container").load("resvlist");
 	});
 });
 </script>
 </head>
 <body>
+
 <jsp:include page="../common/header.jsp"></jsp:include>
+<nav id="nav">
 <button id="mypage">개인정보</button>
 <button id="resvlist">예약리스트</button>
-<hr>
+</nav>
 
-<div id="here">
+<div id="container">
 ${guest_id}님 안녕하세요.
 </div>
+
+
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
