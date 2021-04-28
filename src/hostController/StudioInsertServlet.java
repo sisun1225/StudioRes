@@ -38,7 +38,7 @@ public class StudioInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio = new StudioVO();
-		
+		//부대시설 체크
 		String[] facility = request.getParameterValues("have");
 		Map<String, String> facilityChk = new HashMap<String, String>();
 		facilityChk.put("studio_have_mic", "0");
@@ -69,11 +69,12 @@ public class StudioInsertServlet extends HttpServlet {
 		String originalFileName = mutipartRequest.getOriginalFileName(str);
 		System.out.println("originalFileName=  "+originalFileName);
 
-		//데이터입력
+		//데이터입력(연습실등록)
 		HttpSession session = request.getSession();
 		studio.setHost_no((int)session.getAttribute("host_no"));
 		studio.setStudio_name(request.getParameter("studio_name"));
 		studio.setStudio_desc(request.getParameter("studio_desc"));
+		studio.setStudio_picture(originalFileName);
 		dao.insertStudio(studio);
 		System.out.println(facilityChk.get("studio_have_mic"));
 	}
