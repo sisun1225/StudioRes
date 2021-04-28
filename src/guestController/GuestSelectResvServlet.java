@@ -21,9 +21,10 @@ public class GuestSelectResvServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
   	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
   		HttpSession session = request.getSession();
 		StudioResDAO dao = new StudioResDAO();
-		String guest_id = (String)session.getAttribute("guest_id");		
+		String guest_id = (String)session.getAttribute("guest_id");
 		GuestVO guest = dao.selectGuestById(guest_id);
 		List<ReservationsVO> resvlist = dao.selectResvByGuestNo(guest.getGuest_no());
 
