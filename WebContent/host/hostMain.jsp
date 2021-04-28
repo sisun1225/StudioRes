@@ -17,6 +17,10 @@
     <a href="hostLogin">로그인</a>
     <a href="hostDetail">마이페이지</a>
     <a href="studioInsert">연습실등록</a>
+    
+    <p>경로테스트(hostMain.jsp에서 테스트중)</p>
+    <p>${pageContext.request.contextPath }</p>
+    <p>${appPath}</p>
   </div>
 </body>
 </html>

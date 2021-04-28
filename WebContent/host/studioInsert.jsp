@@ -24,8 +24,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 <script>
 	$(function(){
 		$("input[name=have]:checked").each(function(){
-			$(this).val().replace("1");
-			console.log($(this).val());
+			$(this).val().replace("0","1");
 		})
 		
 	});
@@ -40,29 +39,26 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 <body>
     <h1>연습실 등록</h1>
     
-    <form name="form" id="form" method="post">
-      HOST_NO
+    <form name="form" id="form" method="post" enctype="multipart/form-data">
       연습실 명<input type="text" name="studio_name"><br>
-      연습실 소개<textarea col="60", row="20" name="studio_desc" wrap="hard"></textarea><br>
+      연습실 소개<textarea cols="60" rows="20" name="studio_desc" wrap="hard"></textarea><br>
+      연습실 사진<input type="file" name="image">
       핸드폰<input type="text" name="host_phone"><br>
    	  이메일<input type="text" name="host_email"><br>
-      마이크<input type="checkbox" name="have" value="0">
-      주차장<input type="checkbox" name="have" value="0">
-      샤워실<input type="checkbox" name="have" value="0">
+      마이크<input type="checkbox" name="have" value="studio_have_mic">
+      주차장<input type="checkbox" name="have" value="studio_have_park">
+      샤워실<input type="checkbox" name="have" value="studio_have_shower">
+      정수기<input type="checkbox" name="have" value="studio_have_water">
+      에어컨<input type="checkbox" name="have" value="studio_have_aircon">
+      히터<input type="checkbox" name="have" value="studio_have_heater">
+      화장실<input type="checkbox" name="have" value="studio_have_toilet">
       
       <!-- studio_picture
       studio_days
       studio_notice
       studio_subway
       studio_address
-      studio_check
-      studio_have_mic
-      studio_have_park
-      studio_have_shower
-      studio_have_water
-      studio_have_aircon
-      studio_have_heater
-      studio_have_toilet -->
+      studio_check-->
       우편번호<input type="text"  style="width:100px;" id="zipNo"  name="zipNo" readonly="readonly"/> 
       <input type="button" onClick="goPopup();" value="칮아보기"/> <br>
       주소 <input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" readonly="readonly"/>

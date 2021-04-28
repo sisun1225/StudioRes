@@ -283,20 +283,17 @@ public class StudioResDAO {
 	}
 
 	//예약 취소
-	public int deleteResv(int guest_no, int room_no, String date, int resv_time) {
+	public int deleteResv(int resv_no) {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement st = null;
-		String sql = "delete from reservations where guest_no = ? and room_no = ? and resv_date = ? and resv_time = ?";
+		String sql = "delete from reservations where resv_no = ?";
 
 		conn = DBUtil.getConnection();
 
 		try {
 			st = conn.prepareStatement(sql);
-			st.setInt(1, guest_no);
-			st.setInt(2, room_no);
-			st.setString(3, date);
-			st.setInt(4, resv_time);
+			st.setInt(1, resv_no);
 			result = st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -820,6 +817,19 @@ public class StudioResDAO {
 			DBUtil.dbClose(rs, pst, conn);
 		}
 		return guest;
+	}
+	
+	public List<String> StudioOption(StudioVO studio){
+		List<String> optlist = new ArrayList<String>();
+		if(studio.getStudio_have_mic().equals("1")) optlist.add("마이크");
+		if(studio.getStudio_have_park().equals("1")) optlist.add("주차가능");
+		if(studio.getStudio_have_shower().equals("1")) optlist.add("샤워가능");
+		if(studio.getStudio_have_water().equals("1")) optlist.add("정수기");
+		if(studio.getStudio_have_aircon().equals("1")) optlist.add("에어컨");
+		if(studio.getStudio_have_heater().equals("1")) optlist.add("난방기");
+		if(studio.getStudio_have_toilet().equals("1")) optlist.add("독립화장실");
+		
+		return optlist;
 	}
 
 	private ReservationsVO makeReservation(ResultSet rs) throws SQLException{
