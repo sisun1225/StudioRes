@@ -602,7 +602,7 @@ public class StudioResDAO {
 
 	//      연습실 등록  insert/s
 	public int insertStudio(StudioVO studio) {
-		String sql = "insert into studios values(studio_seq.nextval,?,?,?,?,?,?,?,?,0,?,?,?,?,?,?,?)";
+		String sql = "insert into studios values(studio_seq.nextval,?,?,?,?,?,?,?,?,0,?,?,?,?,?,?,?,0)";
 		int result=0;
 		Connection conn;
 		PreparedStatement st = null;
@@ -758,6 +758,38 @@ public class StudioResDAO {
 		return result;
 	}
 	//		스케쥴러 check->2
+	
+	//방생성 -> studios의 room_count 증가
+	public int insertRoom(RoomVO room) {
+		String sql = "insert into rooms values(room_seq.nextval ,? ,? ,? ,? ,? ,?)";
+		int result=0;
+		Connection conn;
+		PreparedStatement st = null;
+		conn = DBUtil.getConnection();
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, room.getStudio_no());
+			st.setString(2, room.getRoom_name());
+			st.setInt(3, room.getRoom_capacity());
+			st.setString(4, room.getRoom_intro());
+			st.setInt(5, room.getRoom_price());
+			st.setString(6, room.getRoom_picture());
+			result = st.executeUpdate();
+			if(result == 1) {
+				String sql2 = "update studios set room_count = room_count+1 where studio_no = ?";
+				st = conn.prepareStatement(sql2);
+				st.setInt(1, room.getStudio_no());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
+		
+	}
 
 	public HostVO loginChk(String host_id, String host_pw) {
 		HostVO host = null;
@@ -868,6 +900,7 @@ public class StudioResDAO {
 		studio.setStudio_have_aircon(rs.getString("Studio_have_aircon"));
 		studio.setStudio_have_heater(rs.getString("Studio_have_heater"));
 		studio.setStudio_have_toilet(rs.getString("Studio_have_toilet"));
+		studio.setRoom_count(rs.getInt("room_count)"));
 		return studio;
 	}
 
