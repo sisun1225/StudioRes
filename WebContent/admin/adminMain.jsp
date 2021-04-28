@@ -43,6 +43,7 @@ $(function(){
 </script>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"></jsp:include>
 <h1>관리자 페이지</h1>
 <ul>
   <li id="hostAll">전체호스트조회</li>
@@ -52,8 +53,8 @@ $(function(){
   <li id="resvAll">전체예약조회</li>
 </ul>
 <br>
-<br>
 <hr>
+<br>
 <div id="content"></div>
 </body>
 </html>

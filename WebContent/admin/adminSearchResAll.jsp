@@ -33,13 +33,13 @@ $(function(){
 		<c:forEach var="reservation" items="${reservationlist}">
 		<tr>
 		 <td>${reservation.resv_no}</td>
-		 <td><a href="adminResvDetailByRoom?room_no=${reservation.room_no}">${reservation.room_no}</a></td>
+		 <td><a href="javascript:resDetail(${reservation.room_no})">${reservation.room_no}</a></td>
 		 <td>${reservation.room_name}</td>
-		 <td><a href="adminResvDetailByStudio?studio_no=${reservation.studio_no}">${reservation.studio_name}</a></td>
-		 <td><a href="adminGuestDetail?guest_no=${reservation.guest_no}">${reservation.guest_id}</a></td>
+		 <td><a href="javascript:roomDetail(${reservation.studio_no})">${reservation.studio_name}</a></td>
+		 <td><a href="javascript:guestDetail(${reservation.guest_no})">${reservation.guest_id}</a></td>
 		 <td>${reservation.resv_date}</td>
 		 <td>${reservation.resv_time}</td>
-		 <td><a href="adminHostDetail?host_id=${reservation.host_id}">${reservation.host_id}</a></td>
+		 <td><a href="javascript:hostDetail('${reservation.host_id}')">${reservation.host_id}</a></td>
 		 <c:choose>
 			<c:when test="${reservation.resv_check==0}">
 			 <td>예약</td>
@@ -57,5 +57,47 @@ $(function(){
 		</tr>
 		</c:forEach>
 	</table>
+	<script>
+	function hostDetail(host_id){
+		$.ajax({
+			url:"adminHostDetail",
+			data:{"host_id":host_id},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	
+	function guestDetail(guest_no){
+		$.ajax({
+			url:"adminGuestDetail",
+			data:{"guest_no":guest_no},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	
+	function roomDetail(studio_no){
+		$.ajax({
+			url:"adminRoomDetail",
+			data:{"studio_no":studio_no},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	
+	function resDetail(room_no){
+		$.ajax({
+			url:"adminResvDetailByRoom",
+			data:{"room_no":room_no},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	 
+	</script>
 </body>
 </html>

@@ -31,7 +31,7 @@ $(function(){
 		<c:forEach var="guest" items="${guestlist}">
 		<tr>
 		 <td>${guest.guest_no}</td>
-		 <td><a href="adminGuestDetail?guest_no=${guest.guest_no}">${guest.guest_id}</a></td>
+		 <td><a href="javascript:guestDetail(${guest.guest_no})">${guest.guest_id}</a></td>
 		 <td>${guest.guest_pw}</td>
 		 <td>${guest.guest_name}</td>
 		 <td>${guest.guest_phone}</td>
@@ -39,5 +39,17 @@ $(function(){
 		</tr>
 		</c:forEach>
 	</table>
+	<script>
+	function guestDetail(guest_no){
+		$.ajax({
+			url:"adminGuestDetail",
+			data:{"guest_no":guest_no},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	 
+	</script>
 </body>
 </html>

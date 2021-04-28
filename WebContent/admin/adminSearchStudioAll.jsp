@@ -55,10 +55,10 @@ $(function(){
 		<c:forEach var="studio" items="${studiolist}">
 		<tr>
 		 <td>${studio.studio_no}</td>
-		 <td><a href="adminRoomDetail?studio_no=${studio.studio_no}">${studio.studio_name}</a></td>
+		 <td><a href="javascript:roomDetail(${studio.studio_no})">${studio.studio_name}</a></td>
 		 <td>${studio.studio_days}</td>
 		 <td>${studio.studio_address}</td>
-		 <td><a href="adminHostDetail?host_id=${studio.host_id}">${studio.host_id}</a></td>
+		 <td><a href="javascript:hostDetail('${studio.host_id}')">${studio.host_id}</a></td>
 		 <c:choose>
 			<c:when test="${studio.studio_check==0}">
 			 <td>신청중</td>
@@ -72,5 +72,27 @@ $(function(){
 		</tr>
 		</c:forEach>
 	</table>
+	<script>
+	function roomDetail(studio_no){
+		$.ajax({
+			url:"adminRoomDetail",
+			data:{"studio_no":studio_no},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	
+	function hostDetail(host_id){
+		$.ajax({
+			url:"adminHostDetail",
+			data:{"host_id":host_id},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	
+	</script>
 </body>
 </html>

@@ -33,10 +33,22 @@ $(function(){
 		 <td>${room.room_name}</td>
 		 <td>${room.room_capacity}</td>
 		 <td>${room.room_price}</td>
-		 <td><a href="adminRoomDetail?studio_no=${room.studio_no}">${room.studio_name}</a></td>
+		 <td><a href="javascript:roomDetail(${room.studio_no})">${room.studio_name}</a></td>
 		 <td>${room.host_id}</td>
 		</tr>
 		</c:forEach>
 	</table>
+	<script>
+	function roomDetail(studio_no){
+		$.ajax({
+			url:"adminRoomDetail",
+			data:{"studio_no":studio_no},
+			success:function(responsedata){
+				$("#content").html(responsedata);
+			}
+		});
+	}
+	 
+	</script>
 </body>
 </html>
