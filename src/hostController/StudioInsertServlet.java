@@ -75,6 +75,8 @@ public class StudioInsertServlet extends HttpServlet {
 		studio.setStudio_name(request.getParameter("studio_name"));
 		studio.setStudio_desc(request.getParameter("studio_desc"));
 		studio.setStudio_picture(originalFileName);
+		studio.setStudio_days("월화수목금토일");
+		studio.setStudio_notice(str);
 		dao.insertStudio(studio);
 		System.out.println(facilityChk.get("studio_have_mic"));
 	}
