@@ -36,20 +36,22 @@ public class StudioInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("-------------------------------------");
-		System.out.println(request.getSession(false));
-		System.out.println(request.getSession().getAttribute("host_no"));
-		System.out.println(request.getSession(false));
-		HttpSession session = request.getSession();
-		System.out.println(request.getSession(false));
-		System.out.println(request.getSession().getAttribute("host_no"));
-		System.out.println("null인지:" +Objects.isNull(request.getSession(false)));
-		System.out.println("첫번쨰:" + session.getAttribute("host_no"));
-		System.out.println("-------------------------------------");
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio = new StudioVO();
+		
+		//사진업로드
+		String upload_dir ="imageUpload";
+		int size = 1024*1024*10;
+		String path = getServletContext().getRealPath(upload_dir);
+		
+		MultipartRequest mutipartRequest = new MultipartRequest(request, path, size, "utf-8",
+					new DefaultFileRenamePolicy());
+		Enumeration files = mutipartRequest.getFileNames();
+		String str = (String)files.nextElement();
+		String originalFileName = mutipartRequest.getOriginalFileName(str);
+		
 		//부대시설 체크
-		String[] facility = request.getParameterValues("have");
+		String[] facility = mutipartRequest.getParameterValues("have");
 		Map<String, String> facilityChk = new HashMap<String, String>();
 		facilityChk.put("studio_have_mic", "0");
 		facilityChk.put("studio_have_park", "0");
@@ -58,6 +60,7 @@ public class StudioInsertServlet extends HttpServlet {
 		facilityChk.put("studio_have_aircon", "0");
 		facilityChk.put("studio_have_heater", "0");
 		facilityChk.put("studio_have_toilet", "0");
+		
 		if(facility != null) {
 			for(String s:facility) {
 				if(facilityChk.containsKey(s)) {
@@ -65,35 +68,14 @@ public class StudioInsertServlet extends HttpServlet {
 				}
 			}
 		}
-		System.out.println("두번쨰-1:" + session.getAttribute("host_no"));
-		//사진업로드
-		String upload_dir ="imageUpload";
-		int size = 1024*1024*10;
-		String path = getServletContext().getRealPath(upload_dir);
-		System.out.println(path);
-		
-		MultipartRequest mutipartRequest = new MultipartRequest(request, path, size, "utf-8",
-					new DefaultFileRenamePolicy());
-		Enumeration files = mutipartRequest.getFileNames();
-		String str = (String)files.nextElement();
-		System.out.println("str= "+str);
-		String originalFileName = mutipartRequest.getOriginalFileName(str);
-		System.out.println("originalFileName=  "+originalFileName);
 
 		//데이터입력(연습실등록)
-		System.out.println("null인지:" +Objects.isNull(request.getSession(false)));
-				
-		System.out.println("두번쨰-2:" + session.getAttribute("host_no"));
+		HttpSession session = request.getSession();		
 		studio.setHost_no((Integer)session.getAttribute("host_no"));
-		System.out.println("세번쨰:" + session.getAttribute("host_no"));
 		studio.setStudio_name(mutipartRequest.getParameter("studio_name"));
-		System.out.println("네번쨰:" + session.getAttribute("host_no"));
 		studio.setStudio_desc(mutipartRequest.getParameter("studio_desc"));
-		System.out.println("다번쨰:" + session.getAttribute("host_no"));
 		studio.setStudio_picture(originalFileName);
-		System.out.println("여번쨰:" + session.getAttribute("host_no"));
 		studio.setStudio_days("월화수목금토일");
-		System.out.println("일곱번쨰:" + session.getAttribute("host_no"));
 		studio.setStudio_notice(mutipartRequest.getParameter("studio_notice"));
 		studio.setStudio_have_aircon(facilityChk.get("studio_have_aircon"));
 		studio.setStudio_have_heater(facilityChk.get("studio_have_heater"));
@@ -104,9 +86,7 @@ public class StudioInsertServlet extends HttpServlet {
 		studio.setStudio_have_water(facilityChk.get("studio_have_water"));
 		studio.setStudio_subway(mutipartRequest.getParameter("studio_subway"));
 		studio.setStudio_address(mutipartRequest.getParameter("roadFullAddr"));
-		System.out.println(studio);
 		dao.insertStudio(studio);
-		System.out.println("마지막:" + session.getAttribute("host_no"));
 		response.sendRedirect("hostMain");
 	}
 

@@ -21,9 +21,7 @@ public class HostMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getSession(false));
 		HttpSession session = request.getSession();
-		System.out.println("메인서블릿: " +session.getAttribute("host_no"));
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("hostMain.jsp");
 		rd.forward(request, response);
