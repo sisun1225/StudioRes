@@ -900,7 +900,7 @@ public class StudioResDAO {
 		studio.setStudio_have_aircon(rs.getString("Studio_have_aircon"));
 		studio.setStudio_have_heater(rs.getString("Studio_have_heater"));
 		studio.setStudio_have_toilet(rs.getString("Studio_have_toilet"));
-		studio.setRoom_count(rs.getInt("room_count)"));
+		studio.setRoom_count(rs.getInt("room_count"));
 		return studio;
 	}
 
