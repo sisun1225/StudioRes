@@ -41,6 +41,12 @@ $(function(){
 	
 });
 </script>
+<style>
+	#content{
+		width: 100%;
+		height: 800px;
+	}
+</style>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
@@ -56,5 +62,6 @@ $(function(){
 <hr>
 <br>
 <div id="content"></div>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

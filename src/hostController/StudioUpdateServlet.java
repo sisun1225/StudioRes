@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,11 +19,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import model.StudioResDAO;
 import model.StudioVO;
 
-/**
- * Servlet implementation class StudioInsertServlet
- */
-@WebServlet("/host/studioInsert")
-public class StudioInsertServlet extends HttpServlet {
+@WebServlet("/host/studioUpdate")
+public class StudioUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,9 +28,6 @@ public class StudioInsertServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio = new StudioVO();
@@ -71,7 +64,6 @@ public class StudioInsertServlet extends HttpServlet {
 
 		//데이터입력(연습실등록)
 		HttpSession session = request.getSession();		
-		studio.setHost_no((Integer)session.getAttribute("host_no"));
 		studio.setStudio_name(mutipartRequest.getParameter("studio_name"));
 		studio.setStudio_desc(mutipartRequest.getParameter("studio_desc"));
 		studio.setStudio_picture(originalFileName);
@@ -86,8 +78,10 @@ public class StudioInsertServlet extends HttpServlet {
 		studio.setStudio_have_water(facilityChk.get("studio_have_water"));
 		studio.setStudio_subway(mutipartRequest.getParameter("studio_subway"));
 		studio.setStudio_address(mutipartRequest.getParameter("roadFullAddr"));
-		dao.insertStudio(studio);
-		response.sendRedirect("hostMain");
+		studio.setStudio_check(mutipartRequest.getParameter("studio_check"));
+		studio.setStudio_no(Integer.parseInt(mutipartRequest.getParameter("studio_no")));		
+		dao.updateStudio(studio);
+		response.sendRedirect("hostSearchStudio");
 	}
 
 }

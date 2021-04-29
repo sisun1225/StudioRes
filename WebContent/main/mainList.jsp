@@ -26,7 +26,6 @@ $(function(){
 		$.ajax({
 			url:"searchByOption",
 			data:{"loc":$("#loc").val(),"subway":$("#subway").val(), "chkArr":chkArr},
-			
 			type:"get",
 			success:function(responseData){
 				$("#here").html(responseData);

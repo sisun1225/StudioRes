@@ -12,6 +12,42 @@ import java.util.List;
 import util.DBUtil;
 
 public class StudioResDAO {
+	
+		//방넘버와 예약날짜로 예약된 시간 조회
+		public List<ReservationsVO> selectResvByRoomNoDate(Date date, int roomNo){
+			List<ReservationsVO> resvTimelist = new ArrayList<ReservationsVO>();
+			Connection conn = null;
+			PreparedStatement st = null;
+			ResultSet rs = null;
+			String sql = " select * from reservations where resv_date=? and room_no=?";
+			conn = DBUtil.getConnection();
+
+			try {
+				st = conn.prepareStatement(sql);
+				st.setDate(1, date);
+				st.setInt(2, roomNo);
+				rs = st.executeQuery();
+				while(rs.next()) {
+					ReservationsVO resv = new ReservationsVO();
+					resv.setResv_no(rs.getInt("resv_no"));
+					resv.setGuest_no(rs.getInt("guest_no"));
+					resv.setRoom_no(rs.getInt("room_no"));
+					resv.setResv_date(rs.getDate("resv_date"));
+					resv.setResv_time(rs.getInt("resv_time"));
+					resv.setResv_check(rs.getString("resv_check"));
+					resvTimelist.add(resv);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBUtil.dbClose(rs, st, conn);
+			}
+
+			return resvTimelist;
+		}
+	
 	//메인페이지 조건별조회
 	public List<StudioVO> selectStudioByOption(String subOption, String locOption, String[] detailOption){
 		List<StudioVO> studioList = new ArrayList<StudioVO>();
@@ -780,6 +816,7 @@ public class StudioResDAO {
 				String sql2 = "update studios set room_count = room_count+1 where studio_no = ?";
 				st = conn.prepareStatement(sql2);
 				st.setInt(1, room.getStudio_no());
+				st.executeUpdate();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

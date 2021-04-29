@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 <style>
 * {
@@ -52,6 +53,7 @@
 	top: 70px;
 }
 </style>
+
 </head>
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>

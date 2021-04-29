@@ -43,7 +43,6 @@ public class HostLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(host != null) {
 			session.setAttribute("host_no", host.getHost_no());
-			System.out.println("aaa:" + session.getAttribute("host_no"));
 			session.setAttribute("host_id", host.getHost_id());
 			session.setAttribute("host_pw", host.getHost_pw());
 			session.setAttribute("host_name",host.getHost_name());

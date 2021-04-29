@@ -1,4 +1,4 @@
-package mainController;
+package hostController;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.HostVO;
-import model.ReservationsVO;
 import model.RoomVO;
 import model.StudioResDAO;
 import model.StudioVO;
@@ -19,17 +18,15 @@ import model.StudioVO;
 /**
  * Servlet implementation class RoomDetailServlet
  */
-@WebServlet("/main/roomDetail")
-public class RoomDetailServlet extends HttpServlet {
+@WebServlet("/host/hostStudioDetail")
+public class HostStudioDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String s_studioid = request.getParameter("studioid");
-		int i_studioid = Integer.parseInt(s_studioid);
+		int studio_id = Integer.parseInt(request.getParameter("studio_no"));
 		StudioResDAO dao = new StudioResDAO();
-		
-		StudioVO studio = dao.selectStudioByNo(i_studioid);
+		StudioVO studio = dao.selectStudioByNo(studio_id);
 		request.setAttribute("studio", studio);
 		
 		HostVO host	= dao.selectHostById(studio.getHost_id());
@@ -42,13 +39,11 @@ public class RoomDetailServlet extends HttpServlet {
 		request.setAttribute("room", room);
 		System.out.println(room);
 	
-		RequestDispatcher rd = request.getRequestDispatcher("roomDetail.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
 		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
