@@ -38,7 +38,7 @@
   
  	<c:forEach var="listall" items="${studioOption}">
     <tr>
-    <td>${listall.studio_no}</td>
+    <td><a href="roomDetail?studioid=${listall.studio_no}">${listall.studio_no}</a></td>
     <td>${listall.host_no}</td>
     <td>${listall.host_id}</td>
     <td>${listall.studio_desc}</td>
