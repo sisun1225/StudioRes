@@ -27,10 +27,15 @@ $(function(){
 		<td>주소</td>
 		<td>승인여부</td>
 	</tr>
+		<c:set var="number" value="1"/>
 		<c:forEach var="studio" items="${studiolist}">
 		<tr>
 		 <td>${studio.studio_no}</td>
-		 <td><a href="javascript:studioDetail(${studio.studio_no})">${studio.studio_name}</a></td>
+		 <td><a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
+				 <form id="studiodetail${number}" action="hostStudioDetail" method="get">
+				 <input type="hidden" name="studio_no" value="${studio.studio_no}">
+				 </form>
+		 </td>
 		 <td>${studio.studio_days}</td>
 		 <td>${studio.studio_address}</td>
 		 <c:choose>
@@ -41,32 +46,14 @@ $(function(){
 			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
-		 <td><button onclick='searchResv("${studio.studio_no}");'>예약현황</button></td>
+		 <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button></td>
+				 <form id="searchres${number}" action="hostSearchResByStudio" method="post">
+				 <input type="hidden" name="studio_no" value="${studio.studio_no}">
+				 </form>
 		 <td><button>방추가</button></td>
 		</tr>
+		<div style="display:none">${number = number + 1}</div>
 		</c:forEach>
 	</table>
-	<script>
-	function searchResv(studio_no){
-		$.ajax({
-			url:"hostSearchResByStudio",
-			data:{"studio_no":studio_no},
-			success:function(responsedata){
-				$("body").html(responsedata);
-			}
-		});
-	}
-	
-	function studioDetail(studio_no){
-		$.ajax({
-			url:"hostStudioDetail",
-			data:{"studio_no":studio_no},
-			success:function(responsedata){
-				$("body").html(responsedata);
-			}
-		});
-	}
-	
-	</script>
 </body>
 </html>
