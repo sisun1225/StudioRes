@@ -18,6 +18,8 @@ $(function(){
 </script>
 </head>
 <body>
+  <jsp:include page="../common/hostHeader.jsp"></jsp:include>
+
 	<table>
 	<tr>
 		<td>예약번호</td>

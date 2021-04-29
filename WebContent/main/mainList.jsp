@@ -47,6 +47,7 @@ $(function(){
 
 </head>
 <body>
+<jsp:include page="../common/header.jsp"></jsp:include>
 
 <hr>
 지하철:<input type="text" placeholder="지하철을 입력하세요" name="subway" id="subway" value="잠실">
