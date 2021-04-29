@@ -30,7 +30,10 @@ public class RoomDetailServlet extends HttpServlet {
 		StudioResDAO dao = new StudioResDAO();
 		
 		StudioVO studio = dao.selectStudioByNo(i_studioid);
+		String[] simpleAddress = studio.getStudio_address().split(",");
+	    studio.setStudio_address(simpleAddress[0].trim());
 		request.setAttribute("studio", studio);
+		
 		
 		HostVO host	= dao.selectHostById(studio.getHost_id());
 		request.setAttribute("host", host);
