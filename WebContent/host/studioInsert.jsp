@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,28 +27,30 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </style>
 </head>
 <body>
-    <h1>연습실 등록</h1>
-    <form action="studioInsert" name="form" id="form" method="post" enctype="multipart/form-data">
-      연습실 명<input type="text" name="studio_name"><br>
-      연습실 사진<input type="file" name="studio_picture"><br>
-      연습실 소개<textarea cols="60" rows="20" name="studio_desc" wrap="hard"></textarea><br>
-      예약 시 주의사항<textarea cols="30" rows="10" name="studio_notice" wrap="hard"></textarea><br>
-      <fieldset>
-        <legend>시설안내</legend>
-        마이크<input type="checkbox" name="have" value="studio_have_mic">
-        주차장<input type="checkbox" name="have" value="studio_have_park">
-        샤워실<input type="checkbox" name="have" value="studio_have_shower">
-        정수기<input type="checkbox" name="have" value="studio_have_water">
-        에어컨<input type="checkbox" name="have" value="studio_have_aircon">
-        히터<input type="checkbox" name="have" value="studio_have_heater">
-        화장실<input type="checkbox" name="have" value="studio_have_toilet">
-      </fieldset>
-      주변 지하철<input type="text" name="studio_subway"><br>
-      우편번호<input type="text"  style="width:100px;" id="zipNo"  name="zipNo" readonly="readonly"/> 
-      <input type="button" onClick="goPopup();" value="칮아보기"/> <br>
-      주소 <input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" readonly="readonly"/>
-      <input type="submit" value="등록하기">
-    </form>
-    
+  <jsp:include page="../common/hostHeader.jsp"></jsp:include>
+
+  <h1>연습실 등록</h1>
+  <form action="studioInsert" name="form" id="form" method="post" enctype="multipart/form-data">
+    연습실 명<input type="text" name="studio_name"><br>
+    연습실 사진<input type="file" name="studio_picture"><br>
+    연습실 소개<textarea cols="60" rows="20" name="studio_desc" wrap="hard"></textarea><br>
+    예약 시 주의사항<textarea cols="30" rows="10" name="studio_notice" wrap="hard"></textarea><br>
+    <fieldset>
+      <legend>시설안내</legend>
+      마이크<input type="checkbox" name="have" value="studio_have_mic">
+      주차장<input type="checkbox" name="have" value="studio_have_park">
+      샤워실<input type="checkbox" name="have" value="studio_have_shower">
+      정수기<input type="checkbox" name="have" value="studio_have_water">
+      에어컨<input type="checkbox" name="have" value="studio_have_aircon">
+      히터<input type="checkbox" name="have" value="studio_have_heater">
+      화장실<input type="checkbox" name="have" value="studio_have_toilet">
+    </fieldset>
+    주변 지하철<input type="text" name="studio_subway"><br>
+    우편번호<input type="text"  style="width:100px;" id="zipNo"  name="zipNo" readonly="readonly"/> 
+    <input type="button" onClick="goPopup();" value="칮아보기"/> <br>
+    주소 <input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" readonly="readonly"/>
+    <input type="submit" value="등록하기">
+  </form>
+  
 </body>
 </html>

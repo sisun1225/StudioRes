@@ -17,6 +17,8 @@ $(function(){
 </script>
 </head>
 <body>
+  <jsp:include page="../common/hostHeader.jsp"></jsp:include>
+
 <table>
 	<tr>
 		<td>연습실번호</td>

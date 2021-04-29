@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+  <jsp:include page="../common/hostHeader.jsp"></jsp:include>
   <h1>호스트 등록</h1>
   <form action="hostInsert" method="post">
     아이디<input type="text" name="host_id"><br>

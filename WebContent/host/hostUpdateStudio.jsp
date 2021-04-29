@@ -35,6 +35,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </style>
 </head>
 <body>
+  <jsp:include page="../common/hostHeader.jsp"></jsp:include>
+
   <h1>연습실 수정</h1>
     
     <form name="form" id="form" method="post" action="studioUpdate" enctype="multipart/form-data">
