@@ -32,7 +32,7 @@ $(function(){
 		<tr>
 		 <td>${studio.studio_no}</td>
 		 <td><a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
-				 <form id="studiodetail${number}" action="hostStudioDetail" method="get">
+				 <form id="studiodetail${number}" action="hostStudioDetail" method="post">
 				 <input type="hidden" name="studio_no" value="${studio.studio_no}">
 				 </form>
 		 </td>

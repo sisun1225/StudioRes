@@ -21,7 +21,12 @@ import model.StudioVO;
 public class HostSearchResByStudioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("host_no") == null) {
+			response.sendRedirect("hostLogin");
+			return;
+		}
 		StudioResDAO dao = new StudioResDAO();
 		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
 		List<ReservationsVO> originReslist = dao.selectReservationsAll();
@@ -35,12 +40,6 @@ public class HostSearchResByStudioServlet extends HttpServlet {
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("hostSearchResByStudio.jsp");
 		rd.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.setAttribute("work", "studio"); 
-		response.sendRedirect("adminMain");
 	}
 
 }

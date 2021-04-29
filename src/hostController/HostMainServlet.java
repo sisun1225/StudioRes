@@ -17,12 +17,14 @@ import javax.servlet.http.HttpSession;
 public class HostMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		RequestDispatcher rd;
+		if(session.getAttribute("host_no") == null) {
+			response.sendRedirect("hostLogin");
+			return;
+		}
 		rd = request.getRequestDispatcher("hostMain.jsp");
 		rd.forward(request, response);
 	}

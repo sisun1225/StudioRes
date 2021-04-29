@@ -24,6 +24,11 @@ public class StudioUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("host_no") == null) {
+			response.sendRedirect("hostLogin");
+			return;
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("studioInsert.jsp");
 		rd.forward(request, response);
 	}
