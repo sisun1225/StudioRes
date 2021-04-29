@@ -36,7 +36,11 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-
+<nav id="nav">
+<button type="button" onclick="location.href='hostDetail'">마이페이지</button>
+<button type="button" onclick="location.href='studioInsert'">연습실등록</button>
+<button type="button" onclick="location.href='hostSearchStudio'">연습실조회</button>
+</nav>
   <h1>연습실 수정</h1>
     
     <form name="form" id="form" method="post" action="studioUpdate" enctype="multipart/form-data">
