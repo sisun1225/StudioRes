@@ -59,7 +59,6 @@ $(function(){
   <li id="resvAll">전체예약조회</li>
 </ul>
 <br>
-<hr>
 <br>
 <div id="content"></div>
 <jsp:include page="../common/footer.jsp"></jsp:include>

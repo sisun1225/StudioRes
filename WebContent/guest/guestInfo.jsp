@@ -22,7 +22,7 @@ $(function(){
 </head>
 <body>
 
-<div id="here">
+<div id="container">
 <form id="myfrm" action="update" method="post">
 <fieldset>
 <legend>회원정보</legend>

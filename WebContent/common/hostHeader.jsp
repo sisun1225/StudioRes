@@ -13,8 +13,26 @@
 	border: solid orange;
 }
 
+table, td {
+	border: 2px solid black;
+	border-collapse: collapse;
+}
+
 #container {
-	border: solid yellow;
+	overflow: scroll;
+	min-height: 400px;
+}
+
+#content {
+	overflow: scroll;
+	height: 400px;
+}
+
+#footer {
+	font-size: 2px;
+	padding: 20px;
+	position: relation;
+	background-color: #D0CECE
 }
 
 #header {
@@ -25,7 +43,6 @@
 }
 
 #logo {
-	position: absolute;
 	left: 10px;
 	top: 15px;
 }
@@ -43,9 +60,33 @@
 }
 
 #hostcenter {
-	position: absolute;
 	right: 10px;
 	top: 70px;
+}
+
+#guestcenter {
+	right: 10px;
+	top: 70px;
+}
+
+#gasan {
+	margin: 0px; padding : 10px;
+	font-size: 40px;
+	float: right;
+	padding: 10px;
+}
+
+#myfrm {
+	padding: 20px;
+	width: 400px;
+	border: 1px solid #222;
+	border-radius: 5px;
+}
+
+label {
+	float: left;
+	font-size: 13px;
+	width: 80px;
 }
 </style>
 
@@ -53,19 +94,23 @@
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<img id="logo" src="${apppath}/common/spacestore.png" alt="로고자리">
+		<a href="${apppath}/main/searchAll"> <img id="logo"
+			src="${apppath}/common/spacestore.png" alt="로고자리">
+		</a>
 		<c:choose>
+
 			<c:when test="${host_id!=null}">
 				<span id="namewelcome">${host_name}님 환영합니다.</span>
-				<span id="logout"><a href="${apppath}/guest/logout">로그아웃</a></span>
+				<span id="logout"><a href="${apppath}/host/hostLogout">로그아웃</a></span>
 			</c:when>
 
 			<c:otherwise>
-				<span id="login"> <a href="${apppath}/guest/insert">회원가입</a>
-					<a href="${apppath}/guest/login">로그인</a>
+				<span id="login"> <a href="${apppath}/host/hostInsert">회원가입</a>
+					<a href="${apppath}/host/hostLogin">로그인</a>
 				</span>
 			</c:otherwise>
 		</c:choose>
+		<span id="guestcenter"><a href="${apppath}/guest/login">게스트센터</a></span>
 		<span id="hostcenter"><a href="${apppath}/host/hostLogin">호스트센터</a></span>
 	</div>
 </body>
