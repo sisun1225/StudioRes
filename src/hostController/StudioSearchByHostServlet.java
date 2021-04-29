@@ -31,12 +31,4 @@ public class StudioSearchByHostServlet extends HttpServlet {
 		rd = request.getRequestDispatcher("hostSearchStudio.jsp");
 		rd.forward(request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.setAttribute("work", "studio"); 
-		response.sendRedirect("adminMain");
-	}
-
-
 }

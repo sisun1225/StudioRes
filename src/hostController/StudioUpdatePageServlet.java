@@ -14,13 +14,11 @@ import model.StudioResDAO;
 import model.StudioVO;
 
 
-@WebServlet("/host/hostUpdateStudio")
+@WebServlet("/host/studioUpdatePage")
 public class StudioUpdatePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	//get방식 요청시 처리필요
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();

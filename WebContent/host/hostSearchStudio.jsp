@@ -50,11 +50,16 @@ $(function(){
 			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
-		 <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button></td>
-				 <form id="searchres${number}" action="hostSearchResByStudio" method="post">
-				 <input type="hidden" name="studio_no" value="${studio.studio_no}">
-				 </form>
-		 <td><button>방추가</button></td>
+		 <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
+    		 <form id="searchres${number}" action="hostSearchResByStudio" method="post">
+    		   <input type="hidden" name="studio_no" value="${studio.studio_no}">
+    		 </form>
+         </td>
+		 <td><button onclick="javascript:document.getElementById('roominsert${number}').submit()">방추가</button>
+              <form id="roominsert${number}" action="roomInsert" method="get">
+                <input type="hidden" name="room_no" value="${studio.studio_no}">
+              </form>
+         </td>
 		</tr>
 		<div style="display:none">${number = number + 1}</div>
 		</c:forEach>

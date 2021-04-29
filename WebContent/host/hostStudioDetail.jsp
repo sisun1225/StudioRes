@@ -69,7 +69,7 @@
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
   <a href="javascript:document.getElementById('studioUpdate').submit()">수정하기</a>
-  <form id="studioUpdate" action="hostUpdateStudio" method="get">
+  <form id="studioUpdate" action="studioUpdatePage" method="post">
     <input type="hidden" name="studio_no" value="${studio.studio_no}">
   </form>
   <div id="container">
@@ -94,16 +94,13 @@
     </div>
     <div id="roomInfo">
       <c:forEach var="room" items="${room}">
-        <input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();">방번호 : ${room.room_no}호실 | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간<br>
+        <input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();">방이름 : ${room.room_name} | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간<br>
       </c:forEach>
       <div id="datepicker"></div>
        <p> 예약시간 최소 1시간부터</p>
     </div>
 </div>
     
-  
-
-
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
