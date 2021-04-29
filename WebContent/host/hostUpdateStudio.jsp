@@ -41,7 +41,12 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
     
     <form name="form" id="form" method="post" action="studioUpdate" enctype="multipart/form-data">
       연습실 명<input type="text" name="studio_name" value="${studio.studio_name}"><br>
-      연습실 사진<input type="file" name="studio_picture" value="${studio.studio_picture}"><br>
+      <div id= "photoBox">
+        <c:set var="pPath" value="${pageContext.request.contextPath }"/>
+        <img src="${pPath }/imageUpload/${studio.studio_picture}"> 
+      </div>
+      수정하기<input type="file" name="studio_picture"><br>
+      <input type="hidden" name="hidden_studio_picture" value="${studio.studio_picture}">${studio.studio_picture}
       연습실 소개<textarea cols="60" rows="20" name="studio_desc" wrap="hard">${studio.studio_desc}</textarea><br>
       예약 시 주의사항<textarea cols="30" rows="10" name="studio_notice" wrap="hard">${studio.studio_notice}</textarea><br>
       <fieldset>
@@ -104,7 +109,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
         </c:choose>
       </fieldset>
       주변 지하철<input type="text" name="studio_subway" value="${studio.studio_subway}"><br>
-      우편번호<input type="text"  style="width:100px;" id="zipNo"  name="zipNo" readonly="readonly"/> 
+      우편번호<input type="text"  style="width:100px;" id="zipNo" name="zipNo" readonly="readonly"/> 
       <input type="button" onClick="goPopup();" value="칮아보기"/> <br>
       주소 <input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" readonly="readonly" value="${studio.studio_address}"/>
       <input type="hidden" name="studio_check" value="${studio.studio_check}">

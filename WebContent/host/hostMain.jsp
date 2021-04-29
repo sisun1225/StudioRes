@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <jsp:include page="../common/header.jsp"></jsp:include>
+  <jsp:include page="../common/hostHeader.jsp"></jsp:include>
   <h1>${host_name }님 환영합니다.</h1>
   <p>${host_id }</p>
   <p>${host_name }</p>
