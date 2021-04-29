@@ -106,6 +106,7 @@
 
 </head>
 <body>
+<jsp:include page="../common/header.jsp"></jsp:include>
 <h1>스튜디오 이름 :  ${studio.studio_name} </h1>
 
 
