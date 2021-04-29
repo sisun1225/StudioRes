@@ -19,7 +19,7 @@ import model.StudioVO;
  * Servlet implementation class RoomDetailServlet
  */
 @WebServlet("/host/hostStudioDetail")
-public class HostStudioDetailServlet extends HttpServlet {
+public class StudioDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -48,7 +48,6 @@ public class HostStudioDetailServlet extends HttpServlet {
 		System.out.println(getServletContext().getRealPath("imageUpload"));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
-		//RequestDispatcher rd = request.getRequestDispatcher("../NewFile.jsp");
 		rd.forward(request, response);
 	}
 

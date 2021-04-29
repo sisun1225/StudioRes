@@ -29,7 +29,7 @@ public class StudioUpdateServlet extends HttpServlet {
 			response.sendRedirect("hostLogin");
 			return;
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("studioInsert.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("hostUpdateStudio.jsp");
 		rd.forward(request, response);
 	}
 

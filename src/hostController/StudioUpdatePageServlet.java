@@ -1,6 +1,8 @@
 package hostController;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,27 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.StudioResDAO;
+import model.StudioVO;
 
-/**
- * Servlet implementation class roomDeleteServlet
- */
-@WebServlet("/host/roomDelete")
-public class roomDeleteServlet extends HttpServlet {
+
+@WebServlet("/host/hostUpdateStudio")
+public class StudioUpdatePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("host_no") == null) {
 			response.sendRedirect("hostLogin");
 			return;
 		}
+		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
 		StudioResDAO dao = new StudioResDAO();
-		int room_no = Integer.parseInt(request.getParameter("room_no"));
-		dao.deleteRoom(room_no);
-		response.sendRedirect("hostSearchStudio");
-		
+		StudioVO studio =  dao.selectStudioByNo(studio_no);
+		request.setAttribute("studio", studio);
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("hostUpdateStudio.jsp");
+		rd.forward(request, response);
 	}
-
 
 }
