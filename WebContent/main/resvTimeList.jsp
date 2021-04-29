@@ -8,20 +8,14 @@
 <title>시간확인 예약하기 페이지</title>
 
 <script>
-
-$(function(){
 	$("#btn1").on("click", function() {
-
-		var chkArr = [];
+		var chkTimeArr = [];
 		  $("input[name=resvChk]:checked").each(function() { 
 		       var chk = $(this).val();
-		       chkArr.push(chk);
-		       console.log(chkArr);
-		      
-		    });
+		       chkTimeArr.push(chk);
 
+		    });  
 	});
-});
 
 </script>
 
@@ -29,25 +23,27 @@ $(function(){
 <body>
 
 
-
+<form action="searchByNoDate" method="post">
 	<c:forEach var="cnt" begin="0" end="23">
-
-		<c:forEach var="resv" items="${resvList}">
+	      <c:set  var="chk" value=""/>
+	      <c:set  var="dis" value=""/>
+		  <c:forEach var="resv" items="${resvList}">			
 			<c:if test="${cnt eq resv.resv_time}">
-				<script>
-		     	 document.getElementById('${cnt}').setAttribute('disabled','chekced');
-		    	</script>
+				 <c:set  var="chk" value="checked"/>
+				 <c:set  var="dis" value="disabled"/>
 			</c:if>
-		</c:forEach>
-		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}">${cnt} ~ ${cnt+1}<br>
+		 </c:forEach>  
+		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} >${cnt} ~ ${cnt+1}<br>
+			 
 	</c:forEach>
 
-<form action="searchByNoDate" method="post">
-<input type="hidden" name="insertRadioVal" value="${i_radio}">
-<input type="hidden" name="insertDateVal" value="${d_date}">
-<input type="hidden" name="insertChakArrVal" value="${chkArr}">
-<input type="submit" value="예약하기" id="btn1">
-</form>
+
+	
+	<input type="hidden" name="insertRoomNoVal" value="${i_radio}">
+	<input type="hidden" name="insertDateVal" value="${d_date}">
+
+	<input type="submit" value="예약하기" id="btn1">
+	</form>
 
 </body>
 </html>
