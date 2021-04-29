@@ -11,6 +11,18 @@
 #map {
 	border: 1px solid red;
 }
+#studioInfo
+{
+  float: left;
+  width:50%;
+}
+#roomInfo{
+  width:40%;
+  float:right;
+}
+#deleteRoom{
+  display:block-line;
+}
 </style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=806e8091967ec917e3572fad97eb1b9a&libraries=services"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -35,27 +47,26 @@
 
 	var radioVal;
 	var dateVal;
-
+	var studioNo = ${studio.studio_no};
 	function radioChk() {
 		radioVal = $("input[name='roomno']:checked").val();
 		console.log(radioVal);
 	}
+	
 	$(function() {
 		$("#datepicker").datepicker({
 			onSelect : function(dateText, inst) {
 				dateVal = dateText;
-				console.log(dateText);
-				console.log("---------------");
-
 				$.ajax({
-					url : "searchByNoDate",
+					url : "hostSearchResByStudio",
 					data : {
 						"radioVal" : radioVal,
-						"dateVal" : dateVal
+						"dateVal" : dateVal,
+						"studio_no": studioNo
 					},
 					type : "get",
 					success : function(responseData) {
-						$("#resvTime").html(responseData);
+						$("#resvSearch").html(responseData);
 
 					}
 				});
@@ -64,7 +75,6 @@
 
 	});
 </script>
-
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
@@ -81,8 +91,10 @@
         <c:set var="pPath" value="${pageContext.request.contextPath }" />
         <img src="${pPath }/imageUpload/${studio.studio_picture}">
       </div>
-      공간소개
-      <textarea>${studio.studio_desc}</textarea>
+      공간소개<br>
+      <div id="studioDesc">
+      <pre>${studio.studio_desc}</pre>
+      </div>
       <br> 시설안내<br>
       <ul>
        <c:forEach var="studio" items="${studiooption}">
@@ -93,12 +105,20 @@
       <div id="map" style="width:100%;height:400px;"></div>
     </div>
     <div id="roomInfo">
+      <c:set var="number" value="1"/>
       <c:forEach var="room" items="${room}">
-        <input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();">방이름 : ${room.room_name} | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간<br>
+        <input type="radio" value="${room.room_no}" name="room_no" id="roomNoChk" onclick="radioChk();">
+        방이름 : ${room.room_name} | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간
+        <form id="deletRoom" action="roomDelete">
+          <input type="hidden" neme=roomDelete value=${room.room_no }>
+          <input type="submit" value="방삭제">
+        </form>
+        <br>
       </c:forEach>
       <div id="datepicker"></div>
        <p> 예약시간 최소 1시간부터</p>
-    </div>
+      </div>
+      <div id="resvSearch"></div>    
 </div>
     
 <script>

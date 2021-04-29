@@ -1,6 +1,8 @@
 package hostController;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,9 @@ public class RoomDeleteServlet extends HttpServlet {
 		StudioResDAO dao = new StudioResDAO();
 		int room_no = Integer.parseInt(request.getParameter("room_no"));
 		dao.deleteRoom(room_no);
-		response.sendRedirect("hostSearchStudio");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail");
+		rd.forward(request, response);
 		
 	}
 
