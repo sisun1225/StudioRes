@@ -9,11 +9,6 @@
 
 <title>Insert title here</title>
 <style>
-* {
-	padding: 10px;
-	margin: 10px;
-}
-
 #nav {
 	border: solid orange;
 }
