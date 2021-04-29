@@ -42,6 +42,7 @@ public class HostStudioDetailServlet extends HttpServlet {
 		request.setAttribute("room", room);
 	
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
+		//RequestDispatcher rd = request.getRequestDispatcher("../NewFile.jsp");
 		rd.forward(request, response);
 	}
 
