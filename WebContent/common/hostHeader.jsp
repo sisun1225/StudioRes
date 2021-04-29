@@ -9,8 +9,9 @@
 
 <title>Insert title here</title>
 <style>
-#nav {
-	border: solid orange;
+*{
+padding: 10px;
+margin: 5px;
 }
 
 table, td {
@@ -19,12 +20,12 @@ table, td {
 }
 
 #container {
-	overflow: scroll;
+	overflow: auto;
 	min-height: 400px;
 }
 
 #content {
-	overflow: scroll;
+	overflow: auto;
 	height: 400px;
 }
 
@@ -36,7 +37,6 @@ table, td {
 }
 
 #header {
-	border: 3px solid red;
 	float: none;
 	height: 100px;
 	position: relative;
@@ -70,23 +70,62 @@ table, td {
 }
 
 #gasan {
-	margin: 0px; padding : 10px;
+	margin: 0px;
+	padding: 10px;
 	font-size: 40px;
 	float: right;
 	padding: 10px;
 }
+#guest_resv{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
 
+}
 #myfrm {
+	margin-left: auto;
+	margin-right: auto;
 	padding: 20px;
 	width: 400px;
 	border: 1px solid #222;
 	border-radius: 5px;
 }
 
+#hello {
+	margin-top: 30px;
+	margin-left: auto;
+	font-size: 30px;
+}
+
 label {
 	float: left;
 	font-size: 13px;
 	width: 80px;
+}
+
+#nav ul {
+	list-style: none;
+}
+
+#nav ul li {
+	display: inline-block;
+}
+
+#nav a {
+	display: block;
+	padding: 10px 20px;
+	background-color: #ccc;
+}
+
+#nav a:link, a:active {
+	color: black;
+	text-decoration: none;
+}
+
+#nav a:hover {
+	background-color: #000;
+	color: #fff;
 }
 </style>
 
@@ -95,7 +134,7 @@ label {
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
 		<a href="${apppath}/main/searchAll"> <img id="logo"
-			src="${apppath}/common/spacestore.png" alt="로고자리">
+			src="${apppath}/common/spacestore2.png" alt="로고자리">
 		</a>
 		<c:choose>
 
@@ -110,7 +149,7 @@ label {
 				</span>
 			</c:otherwise>
 		</c:choose>
-		<span id="guestcenter"><a href="${apppath}/guest/login">게스트센터</a></span>
+		<span id="guestcenter"><a href="${apppath}/guest/main">게스트센터</a></span>
 		<span id="hostcenter"><a href="${apppath}/host/hostLogin">호스트센터</a></span>
 	</div>
 </body>
