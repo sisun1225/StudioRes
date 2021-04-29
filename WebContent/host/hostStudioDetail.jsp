@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <title>상세페이지-왼쪽</title>
 <style>
 #map {
@@ -12,30 +13,96 @@
 }
 </style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=806e8091967ec917e3572fad97eb1b9a&libraries=services"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script> 
+	$.datepicker.setDefaults({
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월',
+				'10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		showMonthAfterYear : true,
+		yearSuffix : '년',
+		minDate : '0',
+		maxDate : '+1M'
+	});
+
+	var radioVal;
+	var dateVal;
+
+	function radioChk() {
+		radioVal = $("input[name='roomno']:checked").val();
+		console.log(radioVal);
+	}
+	$(function() {
+		$("#datepicker").datepicker({
+			onSelect : function(dateText, inst) {
+				dateVal = dateText;
+				console.log(dateText);
+				console.log("---------------");
+
+				$.ajax({
+					url : "searchByNoDate",
+					data : {
+						"radioVal" : radioVal,
+						"dateVal" : dateVal
+					},
+					type : "get",
+					success : function(responseData) {
+						$("#resvTime").html(responseData);
+
+					}
+				});
+			}
+		});
+
+	});
+</script>
+
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
+  <a href="javascript:document.getElementById('studioUpdate').submit()">수정하기</a>
+  <form id="studioUpdate" action="hostUpdateStudio" method="get">
+    <input type="hidden" name="studio_no" value="${studio.studio_no}">
+  </form>
   <div id="container">
-    <h2>스튜디오 이름 : ${studio.studio_name}</h2>
-    <input type="button" id="Update" value="수정하기"><br>
-
-    <h1>사진(studios ->studio_picture)</h1>
-    <div id="imageBox">
-      <c:set var="pPath" value="${pageContext.request.contextPath }" />
-      <img src="${pPath }/imageUpload/${studio.studio_picture}">
-    </div>
-    공간소개
-    <textarea>${studio.studio_desc}</textarea>
-    <br> 시설안내<br>
-    <ul>
-     <c:forEach var="studio" items="${studiooption}">
-        <li>${studio}</li>
-      </c:forEach>
-    </ul>
-</div>
-    지도,연락처,주소<br>  
+    <div id="studioInfo">
+      <h2>스튜디오 이름 : ${studio.studio_name}</h2>
   
-<div id="map" style="width:100%;height:400px;"></div>
+      <h1>사진(studios ->studio_picture)</h1>
+      <div id="imageBox">
+        <c:set var="pPath" value="${pageContext.request.contextPath }" />
+        <img src="${pPath }/imageUpload/${studio.studio_picture}">
+      </div>
+      공간소개
+      <textarea>${studio.studio_desc}</textarea>
+      <br> 시설안내<br>
+      <ul>
+       <c:forEach var="studio" items="${studiooption}">
+          <li>${studio}</li>
+        </c:forEach>
+      </ul>
+      지도,연락처,주소<br>  
+      <div id="map" style="width:100%;height:400px;"></div>
+    </div>
+    <div id="roomInfo">
+      <c:forEach var="room" items="${room}">
+        <input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();">방번호 : ${room.room_no}호실 | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간<br>
+      </c:forEach>
+      <div id="datepicker"></div>
+       <p> 예약시간 최소 1시간부터</p>
+    </div>
+</div>
+    
+  
+
 
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

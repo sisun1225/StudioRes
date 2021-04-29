@@ -40,7 +40,13 @@ public class HostStudioDetailServlet extends HttpServlet {
 		
 		List<RoomVO> room = dao.selectRoomById(studio.getStudio_no());
 		request.setAttribute("room", room);
-	
+		
+		System.out.println(getServletContext());
+		System.out.println(request.getRequestURI());
+		System.out.println(request.getRequestURL());
+		System.out.println(getServletContext().getContextPath());
+		System.out.println(getServletContext().getRealPath("imageUpload"));
+		
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
 		//RequestDispatcher rd = request.getRequestDispatcher("../NewFile.jsp");
 		rd.forward(request, response);
