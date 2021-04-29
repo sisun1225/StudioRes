@@ -37,6 +37,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="../common/hostHeader.jsp"></jsp:include>
+
 <h2>스튜디오 이름 :  ${studio.studio_name} </h2>
 <input type="button" id="Update" value="수정하기">
 

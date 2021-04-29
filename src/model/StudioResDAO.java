@@ -825,7 +825,25 @@ public class StudioResDAO {
 			DBUtil.dbClose(null, st, conn);
 		}
 		return result;
-		
+	}
+	
+	public int deleteRoom(int room_no) {
+		String sql = "delete from rooms where room_no= ?";
+		int result = 0;
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement st = null;
+
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, room_no);
+			result = st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(null, st, conn);
+		}
+		return result;
 	}
 
 	public HostVO loginChk(String host_id, String host_pw) {
