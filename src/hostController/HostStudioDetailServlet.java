@@ -27,6 +27,9 @@ public class HostStudioDetailServlet extends HttpServlet {
 		int studio_id = Integer.parseInt(request.getParameter("studio_no"));
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio = dao.selectStudioByNo(studio_id);
+		//주소자르기
+		String[] simpleAddress = studio.getStudio_address().split(",");
+		studio.setStudio_address(simpleAddress[0].trim());
 		request.setAttribute("studio", studio);
 		
 		HostVO host	= dao.selectHostById(studio.getHost_id());
@@ -37,12 +40,10 @@ public class HostStudioDetailServlet extends HttpServlet {
 		
 		List<RoomVO> room = dao.selectRoomById(studio.getStudio_no());
 		request.setAttribute("room", room);
-		System.out.println(room);
 	
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
 		rd.forward(request, response);
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
