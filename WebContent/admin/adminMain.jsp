@@ -49,7 +49,7 @@ $(function(){
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"></jsp:include>
+ <jsp:include page="../common/adminHeader.jsp"></jsp:include>
 <h1>관리자 페이지</h1>
 <ul>
   <li id="hostAll">전체호스트조회</li>
