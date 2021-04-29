@@ -9,10 +9,6 @@
 
 <title>Insert title here</title>
 <style>
-#nav {
-	border: solid orange;
-}
-
 table, td {
 	border: 2px solid black;
 	border-collapse: collapse;
@@ -20,7 +16,7 @@ table, td {
 
 #container {
 	overflow: scroll;
-	min-height: 400px;
+	min-height: 460px;
 }
 
 #content {
@@ -87,10 +83,41 @@ table, td {
 	border-radius: 5px;
 }
 
+#hello {
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 30px;
+}
+
 label {
 	float: left;
 	font-size: 13px;
 	width: 80px;
+}
+
+#nav ul {
+	list-style: none;
+}
+
+#nav ul li {
+	display: inline-block;
+}
+
+#nav a {
+	display: block;
+	padding: 10px 20px;
+	background-color: #ccc;
+}
+
+#nav a:link, a:active {
+	color: black;
+	text-decoration: none;
+}
+
+#nav a:hover {
+	background-color: #000;
+	color: #fff;
 }
 </style>
 
