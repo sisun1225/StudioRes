@@ -14,7 +14,13 @@
 }
 
 #container {
+	min-height: 800px;
 	border: solid yellow;
+}
+
+#footer {
+	border: 3px solid orange;
+	background-color: #E6E6E6
 }
 
 #header {
