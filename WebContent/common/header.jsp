@@ -13,14 +13,26 @@
 	border: solid orange;
 }
 
+table, td {
+	border: 2px solid black;
+	border-collapse: collapse;
+}
+
 #container {
-	min-height: 800px;
-	border: solid yellow;
+	overflow: scroll;
+	min-height: 400px;
+}
+
+#content {
+	overflow: scroll;
+	height: 400px;
 }
 
 #footer {
-	border: 3px solid orange;
-	background-color: #E6E6E6
+	font-size: 2px;
+	padding: 20px;
+	position: relation;
+	background-color: #D0CECE
 }
 
 #header {
@@ -31,7 +43,6 @@
 }
 
 #logo {
-	position: absolute;
 	left: 10px;
 	top: 15px;
 }
@@ -49,9 +60,37 @@
 }
 
 #hostcenter {
-	position: absolute;
 	right: 10px;
 	top: 70px;
+}
+
+#guestcenter {
+	right: 10px;
+	top: 70px;
+}
+
+#gasan {
+	margin: 0px;
+	padding: 10px;
+	font-size: 40px;
+	float: right;
+	padding: 10px;
+}
+
+#myfrm {
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	width: 400px;
+	border: 1px solid #222;
+	border-radius: 5px;
+}
+
+label {
+	float: left;
+	font-size: 13px;
+	width: 80px;
 }
 </style>
 
@@ -59,7 +98,9 @@
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<img id="logo" src="${apppath}/common/spacestore.png" alt="로고자리">
+		<a href="${apppath}/main/searchAll"> <img id="logo"
+			src="${apppath}/common/spacestore.png" alt="로고자리">
+		</a>
 		<c:choose>
 			<c:when test="${guest_id!=null}">
 				<span id="namewelcome">${guest_name}님 환영합니다.</span>
@@ -72,6 +113,7 @@
 				</span>
 			</c:otherwise>
 		</c:choose>
+		<span id="guestcenter"><a href="${apppath}/guest/main">게스트센터</a></span>
 		<span id="hostcenter"><a href="${apppath}/host/hostLogin">호스트센터</a></span>
 	</div>
 </body>

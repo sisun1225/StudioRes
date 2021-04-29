@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div id="container">
-<form action="insert" method="post">
+<form id="myfrm" action="insert" method="post">
 <fieldset>
 <legend>회원가입 정보</legend>
 <label> 아이디 </label>

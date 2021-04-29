@@ -6,22 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
+
 <jsp:include page="../common/header.jsp"></jsp:include>
+
 <div id="container">
-<form id="myfrm" action=login method="post">
-<fieldset>
-<legend>로그인</legend>
-<label>아이디</label>
-<input type="text" name="guest_id"><br>
-<label>비밀번호</label>
-<input type="password" name="guest_pw"><br>
-<input type="submit" value="로그인">
-<button type="button" onclick="location.href='insert'">회원가입</button>
-</fieldset>
-</form>
+<h1>로그인이 필요합니다.</h1>
 </div>
+
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
