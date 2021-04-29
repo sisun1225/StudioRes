@@ -1,7 +1,6 @@
 package hostController;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,34 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.ReservationsVO;
 import model.StudioResDAO;
 import model.StudioVO;
 
-
-@WebServlet("/host/hostSearchResByStudio")
-public class SearchResByHostServlet extends HttpServlet {
+@WebServlet("/host/hostSearchStudio")
+public class StudioSearchByHostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("host_no") == null) {
 			response.sendRedirect("hostLogin");
 			return;
 		}
 		StudioResDAO dao = new StudioResDAO();
-		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
-		List<ReservationsVO> originReslist = dao.selectReservationsAll();
-		List<ReservationsVO> filteredReslist = new ArrayList<ReservationsVO>();
-		for(ReservationsVO vo:originReslist) {
-			if(vo.getStudio_no()==studio_no) {
-				filteredReslist.add(vo);
-			}
-		}
-		request.setAttribute("reservationlist", filteredReslist);
+		List<StudioVO> studiolist = dao.selectStudioByHostId(String.valueOf(session.getAttribute("host_id")));
+		request.setAttribute("studiolist", studiolist);	
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("hostSearchResByStudio.jsp");
+		rd = request.getRequestDispatcher("hostSearchStudio.jsp");
 		rd.forward(request, response);
 	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.setAttribute("work", "studio"); 
+		response.sendRedirect("adminMain");
+	}
+
 
 }
