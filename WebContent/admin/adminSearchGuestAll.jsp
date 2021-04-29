@@ -8,15 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script>
-$(function(){
-	$("table,td").css({
-		"border":"2px solid black", 
-		"border-collapse":"collapse"
-	})
 
-})
-</script>
 </head>
 <body>
 	<table>

@@ -24,15 +24,6 @@ $(function(){
 	$("#resvAll").on("click",function(){
 		$("#content").load("adminSearchResAll");
 	});
-	$("ul").css({
-		"list-style":"none"
-	})
-	$("li").css({
-		"float":"left",
-		"border":"1px solid red",
-		"margin":"0 20px",
-		"padding":"5px"
-	})
 	var work = "${work}";
 	if(work=="approve"){
 		$("#studioAll").trigger("click");
@@ -51,13 +42,15 @@ $(function(){
 <body>
  <jsp:include page="../common/adminHeader.jsp"></jsp:include>
 <h1>관리자 페이지</h1>
-<ul>
-  <li id="hostAll">전체호스트조회</li>
-  <li id="guestAll">전체게스트조회</li>
-  <li id="roomAll">전체방조회</li>
-  <li id="studioAll">전체연습실조회</li>
-  <li id="resvAll">전체예약조회</li>
-</ul>
+<nav id="nav">
+	<ul>
+	  <li id="hostAll">전체호스트조회</li>
+	  <li id="guestAll">전체게스트조회</li>
+	  <li id="roomAll">전체방조회</li>
+	  <li id="studioAll">전체연습실조회</li>
+	  <li id="resvAll">전체예약조회</li>
+	</ul>
+</nav>
 <br>
 <br>
 <div id="content"></div>

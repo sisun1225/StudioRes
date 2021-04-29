@@ -9,84 +9,123 @@
 
 <title>Insert title here</title>
 <style>
-#nav {
-	border: solid orange;
+*{
+padding: 10px;
+margin: 5px;
 }
 
 table, td {
-	border: 2px solid black;
-	border-collapse: collapse;
+   border: 2px solid black;
+   border-collapse: collapse;
 }
 
 #container {
-	overflow: scroll;
-	min-height: 400px;
+   overflow: auto;
+   min-height: 400px;
 }
 
 #content {
-	overflow: scroll;
-	height: 400px;
+   overflow: auto;
+   height: 400px;
 }
 
 #footer {
-	font-size: 2px;
-	padding: 20px;
-	position: relation;
-	background-color: #D0CECE
+   font-size: 2px;
+   padding: 20px;
+   position: relation;
+   background-color: #D0CECE
 }
 
 #header {
-	border: 3px solid red;
-	float: none;
-	height: 100px;
-	position: relative;
+   float: none;
+   height: 100px;
+   position: relative;
 }
 
 #logo {
-	left: 10px;
-	top: 15px;
+   left: 10px;
+   top: 15px;
 }
 
 #namewelcome {
-	position: absolute;
-	right: 10px;
-	top: 10px;
+   position: absolute;
+   right: 10px;
+   top: 10px;
 }
 
 #logout, #login {
-	position: absolute;
-	right: 10px;
-	top: 40px;
+   position: absolute;
+   right: 10px;
+   top: 40px;
 }
 
 #hostcenter {
-	right: 10px;
-	top: 70px;
+   right: 10px;
+   top: 70px;
 }
 
 #guestcenter {
-	right: 10px;
-	top: 70px;
+   right: 10px;
+   top: 70px;
 }
 
 #gasan {
-	margin: 0px; padding : 10px;
-	font-size: 40px;
-	float: right;
-	padding: 10px;
+   margin: 0px;
+   padding: 10px;
+   font-size: 40px;
+   float: right;
+   padding: 10px;
+}
+#guest_resv{
+   margin-top: 30px;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 20px;
+
+}
+#myfrm {
+   margin-left: auto;
+   margin-right: auto;
+   padding: 20px;
+   width: 400px;
+   border: 1px solid #222;
+   border-radius: 5px;
 }
 
-#myfrm {
-	padding: 20px;
-	width: 400px;
-	border: 1px solid #222;
-	border-radius: 5px;
+#hello {
+   margin-top: 30px;
+   margin-left: auto;
+   font-size: 30px;
 }
 
 label {
-	float: left;
-	font-size: 13px;
-	width: 80px;
+   float: left;
+   font-size: 13px;
+   width: 80px;
+}
+
+#nav ul {
+   list-style: none;
+}
+
+#nav ul li {
+   display: inline-block;
+}
+
+#nav a {
+   display: block;
+   padding: 10px 20px;
+   background-color: #ccc;
+}
+
+#nav a:link, a:active {
+   color: black;
+   text-decoration: none;
+}
+
+#nav a:hover {
+   background-color: #000;
+   color: #fff;
 }
 </style>
 
