@@ -9,7 +9,8 @@
 	<title>Insert title here</title>
 	<style>
 		#container{
-			border: 3px solid red; 
+			border: 3px solid lightblue;
+			background-color:lightblue; 
 			float:none;
 			width:100%;
 			height: 100px;
