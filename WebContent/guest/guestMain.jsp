@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,25 +10,27 @@
 <script>
 $(function(){
 	$("#mypage").on("click", function(){
-		$("#here").load("info");
+		$("#container").load("info");
 	});
 	$("#resvlist").on("click", function(){
-		$("#here").load("resvlist");
+		$("#container").load("resvlist");
 	});
 });
 </script>
 </head>
 <body>
-<h1>로그인 성공 + 헤더</h1>
+
+<jsp:include page="../common/header.jsp"></jsp:include>
+<nav id="nav">
 <button id="mypage">개인정보</button>
 <button id="resvlist">예약리스트</button>
-<button type="button" onclick="location.href='logout'">로그아웃</button>
-<hr>
-<%
-String id = (String) session.getAttribute("guest_id"); 
-%>
-<div id="here">
-<%=id %>님 안녕하세요.
+</nav>
+
+<div id="container">
+${guest_id}님 안녕하세요.
 </div>
+
+
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

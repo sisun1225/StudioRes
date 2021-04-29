@@ -20,12 +20,15 @@ public class GuestLoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String page = "guestLogin.jsp";
+		
 		if(session.getAttribute("guest_id")!=null) {
-			page = "guestMain.jsp";
+			response.sendRedirect("main");
+			return;
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(page);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("guestLogin.jsp");
 		rd.forward(request, response);
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,16 +37,19 @@ public class GuestLoginServlet extends HttpServlet {
 		String guest_id = request.getParameter("guest_id");
 		String guest_pw = request.getParameter("guest_pw");
 		GuestVO guest = dao.guestLoginChk(guest_id, guest_pw);
-		String page = "guestLogin.jsp";
+
 		HttpSession session = request.getSession();
 		if(guest != null) {
 			session.setAttribute("guest_id", guest_id);
 			session.setAttribute("guest_pw", guest_pw);
 			session.setAttribute("guest_name", guest.getGuest_name());
-			page = "guestMain.jsp";
+			session.setAttribute("guest_no", guest.getGuest_no());
+			response.sendRedirect("main");
+			return;
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(page);
+		RequestDispatcher rd = request.getRequestDispatcher("guestLogin.jsp");
 		rd.forward(request, response);
+		return;
 	}
 
 }
