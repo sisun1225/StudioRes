@@ -9,18 +9,28 @@
 
 <title>Insert title here</title>
 <style>
+* {
+	padding: 10px;
+	margin: 5px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 table, td {
 	border: 2px solid black;
 	border-collapse: collapse;
 }
 
 #container {
-	overflow: scroll;
-	min-height: 460px;
+	overflow: auto;
+	min-height: 400px;
 }
 
 #content {
-	overflow: scroll;
+	overflow: auto;
 	height: 400px;
 }
 
@@ -32,7 +42,6 @@ table, td {
 }
 
 #header {
-	border: 3px solid red;
 	float: none;
 	height: 100px;
 	position: relative;
@@ -73,8 +82,14 @@ table, td {
 	padding: 10px;
 }
 
-#myfrm {
+#guest_resv {
 	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+}
+
+#myfrm {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 20px;
@@ -86,7 +101,6 @@ table, td {
 #hello {
 	margin-top: 30px;
 	margin-left: auto;
-	margin-right: auto;
 	font-size: 30px;
 }
 
@@ -126,7 +140,7 @@ label {
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
 		<a href="${apppath}/main/searchAll"> <img id="logo"
-			src="${apppath}/common/spacestore.png" alt="로고자리">
+			src="${apppath}/common/spacestore2.png" alt="로고자리">
 		</a>
 		<c:choose>
 			<c:when test="${guest_id!=null}">

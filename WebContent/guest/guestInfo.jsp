@@ -22,7 +22,6 @@ $(function(){
 </head>
 <body>
 
-<div id="container">
 <form id="myfrm" action="update" method="post">
 <fieldset>
 <legend>회원정보</legend>
@@ -40,6 +39,6 @@ $(function(){
 <input type="button" id="delete" value="탈퇴하기" mydata="${guest.guest_id}">
 </fieldset>
 </form>
-</div>
+
 </body>
 </html>
