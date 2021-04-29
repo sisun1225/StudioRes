@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +32,12 @@
 
 
 <!-- 달력을 위한 스크립트 -->
+  <!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  
+  <script> 
   $.datepicker.setDefaults({
       dateFormat: 'yy-mm-dd',
       prevText: '이전 달',
@@ -78,28 +78,12 @@
 
  				}
  			});
-    	
-    	
-    	}
-    
-   
-    		
-    		
-    		
+    	} 		
     });  
-   
-    
-   
-    
-    
+
   });
   
-  function test(){
-  console.log("----------");
-  
-  console.log(radioVal);
-  console.log(dateVal);
-  }
+
   </script>
 <!-- 달력을 위한 스크립트 여기까지-->
 
@@ -107,6 +91,7 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
+
 <h1>스튜디오 이름 :  ${studio.studio_name} </h1>
 
 
@@ -141,9 +126,8 @@
 		    </em>
 		  </p>
     
-    	<input type="button" value="호스트페이지 이동 버튼">
+    	<input type="button" value="호스트페이지 이동 버튼 ${host.host_no}"onClick="location.href='http://localhost:9090/StudioRes/host/hostLogin'">
   </div>
-  
   
   
   <div class="column" style="background-color:#bbb;">
@@ -153,29 +137,22 @@
     <p> 예약을 하시려면 호스트의 승인이 필요합니다.</p>
 	<p>	승인 후에 온라인 결제가 가능합니다!</p>
 	
-	<hr>
+
     
 	<c:forEach var="room" items="${room}">
 	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();">방번호 : ${room.room_no}호실 | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간<br>
 	</c:forEach>
 	
-	<hr>
+
     
     <div id="datepicker"></div>
     
-    <input type="button" onclick="test();">
+
     
-    <hr>
+
     
     <p> 예약시간 최소 1시간부터</p>
-    <div id="resvTime" style ="border: 1px solid red">
-   
-   
-    
-    <input type="button" value="button">
-    
-    
-  </div>
+    <div id="resvTime" style ="border: 1px solid red"></div>
   
   
   
@@ -233,6 +210,6 @@ geocoder.addressSearch('${studio.studio_address}', function(result, status) {
 
 
 
-
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

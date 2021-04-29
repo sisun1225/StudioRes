@@ -6,15 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-
 
 $(function(){
 	$("#btn1").on("click", function() {
-		//alert('아아아!!');
 		
 		var chkArr = [];
 		  $("input[name=chk]:checked").each(function() { 
@@ -49,11 +45,11 @@ $(function(){
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 
-<hr>
+
+
 지하철:<input type="text" placeholder="지하철을 입력하세요" name="subway" id="subway" value="잠실">
 		지역:<input type="text" placeholder="지역을 입력하세요" name="loc" id="loc" value="구로">
 		
-
 		<input type="checkbox" name="chk" value="1">마이크
 		<input type="checkbox" name="chk" value="2">주차장
 		<input type="checkbox" name="chk" value="3">샤워장
@@ -64,12 +60,8 @@ $(function(){
 		<input type="button" value="검색" id="btn1">
 		<input type="button" name="chk" value="초기화" id="btn2">
 
-	<hr>
-	
-	
-	<div id ="here">여기
+	<div id ="here">
 
-		
 		<table border="1">
 		  <tr>
 		    <td>studio_no</td>
@@ -115,12 +107,11 @@ $(function(){
 		
 		  </tr>
 			</c:forEach>
-			
 		</table>
-
-
 
 	</div>
 	
+
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
