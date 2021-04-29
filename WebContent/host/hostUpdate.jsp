@@ -10,6 +10,11 @@
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
+  <nav id="nav">
+<button type="button" onclick="location.href='hostDetail'">마이페이지</button>
+<button type="button" onclick="location.href='studioInsert'">연습실등록</button>
+<button type="button" onclick="location.href='hostSearchStudio'">연습실조회</button>
+</nav>
   <h1>호스트 수정</h1>
   <form action="hostUpdate" method="post">
     아이디<input type="text" name="host_id" value="${host.host_id }" readonly="readonly">${host.host_id }<br>

@@ -1,6 +1,7 @@
 package hostController;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.HostVO;
 import model.StudioResDAO;
+import model.StudioVO;
 
 /**
  * Servlet implementation class HostLoginServlet
@@ -46,6 +48,9 @@ public class HostLoginServlet extends HttpServlet {
 			session.setAttribute("host_id", host.getHost_id());
 			session.setAttribute("host_pw", host.getHost_pw());
 			session.setAttribute("host_name",host.getHost_name());
+			List<StudioVO> studiolist = dao.selectStudioByHostId(host_id);
+			session.setAttribute("studiolist", studiolist);	
+			RequestDispatcher rd;
 			response.sendRedirect("hostMain");
 			return;
 		}

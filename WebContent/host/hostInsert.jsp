@@ -9,15 +9,23 @@
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-  <h1>호스트 등록</h1>
-  <form action="hostInsert" method="post">
-    아이디<input type="text" name="host_id"><br>
-    비밀번호<input type="password" name="host_pw"><br>
-    이름<input type="text" name="host_name"><br>
-    핸드폰<input type="text" name="host_phone"><br>
-    이메일<input type="text" name="host_email"><br>
-    <input type="submit" value="회원가입">
-    <input type="reset" value="취소">
-  </form>
+<div id="container">
+<form action="hostInsert" method="post">
+<fieldset>
+<legend>회원가입 정보</legend>
+<label> 아이디 </label>
+<input type="text" name="host_id"><br>
+<label>비밀번호</label>
+<input type="password" name="host_pw"><br>
+<label>이름</label>
+<input type="text" name="host_name"><br>
+<label>Phone</label>
+<input type="text" name="host_phone"><br>
+<label>Email</label>
+<input type="text" name="host_email"><br>
+<input type="submit" value="입력하기">
+</fieldset>
+</form>
+</div>
 </body>
 </html>

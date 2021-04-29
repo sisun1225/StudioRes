@@ -19,7 +19,11 @@ $(function(){
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-
+<nav id="nav">
+<button type="button" onclick="location.href='hostDetail'">마이페이지</button>
+<button type="button" onclick="location.href='studioInsert'">연습실등록</button>
+<button type="button" onclick="location.href='hostSearchStudio'">연습실조회</button>
+</nav>
 	<table>
 	<tr>
 		<td>예약번호</td>
