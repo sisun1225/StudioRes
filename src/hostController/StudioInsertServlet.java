@@ -20,21 +20,20 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import model.StudioResDAO;
 import model.StudioVO;
 
-/**
- * Servlet implementation class StudioInsertServlet
- */
 @WebServlet("/host/studioInsert")
 public class StudioInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("host_no") == null) {
+			response.sendRedirect("hostLogin");
+			return;
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("studioInsert.jsp");
 		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio = new StudioVO();

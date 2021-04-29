@@ -22,6 +22,10 @@ public class HostUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		if(session.getAttribute("host_no") == null) {
+			response.sendRedirect("hostLogin");
+			return;
+		}
 		StudioResDAO dao = new StudioResDAO();
 		String host_id = (String)session.getAttribute("host_id");
 		HostVO host = dao.selectHostById(host_id);

@@ -23,7 +23,7 @@ public class HostStudioDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int studio_id = Integer.parseInt(request.getParameter("studio_no"));
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio = dao.selectStudioByNo(studio_id);
@@ -43,11 +43,6 @@ public class HostStudioDetailServlet extends HttpServlet {
 	
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
 		rd.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
