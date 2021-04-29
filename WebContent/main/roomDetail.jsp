@@ -28,9 +28,12 @@
 </style>
 
 
+
+
+
 <!-- 달력을 위한 스크립트 -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -49,42 +52,80 @@
       minDate: '0',
       maxDate: '+1M'
   });
-
+	
+  	var radioVal;
+  	var dateVal;
+  	
+	function radioChk(){
+		 radioVal = $("input[name='roomno']:checked").val();
+		console.log(radioVal);
+	}
+	
   
   $( function() {
     $( "#datepicker" ).datepicker({
-    	onSelect: function(dateText, inst) {alert(dateText);}
+    	onSelect: function(dateText, inst) {
+    	     dateVal = dateText;
+    		console.log(dateText);
+    		console.log("---------------");
+    		
+    		 $.ajax({
+ 				url:"searchByNoDate",
+ 				data:{"radioVal":radioVal,"dateVal":dateVal},
+ 				type:"get",
+ 				success:function(responseData){
+ 					$("#resvTime").html(responseData);
+
+ 				}
+ 			});
+    	
+    	
+    	}
+    
+   
+    		
+    		
+    		
     });  
+   
+    
+   
+    
+    
   });
   
+  function test(){
+  console.log("----------");
   
-  
+  console.log(radioVal);
+  console.log(dateVal);
+  }
   </script>
 <!-- 달력을 위한 스크립트 여기까지-->
 
 
 </head>
 <body>
-<h2>스튜디오 이름 :  ${studio.studio_name} </h2>
+<h1>스튜디오 이름 :  ${studio.studio_name} </h1>
 
 
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">
     
-    <h1>사진(studios ->studio_picture)</h1>
+    <h2>사진(studios ->studio_picture)</h2>
     
-    <h1>공간소개</h1>
+    <h2>공간소개</h2>
      	${studio.studio_desc}
     
-    <h1>시설안내</h1>
+    <h2>시설안내</h2>
 	    <ul>
 	    	<c:forEach var="studio" items="${studiooption}">
 				<li>${studio}</li>
 			</c:forEach>
 	    </ul>
     
-    <h1>지도,연락처,주소</h1>
+    <h2>지도,연락처,주소</h2>
 	    주소 : ${studio.studio_address}  <br>
 	    연락처 : ${host.host_phone}
 	    <br>
@@ -99,7 +140,7 @@
 		    </em>
 		  </p>
     
-    	<input type="button" value="호스트페이지 이동 버튼"> </button>
+    	<input type="button" value="호스트페이지 이동 버튼">
   </div>
   
   
@@ -109,35 +150,36 @@
  
    
     <p> 예약을 하시려면 호스트의 승인이 필요합니다.</p>
-	<p>		승인 후에 온라인 결제가 가능합니다!</p>
+	<p>	승인 후에 온라인 결제가 가능합니다!</p>
+	
 	<hr>
     
-
-    
-    
 	<c:forEach var="room" items="${room}">
-	<input type="radio" name="chk_info" value="${room.room_no}">방번호 : ${room.room_no}호실 / 수용인원 : ${room.room_capacity} / 가격 : ${room.room_price}<br>
+	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();">방번호 : ${room.room_no}호실 | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간<br>
 	</c:forEach>
+	
+	<hr>
     
     <div id="datepicker"></div>
     
+    <input type="button" onclick="test();">
+    
+    <hr>
+    
     <p> 예약시간 최소 1시간부터</p>
-    <div id="resvTime" style ="border: 1px solid black">방과 날짜 정해지면 여기에출력</div>
+    <div id="resvTime" style ="border: 1px solid red">
+   
+   
     
     <input type="button" value="button">
     
     
   </div>
+  
+  
+  
 </div>
-
-
-
-
-
-
-
-
-
+</div>
 
 
 
