@@ -28,7 +28,7 @@ public class StudioSearchByHostServlet extends HttpServlet {
 		List<StudioVO> studiolist = dao.selectStudioByHostId(String.valueOf(session.getAttribute("host_id")));
 		request.setAttribute("studiolist", studiolist);	
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("hostSearchStudio.jsp");
+		rd = request.getRequestDispatcher("studioSearchByHost.jsp");
 		rd.forward(request, response);
 	}
 }

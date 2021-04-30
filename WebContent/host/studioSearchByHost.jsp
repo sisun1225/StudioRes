@@ -51,7 +51,7 @@ $(function(){
 			</c:when>
 		 </c:choose>
 		 <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
-    		 <form id="searchres${number}" action="hostSearchResByStudio" method="post">
+    		 <form id="searchres${number}" action="resvSearchByHost" method="post">
     		   <input type="hidden" name="studio_no" value="${studio.studio_no}">
     		 </form>
          </td>
