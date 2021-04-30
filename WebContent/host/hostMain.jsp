@@ -30,12 +30,8 @@
 		 <td>${studio.studio_no}</td>
 		 <td>
             <a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
-            <form id="studiodetail${number}" action="hostStudioDetail" method="post">
+            <form id="studiodetail${number}" action="studioDetail" method="post">
               <input type="hidden" name="studio_no" value="${studio.studio_no}">
-            </form>
-            
-            <form id="searchres${number}" action="hostSearchResByStudio" method="post">
-               <input type="hidden" name="studio_no" value="${studio.studio_no}">
             </form>
 		 </td>
 		 <td>${studio.studio_days}</td>
@@ -50,7 +46,7 @@
 		 </c:choose>
 		 <td>
             <button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
-              <form id="searchres${number}" action="hostSearchResByStudio" method="post">
+              <form id="searchres${number}" action="resvSearchByHost" method="post">
                <input type="hidden" name="studio_no" value="${studio.studio_no}">
               </form>
          </td>

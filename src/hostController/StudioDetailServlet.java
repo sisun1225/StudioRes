@@ -18,11 +18,11 @@ import model.StudioVO;
 /**
  * Servlet implementation class RoomDetailServlet
  */
-@WebServlet("/host/hostStudioDetail")
+@WebServlet("/host/studioDetail")
 public class StudioDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("hostSearchStudio.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("studioSearchByHost.jsp");
 		rd.forward(request, response);
 	}
 
@@ -46,6 +46,7 @@ public class StudioDetailServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
 		rd.forward(request, response);
+		//response.sendRedirect("hostStudioDetail");
 	}
 
 }

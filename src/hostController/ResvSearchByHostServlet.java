@@ -17,7 +17,7 @@ import model.StudioResDAO;
 import model.StudioVO;
 
 
-@WebServlet("/host/hostSearchResByStudio")
+@WebServlet("/host/resvSearchByHost")
 public class ResvSearchByHostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,7 +38,7 @@ public class ResvSearchByHostServlet extends HttpServlet {
 		}
 		request.setAttribute("reservationlist", filteredReslist);
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("hostSearchResByStudio.jsp");
+		rd = request.getRequestDispatcher("resvSearchByHost.jsp");
 		rd.forward(request, response);
 	}
 
