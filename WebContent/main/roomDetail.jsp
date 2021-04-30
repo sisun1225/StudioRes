@@ -223,7 +223,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     
     	<div id="imagesizeDiv">
 		  <c:set var="pPath" value="${pageContext.request.contextPath}" />
-		  <img src="${pPath}/imageUpload/${studio.studio_picture}.png">
+		  <img src="${pPath}/imageUpload/${studio.studio_picture}">
 		</div>
     <span id="h2">공간소개</span>
      	<span id="studioDesc"><pre>${studio.studio_desc}</pre></span>

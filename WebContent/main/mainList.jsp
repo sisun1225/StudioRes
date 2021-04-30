@@ -173,7 +173,7 @@ $(function(){
 				<div id="card" onclick="location.href='${pageContext.request.contextPath}/main/roomDetail?studioid=${listall.studio_no}';">
 			
 				  <c:set var="pPath" value="${pageContext.request.contextPath}" />
-				  <img src="${pPath}/imageUpload/${listall.studio_picture}.png">
+				  <img src="${pPath}/imageUpload/${listall.studio_picture}">
 			
 				  <div id="textContainer">
 				    <span id="searchTextA">${listall.studio_name}</span>
