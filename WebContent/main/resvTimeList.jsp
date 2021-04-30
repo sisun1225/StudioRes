@@ -8,13 +8,16 @@
 <title>시간확인 예약하기 페이지</title>
 
 <style>
+* {
+	font-family: 배달의민족 주아;
+	font-size:20px;
+}
 
 checkbox{
 width:30px;
 height:30px;
 border:1px;
 margin: 10px;
-
 }
 
 input[type=checkbox]{
@@ -31,7 +34,6 @@ border: 1px solid  #b3b3b3;
 margin: 1px 1px 1px 1px;
 transition: 0.3s;
 float: left;
-
 }
 
 #buttonIconTime:hover{
@@ -51,34 +53,31 @@ float: left;
 
 #buttonWrap{
 padding : 0 15px 0 15px;
-/* border: 2px solid red; */
 display: inline-block;
 width:390px;
-
-
 }
 
 #timeTitle{
 font-size: 18px;
 }
 
-
-
-
-
+#btn1{
+border-radius: 10px 10px 10px 10px;
+width : 400px;
+height : 35px;
+}
 </style>
 
 
 <script>
 	$("#btn1").on("click", function() {
 		var chkTimeArr = [];
-		  $("input[name=resvChk]:checked").each(function() { 
-		       var chk = $(this).val();
-		       chkTimeArr.push(chk);
+		$("input[name=resvChk]:checked").each(function() {
+			var chk = $(this).val();
+			chkTimeArr.push(chk);
 
-		    });  
+		});
 	});
-
 </script>
 
 </head>
@@ -111,7 +110,14 @@ font-size: 18px;
 	<input type="hidden" name="insertDateVal" value="${d_date}">
 	
 	<br>
+	
+	
+
 	<input type="submit" value="예약하기" id="btn1">
+
+
+	
+	
 	</form>
 
 </body>
