@@ -9,9 +9,14 @@
 
 <title>Insert title here</title>
 <style>
-*{
-padding: 10px;
-margin: 5px;
+* {
+	padding: 10px;
+	margin: 5px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 table, td {
@@ -36,10 +41,11 @@ table, td {
 	background-color: #D0CECE
 }
 
-#header {
-	float: none;
-	height: 100px;
-	position: relative;
+#header button {
+	float: right;
+}
+#header #center{
+clear:none;
 }
 
 #logo {
@@ -48,13 +54,11 @@ table, td {
 }
 
 #namewelcome {
-	position: absolute;
 	right: 10px;
 	top: 10px;
 }
 
 #logout, #login {
-	position: absolute;
 	right: 10px;
 	top: 40px;
 }
@@ -76,13 +80,14 @@ table, td {
 	float: right;
 	padding: 10px;
 }
-#guest_resv{
+
+#guest_resv {
 	margin-top: 30px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 20px;
-
 }
+
 #myfrm {
 	margin-left: auto;
 	margin-right: auto;
@@ -126,6 +131,11 @@ label {
 #nav a:hover {
 	background-color: #000;
 	color: #fff;
+}
+
+#header a:link {
+	color: black;
+	text-decoration: none;
 }
 </style>
 
