@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<table>
+	<table id="tables">
 	<tr>
 		<td>번호</td>
 		<td>아이디</td>

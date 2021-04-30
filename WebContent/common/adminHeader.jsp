@@ -16,6 +16,10 @@ font-family: 배달의민족 주아;
 font-size:20px;
 }
 
+input[type=password]{
+   font-family: Consolas;
+}
+
 table, td {
    border: 2px solid black;
    border-collapse: collapse;
@@ -28,8 +32,7 @@ table, td {
 
 #content {
    overflow: auto;
-   height: 400px;
-   text-align: center;
+   min-height: 400px;
 }
 
 #footer {
@@ -74,6 +77,7 @@ table, td {
    top: 70px;
 }
 
+
 #gasan {
    margin: 0px;
    padding: 10px;
@@ -81,12 +85,11 @@ table, td {
    float: right;
    padding: 10px;
 }
-#guest_resv{
-   margin-top: 30px;
-   margin-left: auto;
-   margin-right: auto;
-   padding: 20px;
-
+#tables {
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
 }
 #myfrm {
    margin-left: auto;
@@ -147,15 +150,25 @@ label {
     margin-left: auto;
     margin-right: auto;
 }
+
+#adminlogintitle{
+	text-align:center;
+	margin:0 auto; 
+}
+
+#nav{
+ 	 list-style: none;
+  	 text-align:center;
+}
+
 </style>
 
 </head>
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<a href="${apppath}/main/searchAll"> <img id="logoMain"
+		<img onclick="location.href='${apppath}/main/searchAll'" id="logoMain"
 			src="${apppath}/common/spacestore2.png" alt="로고자리">
-		</a>
 		<c:choose>
 			<c:when test="${adminid!=null}">
 				<span id="namewelcome">${adminid}님 환영합니다.</span>

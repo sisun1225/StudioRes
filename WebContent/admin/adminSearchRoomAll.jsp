@@ -7,11 +7,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
 </head>
 <body>
-<table>
+<table id="tables">
 	<tr>
 		<td>방번호</td>
 		<td>방이름</td>

@@ -32,22 +32,6 @@ $(function(){
 	
 });
 </script>
-
-<style>
-	#content{
-		width: 100%;
-		height: 800px;
-	}
-	#adminlogintitle{
-		margin:0 auto; 
-	}
-	
-	#nav{
-  	 list-style: none;
-   	 text-align:center;
-	}
-
-</style>
 </head>
 <body>
 <jsp:include page="../common/adminHeader.jsp"></jsp:include>

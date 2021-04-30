@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table id="tables">
 	<tr>
 		<td>호스트id</td>
 		<td>연습실번호</td>

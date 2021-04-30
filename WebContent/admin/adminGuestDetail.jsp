@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
+<table id="tables">
 	<tr>
 		<td>예약번호</td><td>게스트번호</td><td>방번호</td><td>예약날짜</td>
 		<td>예약시간</td><td>상태</td><td>게스트아이디</td><td>호스트아이디</td>
