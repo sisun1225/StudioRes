@@ -89,7 +89,7 @@
       <h1>사진(studios ->studio_picture)</h1>
       <div id="imageBox">
         <c:set var="pPath" value="${pageContext.request.contextPath }" />
-        <img src="${pPath }/imageUpload/${studio.studio_picture}">
+        <img src="${pPath }/imageUpload/${studio.studio_picture}.png">
       </div>
       공간소개<br>
       <div id="studioDesc">

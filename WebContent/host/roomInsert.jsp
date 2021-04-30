@@ -17,7 +17,7 @@
 </nav>
   <h1>방 등록</h1>
   <form action="roomInsert" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="studio_no" value="${studio_no}">인서트페이지${studio_no}
+    <input type="hidden" name="studio_no" value="${studio_no}">
     <input type="hidden" name="host_no" value="${host_no }">
     방이름<input type="text" name="room_name"><br>
     수용인원<input type="number" name="room_capacity"><br>

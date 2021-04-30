@@ -65,6 +65,7 @@ $(function(){
           </form>
         </td>
       </tr>
+      <div style="display:none">${number = number + 1}</div>
     </c:forEach>
   </table>
 </body>
