@@ -12,7 +12,14 @@
 * {
 	padding: 10px;
 	margin: 5px;
+	font-family: 배달의민족 주아;
+	font-size: 20px;
 }
+
+input[type=password]{
+	font-family: Consolas;
+}
+
 
 table {
 	margin-left: auto;
@@ -41,11 +48,17 @@ table, td {
 	background-color: #D0CECE
 }
 
-#header button {
-	float: right;
+#header {
+	float: none;
+	height: 100px;
+	position: relative;
 }
-#header #center{
-clear:none;
+
+#logoMain {
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #logo {
@@ -54,11 +67,13 @@ clear:none;
 }
 
 #namewelcome {
+	position: absolute;
 	right: 10px;
 	top: 10px;
 }
 
 #logout, #login {
+	position: absolute;
 	right: 10px;
 	top: 40px;
 }
@@ -115,12 +130,19 @@ label {
 
 #nav ul li {
 	display: inline-block;
+	border-radius: 10px;
+	width: 120px;
+	color: #2F55AA;
+	border: 2.5px solid #2F55AA;
+}
+
+#nav ul li:hover {
+	background-color: #2F55AA;
+	color: white;
 }
 
 #nav a {
 	display: block;
-	padding: 10px 20px;
-	background-color: #ccc;
 }
 
 #nav a:link, a:active {
@@ -129,7 +151,6 @@ label {
 }
 
 #nav a:hover {
-	background-color: #000;
 	color: #fff;
 }
 
@@ -143,9 +164,8 @@ label {
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<a href="${apppath}/main/searchAll"> <img id="logo"
-			src="${apppath}/common/spacestore2.png" alt="로고자리">
-		</a>
+		<img onclick="location.href='${apppath}/main/searchAll'" id="logoMain"
+			src="${apppath}/common/spacestore2.png" alt="로고자리"/>
 		<c:choose>
 
 			<c:when test="${host_id!=null}">
@@ -159,8 +179,12 @@ label {
 				</span>
 			</c:otherwise>
 		</c:choose>
-		<span id="guestcenter"><a href="${apppath}/guest/main">게스트센터</a></span>
-		<span id="hostcenter"><a href="${apppath}/host/hostLogin">호스트센터</a></span>
+	</div>
+	<div id="center">
+		<button id="guestcenter"
+			onclick="location.href='${apppath}/guest/main'">게스트센터</button>
+		<button id="hostcenter"
+			onclick="location.href='${apppath}/host/hostLogin'">호스트센터</button>
 	</div>
 </body>
 </html>

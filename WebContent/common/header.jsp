@@ -12,6 +12,11 @@
 * {
 	padding: 10px;
 	margin: 5px;
+	font-family: 배달의민족 주아;
+	font-size:20px;
+}
+input[type=password]{
+	font-family: Consolas;
 }
 
 table {
@@ -41,11 +46,17 @@ table, td {
 	background-color: #D0CECE
 }
 
-#header button {
-	float: right;
+#header {
+	float: none;
+	height: 100px;
+	position: relative;
 }
-#header #center{
-clear:none;
+
+#logoMain {
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #logo {
@@ -54,11 +65,13 @@ clear:none;
 }
 
 #namewelcome {
+	position: absolute;
 	right: 10px;
 	top: 10px;
 }
 
 #logout, #login {
+	position: absolute;
 	right: 10px;
 	top: 40px;
 }
@@ -114,23 +127,31 @@ label {
 }
 
 #nav ul li {
-	display: inline-block;
+   display: inline-block;
+   border-radius: 10px;
+   width:120px;
+   color:#2F55AA;
+   border: 2.5px solid #2F55AA; 
 }
 
+#nav ul li:hover{
+   background-color: #2F55AA;
+   color:white;
+}
+
+
 #nav a {
-	display: block;
-	padding: 10px 20px;
-	background-color: #ccc;
+   display: block;
 }
 
 #nav a:link, a:active {
-	color: black;
-	text-decoration: none;
+   color: black;
+   text-decoration: none;
 }
 
 #nav a:hover {
-	background-color: #000;
-	color: #fff;
+
+   color: #fff;
 }
 
 #header a:link {
@@ -143,34 +164,27 @@ label {
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<div id="Ginfo">
-			<a href="${apppath}/main/searchAll"> <img id="logo"
-				src="${apppath}/common/spacestore2.png" alt="로고자리">
-			</a>
-			<c:choose>
-				<c:when test="${guest_id!=null}">
-					<button id="namewelcome"
-						onclick="location.href='${apppath}/guest/main'">${guest_name}님
-						환영합니다.</button>
-					<button id="logout"
-						onclick="location.href='${apppath}/guest/logout'">로그아웃</button>
-				</c:when>
+		<img onclick="location.href='${apppath}/main/searchAll'" id="logoMain"
+			src="${apppath}/common/spacestore2.png" alt="로고자리"/>
+		<c:choose>
+			<c:when test="${guest_id!=null}">
+				<span id="namewelcome">${guest_name}님 환영합니다.</span>
+				<span id="logout"><a href="${apppath}/guest/logout">로그아웃</a></span>
+			</c:when>
 
-				<c:otherwise>
-					<button id="login"
-						onclick="location.href='${apppath}/guest/insert'">회원가입</button>
-					<button onclick="location.href='${apppath}/guest/login'">로그인</button>
+			<c:otherwise>
+				<span id="login"> <a href="${apppath}/guest/insert">회원가입</a>
+					<a href="${apppath}/guest/login">로그인</a>
+				</span>
+			</c:otherwise>
+		</c:choose>
 
-					</span>
-				</c:otherwise>
-			</c:choose>
-		</div>
-		<div id="center">
-			<button id="guestcenter"
-				onclick="location.href='${apppath}/guest/main'">게스트센터</button>
-			<button id="hostcenter"
-				onclick="location.href='${apppath}/host/hostLogin'">호스트센터</button>
-		</div>
+	</div>
+	<div id="center">
+		<button id="guestcenter"
+			onclick="location.href='${apppath}/guest/main'">게스트센터</button>
+		<button id="hostcenter"
+			onclick="location.href='${apppath}/host/hostLogin'">호스트센터</button>
 	</div>
 </body>
 </html>
