@@ -56,7 +56,7 @@ $(function(){
         <td>
           <button onclick="javascript:document.getElementById('roominsert${number}').submit()">방추가</button>
           <form id="roominsert${number}" action="roomInsert" method="get">
-            <input type="hidden" name="room_no" value="${studio.studio_no}">
+            <input type="hidden" name="studio_no" value="${studio.studio_no}">
           </form>
         </td>
         <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>

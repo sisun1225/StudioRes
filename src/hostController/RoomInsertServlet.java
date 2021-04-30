@@ -30,6 +30,7 @@ public class RoomInsertServlet extends HttpServlet {
 			return;
 		}
 		request.setAttribute("studio_no", request.getParameter("studio_no"));
+		System.out.println("insert서블릿: "+request.getParameter("studio_no"));
 		RequestDispatcher rd = request.getRequestDispatcher("roomInsert.jsp");
 		rd.forward(request, response);
 	}
@@ -48,6 +49,7 @@ public class RoomInsertServlet extends HttpServlet {
 		Enumeration files = mutipartRequest.getFileNames();
 		String str = (String)files.nextElement();
 		String originalFileName = mutipartRequest.getOriginalFileName(str);
+		System.out.println("studio_no: "+Integer.parseInt(mutipartRequest.getParameter("studio_no")));
 		room.setStudio_no(Integer.parseInt(mutipartRequest.getParameter("studio_no")));
 		room.setRoom_name(mutipartRequest.getParameter("room_name"));
 		room.setRoom_capacity(Integer.parseInt(mutipartRequest.getParameter("room_capacity")));
