@@ -7,21 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <style>
-
-
-
 #card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
   border : 1px solid #b3b3b3;
   width: 350px;
   height: 350px;
-
   display: inline-block;
   transition: 0.3s;
-  padding:0;
-  
+  padding:0;  
 }
 
 #card:hover {
@@ -39,7 +33,6 @@
 
     margin: 0;
 }
-
 	
 #studioimage{
   width: 350px;
@@ -71,10 +64,7 @@ padding :50px;
 /* border : 1px solid #b3b3b3; */
 margin: 0 auto;
 display: inline-block;
-
 }
-
-
 
 #ajaxWrap{
 /* width:1000px; */

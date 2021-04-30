@@ -57,6 +57,10 @@ public class SearchByNoDateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		if(session.getAttribute("guest_no") == null) {
+			response.sendRedirect("/StudioRes/guest/login");
+			return;
+		}
 		
 		int insertGuestNo = (Integer)(session.getAttribute("guest_no"));
 		int insertRoomNoVal = Integer.parseInt(request.getParameter("insertRoomNoVal")); 

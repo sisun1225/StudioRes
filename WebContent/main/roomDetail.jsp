@@ -5,35 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세페이지-왼쪽</title>
+<title>SPACESTORE</title>
 <style>
-
-p{
-
-	margin: 15px;
-
+* {
+	font-family: 배달의민족 주아;
+	font-size:20px;
 }
 
+p{
+	margin: 15px;
+}
 
 #row{
-/* border : 1px solid red; */
 width: 100%;
 height:100%;
 margin:20px 0 0 0;
 display: flex;
 justify-content:  center;
-
 }
 
 #columnleft{
-/* border : 1px solid red; */
 float: left;
 width: 550px;
 height: 100%;
 padding : 10px;
-
 }
-
 
 #columnright{
 /* border : 1px solid red; */
@@ -72,12 +68,8 @@ margin: 5px;
 background-color : white;
 border-radius: 10px 10px 10px 10px;
 padding:0;
-/* margin: 10px; */
 border: 5px solid white;
-
-
 }
-
 
 #imagesizeDiv img{
 width: 550px;
@@ -102,7 +94,6 @@ width:30px;
 height:30px;
 border:1px;
 margin: 10px;
-
 }
 
 #roomNoChkTitle{
@@ -126,12 +117,9 @@ transition: 0.3s;
 
 #buttonIcon:hover{
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-
 }
 
 </style>
-
-
 
 
 
@@ -294,14 +282,8 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     <p>예약 가능한 시간 확인 가능합니다.</p>
     </div>
   
-  
-  
 </div>
 </div>
-
-
-
-
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=806e8091967ec917e3572fad97eb1b9a&libraries=services"></script>
 <script>
@@ -341,13 +323,6 @@ geocoder.addressSearch('${studio.studio_address}', function(result, status) {
     } 
 });    
 </script>
-
-
-
-
-
-
-
 
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
