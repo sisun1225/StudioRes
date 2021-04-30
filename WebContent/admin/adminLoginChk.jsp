@@ -7,9 +7,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#adminlogintitle{
+		text-align:center;
+}
+</style>
 </head>
 <body>
- <h1>관리자 로그인</h1>
+<jsp:include page="../common/adminHeader.jsp"></jsp:include>
+<div id=adminlogintitle>관리자 로그인</div>
 <div id="container">
 	<form id="myfrm" action="adminLoginChk" method="post">
 	<fieldset>

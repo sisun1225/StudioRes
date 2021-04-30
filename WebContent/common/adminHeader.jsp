@@ -43,8 +43,10 @@ table, td {
 }
 
 #logo {
-   left: 10px;
-   top: 15px;
+   position: relative;
+   left:50%;
+   top:50%;
+   transform:translate(-50%, -50%); 
 }
 
 #namewelcome {
@@ -134,10 +136,17 @@ label {
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
 		<a href="${apppath}/main/searchAll"> <img id="logo"
-			src="${apppath}/common/spacestore.png" alt="로고자리">
+			src="${apppath}/common/spacestore2.png" alt="로고자리">
 		</a>
-		<span id="namewelcome">${adminid}님 환영합니다.</span>
-		<span id="logout"><a href="${apppath}/admin/adminLogOut">로그아웃</a></span>
+		<c:choose>
+			<c:when test="${adminid!=null}">
+				<span id="namewelcome">${adminid}님 환영합니다.</span>
+				<span id="logout"><a href="${apppath}/admin/adminLogOut">로그아웃</a></span>
+			</c:when>
+
+			<c:otherwise>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>
