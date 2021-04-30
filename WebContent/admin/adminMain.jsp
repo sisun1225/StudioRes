@@ -41,6 +41,12 @@ $(function(){
 	#adminlogintitle{
 		margin:0 auto; 
 	}
+	
+	#nav{
+  	 list-style: none;
+   	 text-align:center;
+	}
+
 </style>
 </head>
 <body>
@@ -48,11 +54,11 @@ $(function(){
 
 <nav id="nav">
 	<ul>
-	  <li id="hostAll">전체호스트조회</li>
-	  <li id="guestAll">전체게스트조회</li>
-	  <li id="roomAll">전체방조회</li>
-	  <li id="studioAll">전체연습실조회</li>
-	  <li id="resvAll">전체예약조회</li>
+	  <li class = "menu" id="hostAll">전체호스트조회</li>
+	  <li class = "menu" id="guestAll">전체게스트조회</li>
+	  <li class = "menu" id="roomAll">전체방조회</li>
+	  <li class = "menu" id="studioAll">전체연습실조회</li>
+	  <li class = "menu" id="resvAll">전체예약조회</li>
 	</ul>
 </nav>
 <br>
