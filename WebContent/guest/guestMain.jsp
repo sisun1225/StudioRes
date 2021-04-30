@@ -18,14 +18,20 @@
 		});
 	});
 </script>
+<style>
+#nav{
+  	 list-style: none;
+   	 text-align:center;
+	}
+</style>
 </head>
 <body>
 
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<nav id="nav">
 		<ul>
-			<li id="mypage"><a>개인정보</a></li>
-			<li id="resvlist"><a>예약리스트</a></li>
+			<li class="meun" id="mypage"><a>개인정보</a></li>
+			<li class="menu" id="resvlist"><a>예약리스트</a></li>
 		</ul>
 	</nav>
 

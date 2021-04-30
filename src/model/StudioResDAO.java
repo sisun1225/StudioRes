@@ -296,7 +296,7 @@ public class StudioResDAO {
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? order by resv_no desc";
+		String sql = " select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) where guest_no = ? order by resv_date, resv_time";
 		conn = DBUtil.getConnection();
 
 		try {
