@@ -13,3 +13,11 @@
 2. HostPage 기능
 3. AdminPage 기능
 4. MainPage 기능
+## GuestPage 기능
+guestpage기능을 작성해주세요.
+## HostPage 기능
+Hostpage기능을 작성해주세요.
+## AdminPage 기능
+Adminpage기능을 작성해주세요.
+## MainPage 기능
+Mainpage기능을 작성해주세요.
