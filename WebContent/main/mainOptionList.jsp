@@ -9,9 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-body {
-  background-color: white;
-}
+
 
 
 #card {
@@ -19,10 +17,11 @@ body {
   border : 1px solid #b3b3b3;
   width: 350px;
   height: 350px;
-  margin: 2%;
+
   display: inline-block;
   transition: 0.3s;
-  float:left;
+  padding:0;
+  
 }
 
 #card:hover {
@@ -37,6 +36,8 @@ body {
   white-space:nowrap;
   overflow:hidden;
   word-break:break-all;
+
+    margin: 0;
 }
 
 	
@@ -50,11 +51,36 @@ p{
 line-height : 10px;
 }
 
+#searchTextA{
+font-size: 32px;
+text-align: left;
+}
+
+#searchTextB{
+font-size: 25px;
+}
+
+#topSearch{
+border : 1px solid #b3b3b3;
+height : 110px;
+text-align: center;
+padding :50px;
+}
+
+#topSearchIn{
+/* border : 1px solid #b3b3b3; */
+margin: 0 auto;
+display: inline-block;
+
+}
+
 
 
 #ajaxWrap{
 /* width:1000px; */
  height: 100%;
+       padding: 0;
+    margin: 0;
 }
 
 

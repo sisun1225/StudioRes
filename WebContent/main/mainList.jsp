@@ -9,9 +9,8 @@
 <title>메인</title>
 <style>
 
-body {
-  background-color: white;
-}
+
+
 
 #wrap{
 /* border : 1px solid #b3b3b3; */
@@ -32,10 +31,17 @@ body {
   border : 1px solid #b3b3b3;
   width: 350px;
   height: 350px;
-  margin: 2%;
   display: inline-block;
   transition: 0.3s;
-  
+  padding:0;
+  margin:10px;
+}
+
+#card img{
+width: 100%;
+height: 200px;
+padding :0;
+margin: 0;
 }
 
 #card:hover {
@@ -51,6 +57,8 @@ body {
   white-space:nowrap;
   overflow:hidden;
   word-break:break-all;
+
+    margin: 0;
 }
 
 	
@@ -58,6 +66,8 @@ body {
   width: 350px;
   height: 180px;
   object-fit: cover;
+      padding: 0;
+    margin: 0;
 }
 
 p{
@@ -78,15 +88,18 @@ border : 1px solid #b3b3b3;
 height : 110px;
 text-align: center;
 padding :50px;
-
+margin: 20px;
 }
 
 #topSearchIn{
 /* border : 1px solid #b3b3b3; */
 margin: 0 auto;
 display: inline-block;
-
 }
+
+
+	
+
 
 
 
@@ -157,8 +170,11 @@ $(function(){
 		<div id ="here">
 
 		 	<c:forEach var="listall" items="${searchAll}">
-				<div id="card" onclick="location.href='roomDetail?studioid=${listall.studio_no}';">
-				  <img src="http://www.w-photogroup.com/default/img/mobilen/images/sub1/sub11-slide1.jpg" id="studioimage">
+				<div id="card" onclick="location.href='${pageContext.request.contextPath}/main/roomDetail?studioid=${listall.studio_no}';">
+			
+				  <c:set var="pPath" value="${pageContext.request.contextPath}" />
+				  <img src="${pPath}/imageUpload/${listall.studio_picture}">
+			
 				  <div id="textContainer">
 				    <span id="searchTextA">${listall.studio_name}</span>
 				    <p>${listall.studio_subway}</p> 
@@ -173,3 +189,5 @@ $(function(){
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
+
+<%-- ${listall.studio_picture} --%>

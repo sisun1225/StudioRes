@@ -7,6 +7,18 @@
 <meta charset="UTF-8">
 <title>시간확인 예약하기 페이지</title>
 
+<style>
+
+checkbox{
+width:30px;
+height:30px;
+border:1px;
+margin: 10px;
+
+}
+</style>
+
+
 <script>
 	$("#btn1").on("click", function() {
 		var chkTimeArr = [];
@@ -33,8 +45,7 @@
 				 <c:set  var="dis" value="disabled"/>
 			</c:if>
 		 </c:forEach>  
-		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} >${cnt} ~ ${cnt+1}<br>
-			 
+		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} >${cnt} ~ ${cnt+1}<br>		 
 	</c:forEach>
 
 
