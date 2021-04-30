@@ -32,16 +32,20 @@ $(function(){
 	
 });
 </script>
+
 <style>
 	#content{
 		width: 100%;
 		height: 800px;
 	}
+	#adminlogintitle{
+		margin:0 auto; 
+	}
 </style>
 </head>
 <body>
- <jsp:include page="../common/adminHeader.jsp"></jsp:include>
-<h1>관리자 페이지</h1>
+<jsp:include page="../common/adminHeader.jsp"></jsp:include>
+
 <nav id="nav">
 	<ul>
 	  <li id="hostAll">전체호스트조회</li>
