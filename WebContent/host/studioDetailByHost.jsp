@@ -84,7 +84,7 @@
   </form>
   <div id="container">
     <div id="studioInfo">
-      <h2>스튜디오 이름 : ${studio.studio_name}</h2>
+      <h2>스튜디오 이름1 : ${studio.studio_name}</h2>
   
       <h1>사진(studios ->studio_picture)</h1>
       <div id="imageBox">
@@ -110,7 +110,8 @@
         <input type="radio" value="${room.room_no}" name="room_no" id="roomNoChk" onclick="radioChk();">
         방이름 : ${room.room_name} | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간
         <form id="deletRoom" action="roomDelete">
-          <input type="hidden" neme=roomDelete value=${room.room_no }>
+          <input type="hidden" name=room_no value=${room.room_no }>
+          <input type="hidden" name="studio_no" value="${studio.studio_no }">
           <input type="submit" value="방삭제">
         </form>
         <br>
