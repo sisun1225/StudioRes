@@ -4,22 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8" >
-<title>메인</title>
+<title>SPACESTORE</title>
 <style>
-
-
-
-
-#wrap{
-/* border : 1px solid #b3b3b3; */
-/* text-align: center; */
-}
-
 #here{
-/*   border : 1px solid #b3b3b3; */
-/*    width: 1300px;  */
   height: 100%;
   margin: 0 auto;
   display: inline-block;
@@ -52,22 +40,19 @@ margin: 0;
 #textContainer {
   padding: 10px;
   width: 320px;
-  
   text-overflow:ellipsis;
   white-space:nowrap;
   overflow:hidden;
   word-break:break-all;
-
-    margin: 0;
+  margin: 0;
 }
-
 	
 #studioimage{
   width: 350px;
   height: 180px;
   object-fit: cover;
-      padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 p{
@@ -79,8 +64,9 @@ font-size: 32px;
 text-align: left;
 }
 
-#searchTextB{
-font-size: 25px;
+#searchTextB label{
+font-size: 20px;
+margin : 2px;
 }
 
 #topSearch{
@@ -92,22 +78,20 @@ margin: 20px;
 }
 
 #topSearchIn{
-/* border : 1px solid #b3b3b3; */
 margin: 0 auto;
 display: inline-block;
 }
 
-
-	
-
-
-
+input[type=checkbox]{
+width: 20px; 
+height: 20px;
+}
 
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
 
+<script>
 $(function(){
 	$("#btn1").on("click", function() {
 		
@@ -137,7 +121,6 @@ $(function(){
 	});
 
 }); 
-
 </script>
 
 </head>
@@ -153,20 +136,20 @@ $(function(){
 			<br>
 			
 			<span id="searchTextB">
-			<input type="checkbox" name="chk" value="1">마이크
-			<input type="checkbox" name="chk" value="2">주차장
-			<input type="checkbox" name="chk" value="3">샤워장
-			<input type="checkbox" name="chk" value="4">정수기
-			<input type="checkbox" name="chk" value="5">에어컨
-			<input type="checkbox" name="chk" value="6">난방기
-			<input type="checkbox" name="chk" value="7">내부화장실
+			<label><input type="checkbox" name="chk" value="1">마이크</label>
+			<label><input type="checkbox" name="chk" value="2">주차장</label>
+			<label><input type="checkbox" name="chk" value="3">샤워장</label>
+			<label><input type="checkbox" name="chk" value="4">정수기</label>
+			<label><input type="checkbox" name="chk" value="5">에어컨</label>
+			<label><input type="checkbox" name="chk" value="6">난방기</label>
+			<label><input type="checkbox" name="chk" value="7">내부화장실</label>
 			<input type="button" value="검색" id="btn1">
 			<input type="button" name="chk" value="초기화" id="btn2">
 			</span>
 		</div>
 	</div>
 	
-	<div id="wrap">
+
 		<div id ="here">
 
 		 	<c:forEach var="listall" items="${searchAll}">
@@ -184,10 +167,8 @@ $(function(){
 				</div>
 			</c:forEach>
 		</div>
-	</div>
 
-	<jsp:include page="../common/footer.jsp"></jsp:include>
+
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
-
-<%-- ${listall.studio_picture} --%>

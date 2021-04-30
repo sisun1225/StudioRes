@@ -8,13 +8,63 @@
 <title>시간확인 예약하기 페이지</title>
 
 <style>
+* {
+	font-family: 배달의민족 주아;
+	font-size:20px;
+}
 
 checkbox{
 width:30px;
 height:30px;
 border:1px;
 margin: 10px;
+}
 
+input[type=checkbox]{
+width: 20px; 
+height: 20px;
+}
+
+#buttonIconTime{
+border-radius: 10px 10px 10px 10px;
+background-color:white;
+width:85px;
+height:30px;
+border: 1px solid  #b3b3b3;
+margin: 1px 1px 1px 1px;
+transition: 0.3s;
+float: left;
+}
+
+#buttonIconTime:hover{
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#buttonIconTime:checked{
+border-radius: 10px 10px 10px 10px;
+background-color:lightgrey;
+width:80px;
+height:30px;
+border: 2px solid  #b3b3b3;
+margin: 3px;
+transition: 0.3s;
+float: left;
+}
+
+#buttonWrap{
+padding : 0 15px 0 15px;
+display: inline-block;
+width:390px;
+}
+
+#timeTitle{
+font-size: 18px;
+}
+
+#btn1{
+border-radius: 10px 10px 10px 10px;
+width : 400px;
+height : 35px;
 }
 </style>
 
@@ -22,13 +72,12 @@ margin: 10px;
 <script>
 	$("#btn1").on("click", function() {
 		var chkTimeArr = [];
-		  $("input[name=resvChk]:checked").each(function() { 
-		       var chk = $(this).val();
-		       chkTimeArr.push(chk);
+		$("input[name=resvChk]:checked").each(function() {
+			var chk = $(this).val();
+			chkTimeArr.push(chk);
 
-		    });  
+		});
 	});
-
 </script>
 
 </head>
@@ -36,6 +85,8 @@ margin: 10px;
 
 
 <form action="searchByNoDate" method="post">
+
+<div id="buttonWrap">
 	<c:forEach var="cnt" begin="0" end="23">
 	      <c:set  var="chk" value=""/>
 	      <c:set  var="dis" value=""/>
@@ -45,15 +96,28 @@ margin: 10px;
 				 <c:set  var="dis" value="disabled"/>
 			</c:if>
 		 </c:forEach>  
-		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} >${cnt} ~ ${cnt+1}<br>		 
+		 <label>
+		<div id="buttonIconTime">
+		<span id="checkmark"></span>
+		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} ><span id="timeTitle">${cnt} : 00</span>
+		</div>
+		</label>	 
 	</c:forEach>
-
+</div>
 
 	
 	<input type="hidden" name="insertRoomNoVal" value="${i_radio}">
 	<input type="hidden" name="insertDateVal" value="${d_date}">
+	
+	<br>
+	
+	
 
 	<input type="submit" value="예약하기" id="btn1">
+
+
+	
+	
 	</form>
 
 </body>

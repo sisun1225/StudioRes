@@ -5,35 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세페이지-왼쪽</title>
+<title>SPACESTORE</title>
 <style>
-
-p{
-
-	margin: 15px;
-
+* {
+	font-family: 배달의민족 주아;
+	font-size:20px;
 }
 
+p{
+	margin: 15px;
+}
 
 #row{
-/* border : 1px solid red; */
 width: 100%;
 height:100%;
 margin:20px 0 0 0;
 display: flex;
 justify-content:  center;
-
 }
 
 #columnleft{
-/* border : 1px solid red; */
 float: left;
 width: 550px;
 height: 100%;
 padding : 10px;
-
 }
-
 
 #columnright{
 /* border : 1px solid red; */
@@ -65,19 +61,15 @@ background-color : white;
 width: 400px;
 height: 8px;
 padding:0;
-	margin: 5px;
+margin: 5px;
 }
 
 #resvTime{
 background-color : white;
 border-radius: 10px 10px 10px 10px;
 padding:0;
-/* margin: 10px; */
 border: 5px solid white;
-
-
 }
-
 
 #imagesizeDiv img{
 width: 550px;
@@ -102,7 +94,6 @@ width:30px;
 height:30px;
 border:1px;
 margin: 10px;
-
 }
 
 #roomNoChkTitle{
@@ -114,9 +105,21 @@ font-size: 15px;
 text-align: center;
 margin: 2px;
 }
+
+#buttonIcon{
+border-radius: 30px 30px 30px 30px;
+background-color:white;
+width:400px;
+border: 5px solid white;
+margin: 5px 0 0 0;
+transition: 0.3s;
+}
+
+#buttonIcon:hover{
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 </style>
-
-
 
 
 
@@ -227,7 +230,7 @@ margin: 2px;
    	    <span id="h2">${studio.studio_name}</span>
    	    <ul>
 	    <li>주소:${studio.studio_address}</li>
-	    <li> 연락처:${host.host_phone}</li>
+	    <li>연락처:${host.host_phone}</li>
 	    </ul>
 	    <br>
 	    <!-- 지도 출력 용 div -->
@@ -235,7 +238,7 @@ margin: 2px;
     
 
     	<br>
-    	<input type="button" value="호스트페이지 이동 버튼"onClick="location.href='http://localhost:9090/StudioRes/host/hostLogin'">
+    	
   </div>
   
   
@@ -250,9 +253,15 @@ margin: 2px;
 		<div id="linedivRight"></div>
 		<!-- 라인 만들기용 div -->
     
+    
 	<c:forEach var="room" items="${room}">
-	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();"><span id="roomNoChkTitle">방번호 : ${room.room_no}호실 </span><br><p id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</p><br>
+	<label>
+	<div id="buttonIcon">
+	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();"><span id="roomNoChkTitle">${room.room_no}호실 </span><span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span><br>
+	</div>
+	</label>
 	</c:forEach>
+	
 	
 		<!-- 라인 만들기용 div -->
 		<div id="linedivRight"></div>
@@ -273,14 +282,8 @@ margin: 2px;
     <p>예약 가능한 시간 확인 가능합니다.</p>
     </div>
   
-  
-  
 </div>
 </div>
-
-
-
-
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=806e8091967ec917e3572fad97eb1b9a&libraries=services"></script>
 <script>
@@ -320,13 +323,6 @@ geocoder.addressSearch('${studio.studio_address}', function(result, status) {
     } 
 });    
 </script>
-
-
-
-
-
-
-
 
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
