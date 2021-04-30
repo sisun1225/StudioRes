@@ -76,16 +76,6 @@ table, td {
 	top: 40px;
 }
 
-#hostcenter {
-	right: 10px;
-	top: 70px;
-}
-
-#guestcenter {
-	right: 10px;
-	top: 70px;
-}
-
 #gasan {
 	margin: 0px;
 	padding: 10px;
@@ -122,13 +112,25 @@ label {
 	width: 80px;
 }
 
-#nav ul {
+ul {
 	list-style: none;
+}
+
+#center ul li {
+   display: inline-block;
+   border-radius: 10px;
+    border: 1px solid gray;
+    width:120px;
+    text-align: center;
+}
+
+#center ul li:hover {
+	background-color: #2F55AA;
+	color: white;
 }
 
 #nav ul li {
    display: inline-block;
-   border-radius: 10px;
    width:120px;
    color:#2F55AA;
    border: 2.5px solid #2F55AA; 
@@ -158,6 +160,7 @@ label {
 	color: black;
 	text-decoration: none;
 }
+
 </style>
 
 </head>
@@ -181,10 +184,10 @@ label {
 
 	</div>
 	<div id="center">
-		<button id="guestcenter"
-			onclick="location.href='${apppath}/guest/main'">게스트센터</button>
-		<button id="hostcenter"
-			onclick="location.href='${apppath}/host/hostLogin'">호스트센터</button>
+		<ul>
+			<li onclick="location.href='${apppath}/guest/main'">게스트센터</li>
+			<li onclick="location.href='${apppath}/host/hostLogin'">호스트센터</li>
+		</ul>
 	</div>
 </body>
 </html>
