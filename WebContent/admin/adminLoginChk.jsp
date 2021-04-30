@@ -7,11 +7,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-#adminlogintitle{
-		text-align:center;
-}
-</style>
 </head>
 <body>
 <jsp:include page="../common/adminHeader.jsp"></jsp:include>

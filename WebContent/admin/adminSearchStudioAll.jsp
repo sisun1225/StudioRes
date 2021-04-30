@@ -7,7 +7,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script>
 	  function approve(studio_no){
 		  $.ajax({
@@ -34,7 +33,7 @@
 </script>
 </head>
 <body>
-<table>
+<table id="tables">
 	<tr>
 		<td>번호</td>
 		<td>연습실이름</td>
