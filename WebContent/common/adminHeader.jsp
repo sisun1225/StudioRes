@@ -12,6 +12,8 @@
 *{
 padding: 10px;
 margin: 5px;
+font-family: 배달의민족 주아;
+font-size:20px;
 }
 
 table, td {
@@ -27,6 +29,7 @@ table, td {
 #content {
    overflow: auto;
    height: 400px;
+   text-align: center;
 }
 
 #footer {
@@ -42,7 +45,7 @@ table, td {
    position: relative;
 }
 
-#logo {
+#logoMain {
    position: relative;
    left:50%;
    top:50%;
@@ -112,7 +115,17 @@ label {
 
 #nav ul li {
    display: inline-block;
+   border-radius: 10px;
+   width:120px;
+   color:#2F55AA;
+   border: 2.5px solid #2F55AA; 
 }
+
+#nav ul li:hover{
+   background-color: #2F55AA;
+   color:white;
+}
+
 
 #nav a {
    display: block;
@@ -129,13 +142,18 @@ label {
    background-color: #000;
    color: #fff;
 }
+
+#table, td{
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>
 
 </head>
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<a href="${apppath}/main/searchAll"> <img id="logo"
+		<a href="${apppath}/main/searchAll"> <img id="logoMain"
 			src="${apppath}/common/spacestore2.png" alt="로고자리">
 		</a>
 		<c:choose>
