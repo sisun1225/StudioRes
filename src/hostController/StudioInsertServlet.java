@@ -41,7 +41,12 @@ public class StudioInsertServlet extends HttpServlet {
 		//사진업로드
 		String upload_dir ="imageUpload";
 		int size = 1024*1024*10;
-		String path = getServletContext().getRealPath(upload_dir);
+		//서버경로
+		//String path = getServletContext().getRealPath(upload_dir);
+		//이클립스경로
+		String path =this.getClass().getResource("").getPath();
+		path = path.substring(1,path.indexOf(".metadata"))+request.getContextPath()+"/WebContent/imageUpload";
+		
 		MultipartRequest mutipartRequest = new MultipartRequest(request, path, size, "utf-8",
 					new DefaultFileRenamePolicy());
 		Enumeration files = mutipartRequest.getFileNames();

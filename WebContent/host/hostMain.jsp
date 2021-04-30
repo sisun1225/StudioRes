@@ -28,10 +28,15 @@
 		<c:forEach var="studio" items="${studiolist}">
 		<tr>
 		 <td>${studio.studio_no}</td>
-		 <td><a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
-				 <form id="studiodetail${number}" action="hostStudioDetail" method="post">
-				 <input type="hidden" name="studio_no" value="${studio.studio_no}">
-				 </form>
+		 <td>
+            <a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
+            <form id="studiodetail${number}" action="hostStudioDetail" method="post">
+              <input type="hidden" name="studio_no" value="${studio.studio_no}">
+            </form>
+            
+            <form id="searchres${number}" action="hostSearchResByStudio" method="post">
+               <input type="hidden" name="studio_no" value="${studio.studio_no}">
+            </form>
 		 </td>
 		 <td>${studio.studio_days}</td>
 		 <td>${studio.studio_address}</td>
@@ -43,10 +48,12 @@
 			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
-		 <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button></td>
-				 <form id="searchres${number}" action="hostSearchResByStudio" method="post">
-				 <input type="hidden" name="studio_no" value="${studio.studio_no}">
-				 </form>
+		 <td>
+            <button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
+              <form id="searchres${number}" action="hostSearchResByStudio" method="post">
+               <input type="hidden" name="studio_no" value="${studio.studio_no}">
+              </form>
+         </td>
 		 <td><button>방추가</button></td>
 		</tr>
 		<div style="display:none">${number = number + 1}</div>

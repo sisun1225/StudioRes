@@ -19,9 +19,12 @@ import model.StudioVO;
  * Servlet implementation class RoomDetailServlet
  */
 @WebServlet("/host/hostStudioDetail")
-public class HostStudioDetailServlet extends HttpServlet {
+public class StudioDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("hostSearchStudio.jsp");
+		rd.forward(request, response);
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int studio_id = Integer.parseInt(request.getParameter("studio_no"));
@@ -41,14 +44,7 @@ public class HostStudioDetailServlet extends HttpServlet {
 		List<RoomVO> room = dao.selectRoomById(studio.getStudio_no());
 		request.setAttribute("room", room);
 		
-		System.out.println(getServletContext());
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRequestURL());
-		System.out.println(getServletContext().getContextPath());
-		System.out.println(getServletContext().getRealPath("imageUpload"));
-		
 		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail.jsp");
-		//RequestDispatcher rd = request.getRequestDispatcher("../NewFile.jsp");
 		rd.forward(request, response);
 	}
 

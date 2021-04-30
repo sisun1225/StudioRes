@@ -27,12 +27,14 @@ public class HostLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String page = "hostLogin.jsp";
+		
 		if(session.getAttribute("host_id")!=null) {
-			page = "hostMain.jsp";
+			response.sendRedirect("hostMain");
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("hostLogin.jsp");
+			rd.forward(request, response);
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(page);
-		rd.forward(request, response);
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
