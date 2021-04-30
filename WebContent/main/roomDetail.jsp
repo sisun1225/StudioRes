@@ -65,7 +65,7 @@ background-color : white;
 width: 400px;
 height: 8px;
 padding:0;
-	margin: 5px;
+margin: 5px;
 }
 
 #resvTime{
@@ -114,6 +114,21 @@ font-size: 15px;
 text-align: center;
 margin: 2px;
 }
+
+#buttonIcon{
+border-radius: 30px 30px 30px 30px;
+background-color:white;
+width:400px;
+border: 5px solid white;
+margin: 5px 0 0 0;
+transition: 0.3s;
+}
+
+#buttonIcon:hover{
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
 </style>
 
 
@@ -208,7 +223,7 @@ margin: 2px;
     
     	<div id="imagesizeDiv">
 		  <c:set var="pPath" value="${pageContext.request.contextPath}" />
-		  <img src="${pPath}/imageUpload/${studio.studio_picture}">
+		  <img src="${pPath}/imageUpload/${studio.studio_picture}.png">
 		</div>
     <span id="h2">공간소개</span>
      	<span id="studioDesc"><pre>${studio.studio_desc}</pre></span>
@@ -227,7 +242,7 @@ margin: 2px;
    	    <span id="h2">${studio.studio_name}</span>
    	    <ul>
 	    <li>주소:${studio.studio_address}</li>
-	    <li> 연락처:${host.host_phone}</li>
+	    <li>연락처:${host.host_phone}</li>
 	    </ul>
 	    <br>
 	    <!-- 지도 출력 용 div -->
@@ -235,7 +250,7 @@ margin: 2px;
     
 
     	<br>
-    	<input type="button" value="호스트페이지 이동 버튼"onClick="location.href='http://localhost:9090/StudioRes/host/hostLogin'">
+    	
   </div>
   
   
@@ -250,9 +265,15 @@ margin: 2px;
 		<div id="linedivRight"></div>
 		<!-- 라인 만들기용 div -->
     
+    
 	<c:forEach var="room" items="${room}">
-	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();"><span id="roomNoChkTitle">방번호 : ${room.room_no}호실 </span><br><p id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</p><br>
+	<label>
+	<div id="buttonIcon">
+	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();"><span id="roomNoChkTitle">${room.room_no}호실 </span><span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span><br>
+	</div>
+	</label>
 	</c:forEach>
+	
 	
 		<!-- 라인 만들기용 div -->
 		<div id="linedivRight"></div>
