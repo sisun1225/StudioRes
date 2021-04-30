@@ -10,7 +10,7 @@
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
 <div id="container">
-<form action="hostLogin" method="post">
+<form id="myfrm" action="hostLogin" method="post">
 <fieldset>
 <legend>로그인</legend>
 <label>아이디</label>

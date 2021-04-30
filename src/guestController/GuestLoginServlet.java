@@ -25,6 +25,10 @@ public class GuestLoginServlet extends HttpServlet {
 		session.setAttribute("before", before_address);
 		
 		if(session.getAttribute("guest_id")!=null) {
+			if(before_address.equals("http://localhost:9090/StudioRes/guest/login")) {
+				response.sendRedirect("main");
+				return;
+			}
 			response.sendRedirect(before_address);
 			return;
 		}

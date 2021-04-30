@@ -41,10 +41,11 @@ table, td {
 	background-color: #D0CECE
 }
 
-#header {
-	float: none;
-	height: 100px;
-	position: relative;
+#header button {
+	float: right;
+}
+#header #center{
+clear:none;
 }
 
 #logo {
@@ -53,13 +54,11 @@ table, td {
 }
 
 #namewelcome {
-	position: absolute;
 	right: 10px;
 	top: 10px;
 }
 
 #logout, #login {
-	position: absolute;
 	right: 10px;
 	top: 40px;
 }
@@ -133,34 +132,45 @@ label {
 	background-color: #000;
 	color: #fff;
 }
-#header a:link{
-color: black;
-text-decoration: none;
-}
 
+#header a:link {
+	color: black;
+	text-decoration: none;
+}
 </style>
 
 </head>
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<a href="${apppath}/main/searchAll"> <img id="logo"
-			src="${apppath}/common/spacestore2.png" alt="로고자리">
-		</a>
-		<c:choose>
-			<c:when test="${guest_id!=null}">
-				<span id="namewelcome">${guest_name}님 환영합니다.</span>
-				<span id="logout"><a href="${apppath}/guest/logout">로그아웃</a></span>
-			</c:when>
+		<div id="Ginfo">
+			<a href="${apppath}/main/searchAll"> <img id="logo"
+				src="${apppath}/common/spacestore2.png" alt="로고자리">
+			</a>
+			<c:choose>
+				<c:when test="${guest_id!=null}">
+					<button id="namewelcome"
+						onclick="location.href='${apppath}/guest/main'">${guest_name}님
+						환영합니다.</button>
+					<button id="logout"
+						onclick="location.href='${apppath}/guest/logout'">로그아웃</button>
+				</c:when>
 
-			<c:otherwise>
-				<span id="login"> <a href="${apppath}/guest/insert">회원가입</a>
-					<a href="${apppath}/guest/login">로그인</a>
-				</span>
-			</c:otherwise>
-		</c:choose>
-		<span id="guestcenter"><a href="${apppath}/guest/main">게스트센터</a></span>
-		<span id="hostcenter"><a href="${apppath}/host/hostLogin">호스트센터</a></span>
+				<c:otherwise>
+					<button id="login"
+						onclick="location.href='${apppath}/guest/insert'">회원가입</button>
+					<button onclick="location.href='${apppath}/guest/login'">로그인</button>
+
+					</span>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<div id="center">
+			<button id="guestcenter"
+				onclick="location.href='${apppath}/guest/main'">게스트센터</button>
+			<button id="hostcenter"
+				onclick="location.href='${apppath}/host/hostLogin'">호스트센터</button>
+		</div>
 	</div>
 </body>
 </html>
