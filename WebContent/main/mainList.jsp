@@ -4,8 +4,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+
+<meta charset="UTF-8" >
 <title>메인</title>
+<style>
+
+body {
+  background-color: white;
+}
+
+#wrap{
+/* border : 1px solid #b3b3b3; */
+/* text-align: center; */
+}
+
+#here{
+/*   border : 1px solid #b3b3b3; */
+/*    width: 1300px;  */
+  height: 100%;
+  margin: 0 auto;
+  display: inline-block;
+  padding : 50px 130px 50px 130px;
+}
+
+#card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+  border : 1px solid #b3b3b3;
+  width: 350px;
+  height: 350px;
+  margin: 2%;
+  display: inline-block;
+  transition: 0.3s;
+  
+}
+
+#card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+#textContainer {
+  padding: 10px;
+  width: 320px;
+  
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  word-break:break-all;
+}
+
+	
+#studioimage{
+  width: 350px;
+  height: 180px;
+  object-fit: cover;
+}
+
+p{
+line-height : 10px;
+}
+
+#searchTextA{
+font-size: 32px;
+text-align: left;
+}
+
+#searchTextB{
+font-size: 25px;
+}
+
+#topSearch{
+border : 1px solid #b3b3b3;
+height : 110px;
+text-align: center;
+padding :50px;
+
+}
+
+#topSearchIn{
+/* border : 1px solid #b3b3b3; */
+margin: 0 auto;
+display: inline-block;
+
+}
+
+
+
+</style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 
@@ -45,72 +131,44 @@ $(function(){
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
 
-
-
-지하철:<input type="text" placeholder="지하철을 입력하세요" name="subway" id="subway" value="잠실">
-		지역:<input type="text" placeholder="지역을 입력하세요" name="loc" id="loc" value="구로">
-		
-		<input type="checkbox" name="chk" value="1">마이크
-		<input type="checkbox" name="chk" value="2">주차장
-		<input type="checkbox" name="chk" value="3">샤워장
-		<input type="checkbox" name="chk" value="4">정수기
-		<input type="checkbox" name="chk" value="5">에어컨
-		<input type="checkbox" name="chk" value="6">난방기
-		<input type="checkbox" name="chk" value="7">내부화장실
-		<input type="button" value="검색" id="btn1">
-		<input type="button" name="chk" value="초기화" id="btn2">
-
-	<div id ="here">
-
-		<table border="1">
-		  <tr>
-		    <td>studio_no</td>
-		    <td>host_no</td>
-		    <td>host_id</td>
-		    <td>studio_desc</td>
-		    <td>studio_name</td>
-		    <td>studio_picture</td>
-		    <td>studio_days</td>
-		    <td>studio_notice</td>
-		    <td>studio_subway</td>
-		    <td>studio_address</td>
-		    <td>studio_check</td>
-		    <td>studio_have_mic</td>
-		    <td>studio_have_park</td>
-		    <td>studio_have_shower</td>
-		    <td>studio_have_water</td>
-		    <td>studio_have_aircon</td>
-		    <td>studio_have_heater</td>
-		    <td>studio_have_toilet</td>
-		  </tr>
-		  
-		 	<c:forEach var="listall" items="${searchAll}">
-		    <tr>
-		    <td><a href="roomDetail?studioid=${listall.studio_no}">${listall.studio_no}</a></td>
-		    <td>${listall.host_no}</td>
-		    <td>${listall.host_id}</td>
-		    <td>${listall.studio_desc}</td>
-		    <td>${listall.studio_name}</td>
-		    <td>${listall.studio_picture}</td>
-		    <td>${listall.studio_days}</td>
-		    <td>${listall.studio_notice}</td>
-		    <td>${listall.studio_subway}</td>
-		    <td>${listall.studio_address}</td>
-		    <td>${listall.studio_check}</td>
-		    <td>${listall.studio_have_mic}</td>
-		    <td>${listall.studio_have_park}</td>
-		    <td>${listall.studio_have_shower}</td>
-		    <td>${listall.studio_have_water}</td>
-		    <td>${listall.studio_have_aircon}</td>
-		    <td>${listall.studio_have_heater}</td>
-		    <td>${listall.studio_have_toilet}</td>
-		
-		  </tr>
-			</c:forEach>
-		</table>
-
+	<div id="topSearch">
+		<div id="topSearchIn">
+			<span id="searchTextA">
+			지하철 : <input type="text" placeholder="지하철을 입력하세요" name="subway" id="subway">
+			지역 : <input type="text" placeholder="지역을 입력하세요" name="loc" id="loc">
+			</span>
+			<br>
+			
+			<span id="searchTextB">
+			<input type="checkbox" name="chk" value="1">마이크
+			<input type="checkbox" name="chk" value="2">주차장
+			<input type="checkbox" name="chk" value="3">샤워장
+			<input type="checkbox" name="chk" value="4">정수기
+			<input type="checkbox" name="chk" value="5">에어컨
+			<input type="checkbox" name="chk" value="6">난방기
+			<input type="checkbox" name="chk" value="7">내부화장실
+			<input type="button" value="검색" id="btn1">
+			<input type="button" name="chk" value="초기화" id="btn2">
+			</span>
+		</div>
 	</div>
 	
+	<div id="wrap">
+		<div id ="here">
+
+		 	<c:forEach var="listall" items="${searchAll}">
+				<div id="card" onclick="location.href='roomDetail?studioid=${listall.studio_no}';">
+				  <img src="http://www.w-photogroup.com/default/img/mobilen/images/sub1/sub11-slide1.jpg" id="studioimage">
+				  <div id="textContainer">
+				    <span id="searchTextA">${listall.studio_name}</span>
+				    <p>${listall.studio_subway}</p> 
+				    <p>${listall.studio_desc}</p> 
+				    
+				  </div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
