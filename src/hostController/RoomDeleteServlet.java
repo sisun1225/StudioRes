@@ -27,11 +27,13 @@ public class RoomDeleteServlet extends HttpServlet {
 			return;
 		}
 		StudioResDAO dao = new StudioResDAO();
-		int room_no = Integer.parseInt(request.getParameter("room_no"));
+		int room_no = Integer.parseInt(request.getParameter("room_no").trim());
+		System.out.println("studio_no1"+request.getParameter("studio_no"));
+		String studio_no = request.getParameter("studio_no");
+		System.out.println("studio_no"+studio_no);
 		dao.deleteRoom(room_no);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("hostStudioDetail");
-		rd.forward(request, response);
+		response.sendRedirect("studioDetail?studio_no="+studio_no);
 		
 	}
 
