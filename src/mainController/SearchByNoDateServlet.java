@@ -21,7 +21,7 @@ import model.StudioVO;
  * Servlet implementation class SearchByNoDate
  */
 @WebServlet("/main/searchByNoDate")
-public class SearchByNoDate extends HttpServlet {
+public class SearchByNoDateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
