@@ -29,7 +29,11 @@ public class StudioUpdatePageServlet extends HttpServlet {
 		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
 		StudioResDAO dao = new StudioResDAO();
 		StudioVO studio =  dao.selectStudioByNo(studio_no);
+		String[] simpleAddress = studio.getStudio_address().split(",");
+		studio.setStudio_address(simpleAddress[0].trim());
+		String detailAddress = simpleAddress[1].trim();
 		request.setAttribute("studio", studio);
+		request.setAttribute("detailAddress", detailAddress);
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("hostUpdateStudio.jsp");
 		rd.forward(request, response);

@@ -78,18 +78,15 @@
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-  <a href="javascript:document.getElementById('studioUpdate').submit()">수정하기</a>
-  <form id="studioUpdate" action="studioUpdatePage" method="post">
-    <input type="hidden" name="studio_no" value="${studio.studio_no}">
-  </form>
+  
   <div id="container">
     <div id="studioInfo">
       <h2>스튜디오 이름1 : ${studio.studio_name}</h2>
   
-      <h1>사진(studios ->studio_picture)</h1>
+      ${studio.studio_picture}
       <div id="imageBox">
         <c:set var="pPath" value="${pageContext.request.contextPath }" />
-        <img src="${pPath }/imageUpload/${studio.studio_picture}.png">
+        <img src="${pPath }/imageUpload/${studio.studio_picture}">
       </div>
       공간소개<br>
       <div id="studioDesc">
@@ -101,7 +98,9 @@
           <li>${studio}</li>
         </c:forEach>
       </ul>
-      지도,연락처,주소<br>  
+      주소 : ${studio.studio_address }<br>
+      전화번호 : ${host.host_phone }  
+      이메일 : ${host.host_email }  
       <div id="map" style="width:100%;height:400px;"></div>
     </div>
     <div id="roomInfo">
@@ -118,6 +117,10 @@
       </c:forEach>
       <div id="datepicker"></div>
        <p> 예약시간 최소 1시간부터</p>
+      <form id="studioUpdate" action="studioUpdatePage" method="post">
+        <input type="hidden" name="studio_no" value="${studio.studio_no}">
+        <input type="submit" value="수정하기">
+      </form>
       </div>
       <div id="resvSearch"></div>    
 </div>

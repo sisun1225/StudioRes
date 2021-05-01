@@ -48,6 +48,10 @@ public class RoomInsertServlet extends HttpServlet {
 		Enumeration files = mutipartRequest.getFileNames();
 		String str = (String)files.nextElement();
 		String originalFileName = mutipartRequest.getOriginalFileName(str);
+		if(originalFileName==null) {
+			originalFileName = "이미지 없음"; 
+		}
+		
 		room.setStudio_no(Integer.parseInt(mutipartRequest.getParameter("studio_no")));
 		room.setRoom_name(mutipartRequest.getParameter("room_name"));
 		room.setRoom_capacity(Integer.parseInt(mutipartRequest.getParameter("room_capacity")));

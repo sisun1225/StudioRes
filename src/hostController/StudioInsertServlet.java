@@ -74,7 +74,9 @@ public class StudioInsertServlet extends HttpServlet {
 				}
 			}
 		}
-
+		//전체 주소
+		String fullAddress = mutipartRequest.getParameter("address")+", "+mutipartRequest.getParameter("detailAddress");
+		
 		//데이터입력(연습실등록)
 		HttpSession session = request.getSession();		
 		studio.setHost_no((Integer)session.getAttribute("host_no"));
@@ -91,7 +93,7 @@ public class StudioInsertServlet extends HttpServlet {
 		studio.setStudio_have_toilet(facilityChk.get("studio_have_toilet"));
 		studio.setStudio_have_water(facilityChk.get("studio_have_water"));
 		studio.setStudio_subway(mutipartRequest.getParameter("studio_subway"));
-		studio.setStudio_address(mutipartRequest.getParameter("roadFullAddr"));
+		studio.setStudio_address(fullAddress);
 		dao.insertStudio(studio);
 		response.sendRedirect("hostMain");
 	}

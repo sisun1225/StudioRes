@@ -9,38 +9,50 @@
 <title>Insert title here</title>
 <script>
 $(function(){
-	$("table,td").css({
-		"border":"2px solid black", 
-		"border-collapse":"collapse"
-	})
+  $("table,td").css({
+    "border":"2px solid black", 
+    "border-collapse":"collapse"
+  });
+  $("#hostInfo").on("click",function(){
+  	$(location).attr("href","hostDetail");
+  });
+  $("#studioInsert").on("click",function(){
+	$(location).attr("href","studioInsert");
+  });
+  $("#studioSearch").on("click",function(){
+  	$(location).attr("href","hostSearchStudio");
+  });
 })
 </script>
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
   <nav id="nav">
-    <button type="button" onclick="location.href='hostDetail'">마이페이지</button>
-    <button type="button" onclick="location.href='studioInsert'">연습실등록</button>
-    <button type="button" onclick="location.href='hostSearchStudio'">연습실조회</button>
+    <ul>
+      <li class = "menu" id="hostInfo">마이페이지</li>
+      <li class = "menu" id="studioInsert">연습실등록</li>
+      <li class = "menu" id="studioSearch">연습실조회</li>
+    </ul>
   </nav>
-  <table>
-    <tr>
-      <td>연습실번호</td>
-      <td>연습실이름</td>
-      <td>영업요일</td>
-      <td>주소</td>
-      <td>승인여부</td>
-      <td>방개수</td>
-    </tr>
-  	<c:set var="number" value="1"/>
-    <c:forEach var="studio" items="${studiolist}">
+  <div id="container"> 
+    <table>
+      <tr>
+        <td>연습실번호</td>
+        <td>연습실이름</td>
+        <td>영업요일</td>
+        <td>주소</td>
+        <td>승인여부</td>
+        <td>방개수</td>
+      </tr>
+    	<c:set var="number" value="1"/>
+      <c:forEach var="studio" items="${studiolist}">
       <tr>
         <td>${studio.studio_no}</td>
         <td>
           <a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
           <form id="studiodetail${number}" action="studioDetail" method="get">
-          <input type="hidden" name="studio_no" value="${studio.studio_no}">
-        </form>
+            <input type="hidden" name="studio_no" value="${studio.studio_no}">
+          </form>
         </td>
         <td>${studio.studio_days}</td>
         <td>${studio.studio_address}</td>
@@ -51,7 +63,7 @@ $(function(){
           <c:when test="${studio.studio_check==1}">
             <td>승인완료</td>
           </c:when>
-        </c:choose>
+          </c:choose>
         <td>${studio.room_count }</td>
         <td>
           <button onclick="javascript:document.getElementById('roominsert${number}').submit()">방추가</button>
@@ -66,7 +78,8 @@ $(function(){
         </td>
       </tr>
       <div style="display:none">${number = number + 1}</div>
-  </c:forEach>
-  </table>
+    </c:forEach>
+    </table>
+  </div>
 </body>
 </html>

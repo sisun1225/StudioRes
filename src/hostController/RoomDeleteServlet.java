@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.RoomVO;
 import model.StudioResDAO;
 
 /**
@@ -27,11 +28,13 @@ public class RoomDeleteServlet extends HttpServlet {
 			return;
 		}
 		StudioResDAO dao = new StudioResDAO();
+		RoomVO room = new RoomVO();
 		int room_no = Integer.parseInt(request.getParameter("room_no").trim());
-		System.out.println("studio_no1"+request.getParameter("studio_no"));
 		String studio_no = request.getParameter("studio_no");
-		System.out.println("studio_no"+studio_no);
-		dao.deleteRoom(room_no);
+		room.setRoom_no(room_no);
+		room.setStudio_no(Integer.parseInt(studio_no));
+		
+		dao.deleteRoom(room);
 		
 		response.sendRedirect("studioDetail?studio_no="+studio_no);
 		
