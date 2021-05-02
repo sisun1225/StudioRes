@@ -7,7 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script>
+$(function(){
+  $("#image").on("click",function(){
+	$(location).attr("href","studioDetail");
+  })
+});
+</script>
 <style>
 #imageTD{
   margin:0px;
