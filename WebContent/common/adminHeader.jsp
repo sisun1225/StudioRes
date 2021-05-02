@@ -25,6 +25,14 @@ table, td {
    border-collapse: collapse;
 }
 
+input[type=password]{
+	font-family: Consolas;
+}
+
+#myfrm input[type=password],#myfrm input[type=text]{
+	width: 50%;
+}
+
 #container {
    overflow: auto;
    min-height: 400px;

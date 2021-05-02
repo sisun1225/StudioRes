@@ -8,19 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(function(){
-  $("#hostInfo").on("click",function(){
-    $(location).attr("href","hostDetail");
-  });
-  $("#studioInsert").on("click",function(){
-  	$(location).attr("href","studioInsert");
-  });
-  $("#studioSearch").on("click",function(){
-    $(location).attr("href","hostSearchStudio");
-  });
-});
-</script>
 <style>
 #roomfrm{
   width:80%;
@@ -41,13 +28,6 @@ textarea,
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
   <div id="container">
-    <nav id="nav">
-      <ul>
-        <li class = "menu" id="hostInfo">마이페이지</li>
-        <li class = "menu" id="studioInsert">연습실등록</li>
-        <li class = "menu" id="studioSearch">연습실조회</li>
-      </ul>
-    </nav>
     <form id="roomfrm" action="roomInsert" method="post" enctype="multipart/form-data">
     <fieldset>
       <legend>방 등록</legend>

@@ -7,34 +7,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script>
 $(function(){
 	$("table,td").css({
 		"border":"2px solid black", 
 		"border-collapse":"collapse"
 	});
-	$("#hostInfo").on("click",function(){
-	  $(location).attr("href","hostDetail");
-    });
-    $("#studioInsert").on("click",function(){
-      $(location).attr("href","studioInsert");
-    });
-    $("#studioSearch").on("click",function(){
-      $(location).attr("href","hostSearchStudio");
-    });
 })
 </script>
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-  <nav id="nav">
-      <ul>
-        <li class = "menu" id="hostInfo">마이페이지</li>
-        <li class = "menu" id="studioInsert">연습실등록</li>
-        <li class = "menu" id="studioSearch">연습실조회</li>
-      </ul>
-    </nav>
   <table>
     <tr>
       <td>예약번호</td>

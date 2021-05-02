@@ -53,7 +53,7 @@ table, td {
 
 #header {
 	float: none;
-	height: 100px;
+	height: 200px;
 	position: relative;
 }
 
@@ -136,7 +136,7 @@ ul {
 
 #nav ul li {
    display: inline-block;
-   width:120px;
+   width:80px;
    color:#2F55AA;
    border: 2.5px solid #2F55AA; 
 }
@@ -185,8 +185,35 @@ html{
 	top:0px;
 }
 
-</style>
+#nav{
+	display:inline-block;
+	text-align: right;
+	position: absolute;
+	right:0px;
+	top:120px;
+}
+#nav li{
+	text-align: center;
+	font-size: 15px;
+}
 
+</style>
+<script>
+$(function(){
+  $("#hostInfo").on("click",function(){
+    $(location).attr("href","/studioRes/host/hostDetail");
+  });
+  $("#studioInsert").on("click",function(){
+	$(location).attr("href","/studioRes/host/studioInsert");
+  });
+  $("#studioSearch").on("click",function(){
+	$(location).attr("href","/studioRes/host/hostSearchStudio");
+  });
+  $("#image").on("click",function(){
+	$(location).attr("href","/studioRes/host/studioDetail");
+  })
+});
+</script>
 </head>
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
@@ -198,6 +225,13 @@ html{
 			<c:when test="${host_id!=null}">
 				<span id="namewelcome">${host_name}님 환영합니다.</span>
 				<span id="logout"><a href="${apppath}/host/hostLogout">로그아웃</a></span>
+				  <nav id="nav">
+				   <ul>
+				     <li class = "menu" id="hostInfo">마이페이지</li>
+				     <li class = "menu" id="studioInsert">연습실등록</li>
+				     <li class = "menu" id="studioSearch">연습실조회</li>
+				   </ul>
+				  </nav>
 			</c:when>
 
 			<c:otherwise>

@@ -56,19 +56,6 @@ function execDaumPostcode() {
 }
 </script>
 <script>
-$(function(){
-  $("#hostInfo").on("click",function(){
-    $(location).attr("href","hostDetail");
-  });
-  $("#studioInsert").on("click",function(){
-  $(location).attr("href","studioInsert");
-  });
-  $("#studioSearch").on("click",function(){
-    $(location).attr("href","hostSearchStudio");
-  });
-});
-</script>
-<script>
 	$(function(){
 		$("input[name=have]:checked").each(function(){
 			$(this).val().replace("0","1");
@@ -106,13 +93,6 @@ textarea,
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-  <nav id="nav">
-    <ul>
-      <li class = "menu" id="hostInfo">마이페이지</li>
-      <li class = "menu" id="studioInsert">연습실등록</li>
-      <li class = "menu" id="studioSearch">연습실조회</li>
-    </ul>
-  </nav>
   <div id="container">
     <form name="form" id="studiofrm" method="post" action="studioUpdate" enctype="multipart/form-data">
       <fieldset>
