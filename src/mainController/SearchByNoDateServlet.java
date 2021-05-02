@@ -95,7 +95,7 @@ public class SearchByNoDateServlet extends HttpServlet {
 		}
 
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/main/searchAll");
+		RequestDispatcher rd = request.getRequestDispatcher("searchAll");
 		rd.forward(request, response);
 		
 	}
