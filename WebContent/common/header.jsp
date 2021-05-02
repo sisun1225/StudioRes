@@ -15,6 +15,7 @@
 	font-family: 배달의민족 주아;
 	font-size:20px;
 }
+
 input[type=password]{
 	font-family: Consolas;
 }
@@ -161,6 +162,26 @@ ul {
 	text-decoration: none;
 }
 
+body{
+	padding:0 !important;
+	margin:0 !important;
+}
+
+html{
+	padding:0 !important;
+	margin:0 !important;
+}
+
+#center{
+	padding:0 !important;
+	margin:0 !important;
+	width:200px;
+	display:inline-block;
+	position: absolute;
+	left:0px;
+	top:0px;
+}
+
 </style>
 
 </head>
@@ -181,13 +202,13 @@ ul {
 				</span>
 			</c:otherwise>
 		</c:choose>
-
-	</div>
 	<div id="center">
 		<ul>
-			<li onclick="location.href='${apppath}/guest/main'">게스트센터</li>
+			<li id="guestCenteronclick="location.href='${apppath}/guest/main'">게스트센터</li>
 			<li onclick="location.href='${apppath}/host/hostLogin'">호스트센터</li>
 		</ul>
 	</div>
+	</div>
+
 </body>
 </html>
