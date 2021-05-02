@@ -20,7 +20,7 @@ input[type=password]{
 	font-family: Consolas;
 }
 
-input[type=password],input[type=text]{
+#myfrm input[type=password],#myfrm input[type=text]{
 	width: 50%;
 }
 
@@ -111,7 +111,7 @@ table, td {
 	font-size: 30px;
 }
 
-label {
+#myfrm label {
 	float: left;
 	font-size: 13px;
 	width: 70px;
