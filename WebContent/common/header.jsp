@@ -204,7 +204,7 @@ html{
 		</c:choose>
 	<div id="center">
 		<ul>
-			<li id="guestCenteronclick="location.href='${apppath}/guest/main'">게스트센터</li>
+			<li onclick="location.href='${apppath}/guest/main'">게스트센터</li>
 			<li onclick="location.href='${apppath}/host/hostLogin'">호스트센터</li>
 		</ul>
 	</div>
