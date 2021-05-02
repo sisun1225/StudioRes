@@ -25,7 +25,7 @@ $(function(){
 #image{
   margin:0px;
   padding:0px;
-  width:300px;
+  width:400px;
   height:250px;
   float:left;
   display:block;
@@ -42,9 +42,25 @@ $(function(){
 .studio_approve{
   color:#ac0d0d;
 }
+tr td{
+  border:none;
+}
 tr td:last-child {
     text-align: center;
 	width:400px;
+    border:none;
+}
+.fstTd{
+  padding-top:15px;
+  padding-bottom:0px;
+}
+.midTd{
+  padding-top:2px;
+  padding-bottom:2px;
+}
+.finTd{
+  padding-top: 2px;
+  padding-bottom: 15px;
 }
 #studioNo{
   text-align: center;
@@ -70,24 +86,24 @@ tr td:last-child {
         </form>
       </div>
       </td>
-      <td>${studio.studio_name }</td>
+      <td class="fstTd">${studio.studio_name }</td>
     </tr>
     <tr>
-      <td>방개수 - ${studio.room_count}개</td>
+      <td class="midTd">방개수 - ${studio.room_count}개</td>
     </tr>
     <tr>
-      <td>${studio.studio_address}</td>
+      <td class="midTd">${studio.studio_address}</td>
     </tr>
     <tr>
-      <td>주변지하철 - ${studio.studio_subway }</td>
+      <td class="midTd">주변지하철 - ${studio.studio_subway }</td>
     </tr>
     <tr>
       <c:choose>
         <c:when test="${studio.studio_check==0}">
-          <td>연습실 승인 <span class="studio_approve">대기 중</span></td>
+          <td class="finTd">연습실 승인 <span class="studio_approve">대기 중</span></td>
         </c:when>
         <c:when test="${studio.studio_check==1}">
-          <td>연습실 승인 <span class="studio_approve">완료</span></td>
+          <td class="finTd">연습실 승인 <span class="studio_approve">완료</span></td>
         </c:when>
       </c:choose>
     </tr>
