@@ -46,7 +46,9 @@ tr td:last-child {
     text-align: center;
 	width:400px;
 }
-
+#studioNo{
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -56,7 +58,7 @@ tr td:last-child {
     <c:set var="number" value="1"/>
     <c:forEach var="studio" items="${studiolist}">
     <tr>
-      <td rowspan="5">${studio.studio_no}</td>
+      <td id="studioNo" rowspan="5">${studio.studio_no}</td>
       <td rowspan="5" id="imageTD">
         <a id="imageClick" href="javascript:document.getElementById('studiodetail${number}').submit()">
         <c:set var="pPath" value="${pageContext.request.contextPath }" />

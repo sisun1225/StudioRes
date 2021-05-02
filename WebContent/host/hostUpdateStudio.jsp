@@ -181,8 +181,10 @@ textarea,
         </fieldset>
         <input type="hidden" class="hidden" name="studio_check" value="${studio.studio_check}">
         <input type="hidden" class="hidden" name="studio_no" value="${studio.studio_no}">  
-        <input type="submit" value="수정하기">
-        <input type="reset" value="취소">
+        <div id="inputBtn">
+          <input type="submit" value="수정하기">
+          <input type="reset" value="취소">
+        </div>
       </fieldset>
     </form>
   </div>

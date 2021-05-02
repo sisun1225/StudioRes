@@ -23,7 +23,9 @@
     <input type="text" name="host_phone" value="${host.host_phone}"><br>
     <label>이메일</label>
     <input type="text" name="host_email" value="${host.host_email }"><br>
-    <input type="submit" value="수정완료"> <input type="reset" value="취소">
+    <div id="inputBtn">
+      <input type="submit" value="수정완료"> <input type="reset" value="취소">
+    </div>
   </fieldset>
   </form>
 </body>

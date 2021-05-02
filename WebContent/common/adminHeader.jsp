@@ -168,7 +168,9 @@ label {
  	 list-style: none;
   	 text-align:center;
 }
-
+#inputBtn{
+  text-align:center;
+}
 </style>
 
 </head>

@@ -196,12 +196,14 @@ html{
 	text-align: center;
 	font-size: 15px;
 }
-
+#inputBtn{
+  text-align:center;
+}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function(){
 	var pPath = "${pageContext.request.contextPath }";
-	console.log(pPath);
   $("#hostInfo").on("click",function(){
     $(location).attr("href",pPath+"/host/hostDetail");
   });

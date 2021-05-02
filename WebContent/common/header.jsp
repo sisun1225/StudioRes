@@ -186,7 +186,9 @@ html{
 	left:0px;
 	top:0px;
 }
-
+#inputBtn{
+  text-align:center;
+}
 </style>
 
 </head>
