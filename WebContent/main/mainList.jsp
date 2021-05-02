@@ -196,16 +196,17 @@ $(function(){
 <jsp:include page="../common/header.jsp"></jsp:include>
 <div class="sliderFrame">
    <div class="sliderContainer">
+      <c:set var="pPath" value="${pageContext.request.contextPath }" />
       <div class="sliderInner">
-        <img src="/studioRes/common/a.png"/>
+        <img src="${pPath }/common/a.png"/>
       </div><div class="sliderInner">
-        <img src="/studioRes/common/b.png"/>
+        <img src="${pPath }/common/b.png"/>
       </div><div class="sliderInner">
-        <img src="/studioRes/common/c.png"/>
+        <img src="${pPath }/common/c.png"/>
       </div><div class="sliderInner">
-        <img src="/studioRes/common/d.png"/>
+        <img src="${pPath }/common/d.png"/>
       </div><div class="sliderInner">
-        <img src="/studioRes/common/e.png"/>
+        <img src="${pPath }/common/e.png"/>
       </div>
    </div>
 </div>
