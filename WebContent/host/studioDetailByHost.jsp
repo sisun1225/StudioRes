@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- 사진슬라이드 -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>상세페이지-왼쪽</title>
 <style>
 #map {
@@ -23,10 +25,21 @@
 #deleteRoom{
   display:block-line;
 }
+.mySlides {display:none;}
+#imageContainer{
+ width:600px;
+ padding:0px;
+ margin:0px;
+}
+#imageContainer button{
+ opacity: 20%;
+}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=806e8091967ec917e3572fad97eb1b9a&libraries=services"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script> 
 	$.datepicker.setDefaults({
 		dateFormat : 'yy-mm-dd',
@@ -84,9 +97,16 @@
       <h2>스튜디오 이름1 : ${studio.studio_name}</h2>
   
       ${studio.studio_picture}
-      <div id="imageBox">
+      <div id="imageContainer" class="w3-content w3-display-container">
         <c:set var="pPath" value="${pageContext.request.contextPath }" />
-        <img src="${pPath }/imageUpload/${studio.studio_picture}">
+        <img class="mySlides" src="${pPath }/imageUpload/${studio.studio_picture}" style="width:600px">
+        <c:forEach var="room" items="${room }">
+          <c:if test="${room.room_picture ne '이미지 없음'}">
+            <img class="mySlides" src="${pPath }/imageUpload/${room.room_picture}" style="width:600px">
+          </c:if>
+        </c:forEach>
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
       </div>
       공간소개<br>
       <div id="studioDesc">
@@ -124,7 +144,25 @@
       </div>
       <div id="resvSearch"></div>    
 </div>
-    
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>    
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
