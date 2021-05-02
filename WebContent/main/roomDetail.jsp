@@ -119,6 +119,87 @@ transition: 0.3s;
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+/*header를 위한 Css부분  */
+#header {
+	float: none;
+	height: 100px;
+	position: relative;
+	padding: 10px;
+	margin: 5px;
+}
+#namewelcome {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+#logout, #login {
+	position: absolute;
+	right: 10px;
+	top: 40px;
+	padding: 10px;
+	margin: 5px;
+}
+#center{
+	padding:0 !important;
+	margin:0 !important;
+	width:200px;
+	display:inline-block;
+	position: absolute;
+	left:0px;
+	top:0px;
+}
+#center ul li {
+   display: inline-block;
+   border-radius: 10px;
+    border: 1px solid gray;
+    width:120px;
+    text-align: center;
+    padding: 10px;
+	margin: 5px;
+}
+
+#center ul {
+	padding: 10px;
+	margin: 5px;
+}
+#center ul li:hover {
+	background-color: #2F55AA;
+	color: white;
+}
+#logoMain {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#header a:link {
+	color: black;
+	text-decoration: none;
+}
+#header a{
+	padding: 10px;
+	margin: 5px;
+}
+/*header를 위한 Css끝  */
+
+/*footer를 위한 Css부분  */
+#footer {
+	font-size: 2px;
+	padding: 20px;
+	position: relation;
+	background-color: #D0CECE
+}
+
+#gasan {
+	margin: 0px;
+	padding: 10px;
+	font-size: 40px;
+	float: right;
+	padding: 10px;
+}
+
+/*footer를 위한 Css끝  */
+
 </style>
 
 
@@ -175,30 +256,32 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   </script>
 <!-- 달력을 위한 스크립트 여기까지-->
 
-
 </head>
 <body>
 <!-- 헤더부분 -->
-	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
-	<div id="header">
-		<a href="${apppath}/main/searchAll"> <img id="logo"
-			src="${apppath}/common/spacestore2.png" alt="로고자리">
-		</a>
-		<c:choose>
-			<c:when test="${guest_id!=null}">
-				<span id="namewelcome">${guest_name}님 환영합니다.</span>
-				<span id="logout"><a href="${apppath}/guest/logout">로그아웃</a></span>
-			</c:when>
+<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
+<div id="header">
+	<img onclick="location.href='${apppath}/main/searchAll'" id="logoMain"
+		src="${apppath}/common/spacestore2.png" alt="로고자리"/>
+	<c:choose>
+		<c:when test="${guest_id!=null}">
+			<span id="namewelcome">${guest_name}님 환영합니다.</span>
+			<span id="logout"><a href="${apppath}/guest/logout">로그아웃</a></span>
+		</c:when>
 
-			<c:otherwise>
-				<span id="login"> <a href="${apppath}/guest/insert">회원가입</a>
-					<a href="${apppath}/guest/login">로그인</a>
-				</span>
-			</c:otherwise>
-		</c:choose>
-		<span id="guestcenter"><a href="${apppath}/guest/main">게스트센터</a></span>
-		<span id="hostcenter"><a href="${apppath}/host/hostLogin">호스트센터</a></span>
+		<c:otherwise>
+			<span id="login"> <a href="${apppath}/guest/insert">회원가입</a>
+				<a href="${apppath}/guest/login">로그인</a>
+			</span>
+		</c:otherwise>
+	</c:choose>
+	<div id="center">
+		<ul>
+			<li onclick="location.href='${apppath}/guest/main'">게스트센터</li>
+			<li onclick="location.href='${apppath}/host/hostLogin'">호스트센터</li>
+		</ul>
 	</div>
+</div>
 <!-- 헤더부분 끝-->
 <div id="row">
 
