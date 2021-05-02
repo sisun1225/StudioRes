@@ -20,6 +20,10 @@ input[type=password]{
 	font-family: Consolas;
 }
 
+input[type=password],input[type=text]{
+	width: 50%;
+}
+
 table {
 	margin-left: auto;
 	margin-right: auto;
@@ -110,7 +114,7 @@ table, td {
 label {
 	float: left;
 	font-size: 13px;
-	width: 80px;
+	width: 70px;
 }
 
 ul {
