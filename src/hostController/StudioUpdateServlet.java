@@ -43,7 +43,6 @@ public class StudioUpdateServlet extends HttpServlet {
 		//사진을 업데이트 안했을때 기존 파일명 저장
 		if(originalFileName==null) {
 			originalFileName = mutipartRequest.getParameter("hidden_studio_picture");
-			System.out.println(originalFileName);
 		}
 		//부대시설 체크
 		String[] facility = mutipartRequest.getParameterValues("have");
@@ -63,9 +62,9 @@ public class StudioUpdateServlet extends HttpServlet {
 				}
 			}
 		}
-
+		//주소합치기
+		String fullAddress = mutipartRequest.getParameter("address")+", "+mutipartRequest.getParameter("detailAddress");
 		//데이터입력(연습실등록)
-		HttpSession session = request.getSession();		
 		studio.setStudio_name(mutipartRequest.getParameter("studio_name"));
 		studio.setStudio_desc(mutipartRequest.getParameter("studio_desc"));
 		studio.setStudio_picture(originalFileName);
@@ -79,11 +78,10 @@ public class StudioUpdateServlet extends HttpServlet {
 		studio.setStudio_have_toilet(facilityChk.get("studio_have_toilet"));
 		studio.setStudio_have_water(facilityChk.get("studio_have_water"));
 		studio.setStudio_subway(mutipartRequest.getParameter("studio_subway"));
-		studio.setStudio_address(mutipartRequest.getParameter("roadFullAddr"));
+		studio.setStudio_address(fullAddress);
 		studio.setStudio_check(mutipartRequest.getParameter("studio_check"));
 		studio.setStudio_no(Integer.parseInt(mutipartRequest.getParameter("studio_no")));		
 		dao.updateStudio(studio);
 		response.sendRedirect("hostSearchStudio");
 	}
-
 }

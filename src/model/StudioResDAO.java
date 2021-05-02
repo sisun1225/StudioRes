@@ -827,7 +827,7 @@ public class StudioResDAO {
 		return result;
 	}
 	
-	public int deleteRoom(int room_no) {
+	public int deleteRoom(RoomVO room) {
 		String sql = "delete from rooms where room_no= ?";
 		int result = 0;
 		Connection conn = DBUtil.getConnection();
@@ -835,8 +835,14 @@ public class StudioResDAO {
 
 		try {
 			st = conn.prepareStatement(sql);
-			st.setInt(1, room_no);
+			st.setInt(1, room.getRoom_no());
 			result = st.executeUpdate();
+			if(result == 1) {
+				String sql2 = "update studios set room_count = room_count-1 where studio_no = ?";
+				st = conn.prepareStatement(sql2);
+				st.setInt(1, room.getStudio_no());
+				st.executeUpdate();
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

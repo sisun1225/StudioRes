@@ -14,7 +14,7 @@ $(function() {
 </head>
 <body>
  <form id="resvChk" action="resvSearchByHost" method="post">
-  <input type="hidden" name="studio_id" value="${studio_id}">
+  <input type="hidden" name="studio_no" value="${studio_no}">
  </form>
 </body>
 </html>

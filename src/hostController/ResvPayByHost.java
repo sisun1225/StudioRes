@@ -20,13 +20,11 @@ public class ResvPayByHost extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
-		System.out.println("resv-----");
 		int resv_no = Integer.parseInt(request.getParameter("resv_no"));
 		System.out.println(resv_no);
 		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
-		System.out.println(studio_no);
-		dao.updateReservationPay(resv_no);
-		
+		int result = dao.updateReservationPay(resv_no);
+		System.out.println("result?? :"+result);
 		request.setAttribute("studio_no",studio_no);
 		RequestDispatcher rd = request.getRequestDispatcher("resvChkByHost.jsp");
 		rd.forward(request, response);

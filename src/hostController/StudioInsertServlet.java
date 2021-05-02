@@ -42,10 +42,13 @@ public class StudioInsertServlet extends HttpServlet {
 		String upload_dir ="imageUpload";
 		int size = 1024*1024*10;
 		//서버경로
-		//String path = getServletContext().getRealPath(upload_dir);
+		String path = getServletContext().getRealPath(upload_dir);
 		//이클립스경로
-		String path =this.getClass().getResource("").getPath();
-		path = path.substring(1,path.indexOf(".metadata"))+request.getContextPath()+"/WebContent/imageUpload";
+		//String path =this.getClass().getResource("").getPath();
+		//>>경로    /C:/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/StudioRes/WEB-INF/classes/hostController/
+		
+		//이클립스 경로설정시 저장경로
+		//path = path.substring(1,path.indexOf(".metadata"))+request.getContextPath()+"/WebContent/imageUpload";
 		
 		MultipartRequest mutipartRequest = new MultipartRequest(request, path, size, "utf-8",
 					new DefaultFileRenamePolicy());
@@ -71,7 +74,9 @@ public class StudioInsertServlet extends HttpServlet {
 				}
 			}
 		}
-
+		//전체 주소
+		String fullAddress = mutipartRequest.getParameter("address")+", "+mutipartRequest.getParameter("detailAddress");
+		
 		//데이터입력(연습실등록)
 		HttpSession session = request.getSession();		
 		studio.setHost_no((Integer)session.getAttribute("host_no"));
@@ -88,7 +93,7 @@ public class StudioInsertServlet extends HttpServlet {
 		studio.setStudio_have_toilet(facilityChk.get("studio_have_toilet"));
 		studio.setStudio_have_water(facilityChk.get("studio_have_water"));
 		studio.setStudio_subway(mutipartRequest.getParameter("studio_subway"));
-		studio.setStudio_address(mutipartRequest.getParameter("roadFullAddr"));
+		studio.setStudio_address(fullAddress);
 		dao.insertStudio(studio);
 		response.sendRedirect("hostMain");
 	}
