@@ -38,7 +38,9 @@ public class StudioDetailServlet extends HttpServlet {
 		
 		List<RoomVO> room = dao.selectRoomById(studio.getStudio_no());
 		request.setAttribute("room", room);
-		
+		for(RoomVO r:room) {
+			System.out.println(r.getRoom_picture());
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("studioDetailByHost.jsp");
 		rd.forward(request, response);
 	}
