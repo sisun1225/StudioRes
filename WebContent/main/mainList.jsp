@@ -87,6 +87,25 @@ width: 20px;
 height: 20px;
 }
 
+.sliderFrame, .sliderContainer{;
+   margin:0;
+   padding:0;
+}
+
+.sliderInner{
+   display:inline-block;
+   float:"left";
+   margin:0;
+   padding:0;
+}
+
+.sliderInner img{
+   width:100%;
+   height:100%;
+   margin:0;
+   padding:0;
+}
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -121,12 +140,75 @@ $(function(){
 	});
 
 }); 
+ 
+ $(function(){
+     var length = $(".sliderInner").length
+     var height = $(window).height()*0.5;
+     var width = $(window).width()*1.0;
+     
+     $(".sliderFrame").css({
+        width:width+'px',
+        height:height+'px',
+        overflow:"hidden",
+        radius : "25px"
+     })
+     
+     $(".sliderContainer").css("width", width*length+'px')
+     
+     $(".sliderInner").css({
+        width : width+'px',
+        height : height+'px',
+        
+     })
+     
+     var moveTo = function(index){
+        //매개변수를 보완합니다.
+        index = index||0
+        index = index % length
+        
+        //애니매이션으로 이동합니다.
+        $(".sliderContainer").animate({
+           marginLeft: -width * index +'px'
+        })
+        currentIndex = index;
+     }
+     
+     var currentIndex = 0
+     setInterval(function(){
+        currentIndex +=1;
+        moveTo(currentIndex)
+     }, 1000*5)
+     
+     window.moveSlider = moveTo;
+     
+     
+     $('#btn1').click(function(){
+        var offset = $('#topSearch').offset();
+          $('html').animate({scrollTop : offset.top}, 500);
+     });
+
+})
+
 </script>
 
 </head>
 <body>
 <jsp:include page="../common/header.jsp"></jsp:include>
-
+<div class="sliderFrame">
+   <div class="sliderContainer">
+      <div class="sliderInner">
+        <img src="/studioRes/common/a.png"/>
+      </div><div class="sliderInner">
+        <img src="/studioRes/common/b.png"/>
+      </div><div class="sliderInner">
+        <img src="/studioRes/common/c.png"/>
+      </div><div class="sliderInner">
+        <img src="/studioRes/common/d.png"/>
+      </div><div class="sliderInner">
+        <img src="/studioRes/common/e.png"/>
+      </div>
+   </div>
+</div>
 	<div id="topSearch">
 		<div id="topSearchIn">
 			<span id="searchTextA">
