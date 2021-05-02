@@ -20,6 +20,10 @@ input[type=password]{
 	font-family: Consolas;
 }
 
+#myfrm input[type=password],#myfrm input[type=text]{
+	width: 50%;
+}
+
 table {
 	margin-left: auto;
 	margin-right: auto;

@@ -20,6 +20,10 @@ input[type=password]{
 	font-family: Consolas;
 }
 
+#myfrm input[type=password],#myfrm input[type=text]{
+	width: 50%;
+}
+
 table {
 	margin-left: auto;
 	margin-right: auto;
@@ -107,10 +111,10 @@ table, td {
 	font-size: 30px;
 }
 
-label {
+#myfrm label {
 	float: left;
 	font-size: 13px;
-	width: 80px;
+	width: 70px;
 }
 
 ul {
