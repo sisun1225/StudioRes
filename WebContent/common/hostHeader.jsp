@@ -200,17 +200,19 @@ html{
 </style>
 <script>
 $(function(){
+	var pPath = "${pageContext.request.contextPath }";
+	console.log(pPath);
   $("#hostInfo").on("click",function(){
-    $(location).attr("href","/studioRes/host/hostDetail");
+    $(location).attr("href",pPath+"/host/hostDetail");
   });
   $("#studioInsert").on("click",function(){
-	$(location).attr("href","/studioRes/host/studioInsert");
+	$(location).attr("href",pPath +"/host/studioInsert");
   });
   $("#studioSearch").on("click",function(){
-	$(location).attr("href","/studioRes/host/hostSearchStudio");
+	$(location).attr("href",pPath +"/host/hostSearchStudio");
   });
   $("#image").on("click",function(){
-	$(location).attr("href","/studioRes/host/studioDetail");
+	$(location).attr("href",pPath +"/host/studioDetail");
   })
 });
 </script>
