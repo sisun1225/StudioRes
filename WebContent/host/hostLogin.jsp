@@ -9,18 +9,21 @@
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-<div id="container">
-<form id="myfrm" action="hostLogin" method="post">
-<fieldset>
-<legend>로그인</legend>
-<label>아이디</label>
-<input type="text" name="host_id"><br>
-<label>비밀번호</label>
-<input type="password" name="host_pw"><br>
-<input type="submit" value="로그인">
-<button type="button" onclick="location.href='hostInsert'">회원가입</button>
-</fieldset>
-</form>
-</div>
+  <div id="container">
+    <form id="myfrm" action="hostLogin" method="post">
+    <fieldset>
+      <legend>로그인</legend>
+      <label>아이디</label>
+      <input type="text" name="host_id"><br>
+      <label>비밀번호</label>
+      <input type="password" name="host_pw"><br>
+      <div id="inputBtn">
+        <input type="submit" class="loginBtn" value="로그인">
+        <button type="button" class="loginBtn" onclick="location.href='hostInsert'">회원가입</button>
+      </div>
+    </fieldset>
+    </form>
+  </div>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

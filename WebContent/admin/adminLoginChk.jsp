@@ -19,7 +19,9 @@
 	<input type="text" name="adminid"><br>
 	<label>비밀번호</label>
 	<input type="password" name="adminpw"><br>
-	<input type="submit" value="로그인">
+    <div id="inputBtn">
+	 <input type="submit" value="로그인">
+    </div>
 	</fieldset>
 	</form>
 </div>

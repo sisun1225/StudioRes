@@ -63,7 +63,6 @@
 	var studioNo = ${studio.studio_no};
 	function radioChk() {
 		radioVal = $("input[name='roomno']:checked").val();
-		console.log(radioVal);
 	}
 	
 	$(function() {

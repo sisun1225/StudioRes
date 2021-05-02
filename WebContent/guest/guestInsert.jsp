@@ -23,7 +23,9 @@
 <input type="text" name="guest_phone"><br>
 <label>Email</label>
 <input type="text" name="guest_email"><br>
+<div id="inputBtn">
 <input type="submit" value="입력하기">
+</div>
 </fieldset>
 </form>
 </div>

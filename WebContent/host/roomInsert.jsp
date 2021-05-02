@@ -43,8 +43,10 @@ textarea,
       <input type="number" name="room_price"><br>
       <label>방사진</label>
       <input type="file" name="room_picture"><br>
-      <input type="submit" value="방등록">
-      <input type="reset" value="취소">
+      <div id="inputBtn">
+        <input type="submit" value="방등록">
+        <input type="reset" value="취소">
+      </div>
     </fieldset>
   </form>
   </div>

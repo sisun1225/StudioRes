@@ -24,17 +24,19 @@ $(function() {
   	<form id="myfrm" action="hostUpdate">
       <fieldset>
         <legend>호스트정보</legend>
-          <label>ID</label> 
-          <input type="text" value="${host.host_id }"	readonly> <br> 
-          <label>이름</label> 
-          <input type="text" value="${host.host_name }" readonly> <br> 
-          <label>핸드폰</label>
-          <input type="text" value="${host.host_phone }" readonly> <br>
-          <label>이메일</label>
-          <input type="text" value="${host.host_email }" readonly> <br>
-    	</fieldset>
-    	<input type="button" id="updateBtn" value="수정하기"></button>
-    	<input type="button" id="deleteBtn" name="host_id" value="삭제"></button>
+        <label>ID</label> 
+        <input type="text" value="${host.host_id }"	readonly> <br> 
+        <label>이름</label> 
+        <input type="text" value="${host.host_name }" readonly> <br> 
+        <label>핸드폰</label>
+        <input type="text" value="${host.host_phone }" readonly> <br>
+        <label>이메일</label>
+        <input type="text" value="${host.host_email }" readonly> <br>
+        <div id="inputBtn">
+          <input type="button" id="updateBtn" value="수정하기"></button>
+          <input type="button" id="deleteBtn" name="host_id" value="삭제"></button>
+        </div>
+      </fieldset>
   	</form>
 </div>
 </body>

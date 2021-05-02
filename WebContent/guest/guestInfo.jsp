@@ -35,8 +35,10 @@ $(function(){
 <input type="text" value="${guest.guest_email}" name="guest_email"><br>
 <label>연락처</label>
 <input type="text" value="${guest.guest_phone}" name="guest_phone"><br>
+<div id="inputBtn">
 <input type="button" id="update" value="수정하기">
 <input type="button" id="delete" value="탈퇴하기" mydata="${guest.guest_id}">
+</div>
 </fieldset>
 </form>
 

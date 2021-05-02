@@ -125,8 +125,10 @@ textarea,
         <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
         <input type="text" id="extraAddress" placeholder="참고항목" readonly="readonly"><br>
       </fieldset>
-        <input type="submit" value="등록하기">
-        <input type="reset" value="취소">
+        <div id="inputBtn">
+          <input type="submit" value="등록하기">
+          <input type="reset" value="취소">
+        </div>
       </fieldset>
     </form>
   </div>
