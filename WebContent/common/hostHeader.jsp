@@ -13,13 +13,12 @@
 	padding: 10px;
 	margin: 5px;
 	font-family: 배달의민족 주아;
-	font-size: 20px;
+	font-size:20px;
 }
 
 input[type=password]{
 	font-family: Consolas;
 }
-
 
 table {
 	margin-left: auto;
@@ -121,9 +120,9 @@ ul {
 #center ul li {
    display: inline-block;
    border-radius: 10px;
-   border: 1px solid gray;
-   width:120px;
-   text-align: center;
+    border: 1px solid gray;
+    width:120px;
+    text-align: center;
 }
 
 #center ul li:hover {
@@ -131,37 +130,57 @@ ul {
 	color: white;
 }
 
-
 #nav ul li {
-	display: inline-block;
-	border-radius: 10px;
-	width: 120px;
-	color: #2F55AA;
-	border: 2.5px solid #2F55AA;
+   display: inline-block;
+   width:120px;
+   color:#2F55AA;
+   border: 2.5px solid #2F55AA; 
 }
 
-#nav ul li:hover {
-	background-color: #2F55AA;
-	color: white;
+#nav ul li:hover{
+   background-color: #2F55AA;
+   color:white;
 }
+
 
 #nav a {
-	display: block;
+   display: block;
 }
 
 #nav a:link, a:active {
-	color: black;
-	text-decoration: none;
+   color: black;
+   text-decoration: none;
 }
 
 #nav a:hover {
-	color: #fff;
+   color: #fff;
 }
 
 #header a:link {
 	color: black;
 	text-decoration: none;
 }
+
+body{
+	padding:0 !important;
+	margin:0 !important;
+}
+
+html{
+	padding:0 !important;
+	margin:0 !important;
+}
+
+#center{
+	padding:0 !important;
+	margin:0 !important;
+	width:200px;
+	display:inline-block;
+	position: absolute;
+	left:0px;
+	top:0px;
+}
+
 </style>
 
 </head>
@@ -185,10 +204,10 @@ ul {
 		</c:choose>
 	</div>
 	<div id="center">
-		<ul>
-			<li onclick="location.href='${apppath}/guest/main'">게스트센터</li>
-			<li onclick="location.href='${apppath}/host/hostLogin'">호스트센터</li>
-		</ul>
+			<ul>
+				<li onclick="location.href='${apppath}/guest/main'">게스트센터</li>
+				<li onclick="location.href='${apppath}/host/hostLogin'">호스트센터</li>
+			</ul>
 	</div>
 </body>
 </html>
