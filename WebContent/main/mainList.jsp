@@ -7,11 +7,16 @@
 <meta charset="UTF-8" >
 <title>SPACESTORE</title>
 <style>
+
+#herecontainer{
+	margin:0 auto;
+}
+
 #here{
   height: 100%;
   margin: 0 auto;
-  display: inline-block;
-  padding : 50px 130px 50px 130px;
+  padding : 0px;
+  width :1120px;
 }
 
 #card {
@@ -23,6 +28,7 @@
   transition: 0.3s;
   padding:0;
   margin:10px;
+  float:left;
 }
 
 #card img{
@@ -231,25 +237,25 @@ $(function(){
 			</span>
 		</div>
 	</div>
-	
-
+		
+	<div id="herecontainer">
 		<div id ="here">
-
-		 	<c:forEach var="listall" items="${searchAll}">
-				<div id="card" onclick="location.href='${pageContext.request.contextPath}/main/roomDetail?studioid=${listall.studio_no}';">
-			
-				  <c:set var="pPath" value="${pageContext.request.contextPath}" />
-				  <img src="${pPath}/imageUpload/${listall.studio_picture}">
-			
-				  <div id="textContainer">
-				    <span id="searchTextA">${listall.studio_name}</span>
-				    <p>${listall.studio_subway}</p> 
-				    <p>${listall.studio_desc}</p> 
-				    
-				  </div>
-				</div>
+			 <c:forEach var="listall" items="${searchAll}">
+					<div id="card" onclick="location.href='${pageContext.request.contextPath}/main/roomDetail?studioid=${listall.studio_no}';">
+					
+						  <c:set var="pPath" value="${pageContext.request.contextPath}" />
+						  <img src="${pPath}/imageUpload/${listall.studio_picture}">
+					
+						  <div id="textContainer">
+						    <span id="searchTextA">${listall.studio_name}</span>
+						    <p>${listall.studio_subway}</p> 
+						    <p>${listall.studio_desc}</p> 
+						    
+						  </div>
+					</div>
 			</c:forEach>
 		</div>
+	</div>
 
 
 <jsp:include page="../common/footer.jsp"></jsp:include>

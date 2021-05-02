@@ -48,7 +48,8 @@ table, td {
 	font-size: 2px;
 	padding: 20px;
 	position: relation;
-	background-color: #D0CECE
+	background-color: #D0CECE;
+	clear:both;
 }
 
 #header {
