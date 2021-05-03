@@ -8,14 +8,14 @@
 <meta charset="UTF-8">
 <title>SPACESTORE-admin-studio</title>
 <script>
-	  function approve(studio_no){
+	  function approve(obj,studio_no){
 		  $.ajax({
 			  url:"adminStudioApprove",
 			  data:{"studio_no":studio_no},
-			  success:function(){
-				  location.reload();
-				  //$("#studioAll").trigger("click");
-				  //$("#content").load("adminSearchStudioAll");
+			  success:function(responsedata){
+				  console.log($(obj).parent().prev());
+				  alert($(obj).parent().prev());
+				  $(obj).parent().prev().html("승인완료");
 			  }
 		  });
 	  }
@@ -66,7 +66,7 @@
 			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
-		 <td><button onclick='approve("${studio.studio_no}");'>승인</button></td>
+		 <td><button onclick='approve(this,"${studio.studio_no}");'>승인</button></td>
 		 <td><button onclick='disapprove("${studio.studio_no}");'>연습실삭제</button></td>
 		</tr>
 		</c:forEach>
