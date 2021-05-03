@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-마이페이지_호스트</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function() {

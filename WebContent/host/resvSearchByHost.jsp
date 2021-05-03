@@ -6,7 +6,7 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-${studio_name}_예약현황</title>
 <script>
 $(function(){
 	$("table,td").css({

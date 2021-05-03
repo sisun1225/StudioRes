@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<title>상세페이지-왼쪽</title>
+<title>SPACESTORE-연습실상세정보</title>
 <style>
 #container{
   border-radius: 10px 10px 10px 10px;
@@ -119,8 +119,7 @@ font-weight: lighter;
     <c:set var="number" value="1"/>
     <c:forEach var="room" items="${room}">
         <div id="buttonIcon">
-          <input type="radio" value="${room.room_no}" name="room_no" id="roomNoChk" onclick="radioChk();">
-          <span id="roomNoChkTitle">${room.room_no}호실 </span><br>
+          <span id="roomNoChkTitle">${room.room_name} </span><br>
           <span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span>
           <form id="deletRoom" action="roomDelete" style="display:inline-block">
             <input type="hidden" name=room_no value=${room.room_no }>

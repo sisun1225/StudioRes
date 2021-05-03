@@ -6,7 +6,7 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-연습실조회</title>
 <style>
 input[type="hidden"],
 .hiddenfrm{
@@ -68,6 +68,7 @@ $(function(){
         <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
           <form id="searchres${number}" class="hiddenfrm" action="resvSearchByHost" method="post">
            <input type="hidden" name="studio_no" value="${studio.studio_no}">
+           <input type="hidden" name="studio_name" value="${studio.studio_name }">
           </form>
         </td>
       </tr>
