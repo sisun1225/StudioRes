@@ -48,7 +48,7 @@ line-height : 10px;
 }
 
 #searchTextA{
-font-size: 32px;
+font-size: 30px;
 text-align: left;
 }
 
