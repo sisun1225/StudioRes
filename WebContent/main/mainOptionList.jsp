@@ -12,7 +12,7 @@
 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
 border : 1px solid #b3b3b3;
 width: 350px;
-height: 350px;
+height: 330px;
 display: inline-block;
 transition: 0.3s;
 padding:0;  
@@ -45,15 +45,22 @@ object-fit: cover;
 
 p{
 line-height : 10px;
+font-size: 15px;
+}
+
+#studioDescStyle{
+font-size: 15px;
 }
 
 #searchTextA{
-font-size: 30px;
+font-size: 20px;
 text-align: left;
 }
 
-#searchTextB{
-font-size: 25px;
+#searchTextB label{
+font-size: 20px;
+margin : 2px;
+color :black;
 }
 
 #topSearch{
@@ -97,7 +104,7 @@ color:grey;
 					    <span id="searchTextB">
 					    <p><img src ="images/subwayicon.png"> ${listall.studio_subway}</p> 
 					    <div id="studioDescClamp">
-					    <span>${listall.studio_desc}</span>
+					    <span id="studioDescStyle">${listall.studio_desc}</span>
 					    </div>
 				    </span>
 				  </div>
