@@ -8,7 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+#admintitle{
+	text-align: center;
+	font-size: 30px;
+}
+</style>
 <body>
+	<div id="admintitle" style>호스트 전체</div>
 	<table id="tables">
 	<tr>
 		<td>번호</td>

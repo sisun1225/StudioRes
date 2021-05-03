@@ -13,31 +13,35 @@
 	font-size: 30px;
 }
 </style>
+<style>
+#admintitle{
+	text-align: center;
+	font-size: 30px;
+}
+</style>
 </head>
 <body>
-<div id="admintitle" style>예약 전체</div>
+<div id="admintitle">
+		번호 :<span style="color:blue; font-size:35px"> ${reservationlist[0].room_no}</span>
+	 	이름 :<span style="color:blue; font-size:35px">${reservationlist[0].room_name}</span> 방의 예약현황</div>
 <div id="guest_resv">
 	<table id="tables">
 	<tr>
 		<td>예약번호</td>
-		<td>방번호</td>
-		<td>방이름</td>
-		<td>연습실이름</td>
 		<td>게스트id</td>
 		<td>예약일</td>
 		<td>예약시간</td>
+		<td>연습실이름</td>
 		<td>호스트id</td>
 		<td>현재상태</td>
 	</tr>
 		<c:forEach var="reservation" items="${reservationlist}">
 		<tr>
 		 <td>${reservation.resv_no}</td>
-		 <td><a href="javascript:resDetail(${reservation.room_no})">${reservation.room_no}</a></td>
-		 <td>${reservation.room_name}</td>
-		 <td><a href="javascript:roomDetail(${reservation.studio_no})">${reservation.studio_name}</a></td>
 		 <td><a href="javascript:guestDetail(${reservation.guest_no})">${reservation.guest_id}</a></td>
 		 <td>${reservation.resv_date}</td>
 		 <td>${reservation.resv_time}</td>
+		 <td><a href="javascript:roomDetail(${reservation.studio_no})">${reservation.studio_name}</a></td>
 		 <td><a href="javascript:hostDetail('${reservation.host_id}')">${reservation.host_id}</a></td>
 		 <c:choose>
 			<c:when test="${reservation.resv_check==0}">
