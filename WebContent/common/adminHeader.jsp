@@ -172,12 +172,11 @@ label {
   text-align:center;
 }
 </style>
-
 </head>
 <body>
 	<c:set var="apppath" value="${pageContext.request.contextPath}"></c:set>
 	<div id="header">
-		<img onclick="location.href='${apppath}/main/searchAll'" id="logoMain"
+		<img onclick="location.href='${apppath}/admin/adminMain'" id="logoMain"
 			src="${apppath}/common/spacestore2.png" alt="로고자리">
 		<c:choose>
 			<c:when test="${adminid!=null}">
