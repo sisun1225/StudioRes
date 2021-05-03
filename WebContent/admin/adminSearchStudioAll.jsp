@@ -13,8 +13,6 @@
 			  url:"adminStudioApprove",
 			  data:{"studio_no":studio_no},
 			  success:function(responsedata){
-				  console.log($(obj).parent().prev());
-				  alert($(obj).parent().prev());
 				  $(obj).parent().prev().html("승인완료");
 			  }
 		  });
