@@ -33,7 +33,7 @@
 						target="_blank">${resv.studio_name}</a></td>
 					<td>${resv.room_name}</td>
 					<td><button
-							onclick="location.href='resvDelete?resv_no=${resv.resv_no}'">삭제버튼</button></td>
+							onclick="location.href='resvDelete?resv_no=${resv.resv_no}'">예약취소</button></td>
 				</tr>
 			</c:forEach>
 		</table>
