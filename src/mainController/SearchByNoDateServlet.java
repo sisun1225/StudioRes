@@ -17,22 +17,17 @@ import model.ReservationsVO;
 import model.StudioResDAO;
 import model.StudioVO;
 
-/**
- * Servlet implementation class SearchByNoDate
- */
+
 @WebServlet("/main/searchByNoDate")
 public class SearchByNoDateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
 		 String s_radio = request.getParameter("radioVal"); 
 		 int i_radio =Integer.parseInt(s_radio); 
 		 String s_date = request.getParameter("dateVal");
 		 Date d_date= Date.valueOf(s_date);
-		 
 		 
 		 StudioResDAO dao = new StudioResDAO();
 		 
@@ -44,12 +39,10 @@ public class SearchByNoDateServlet extends HttpServlet {
 		 request.setAttribute("i_radio", i_radio);
 		 request.setAttribute("d_date", d_date);
 		 
-		 
-		 
+		  
 		RequestDispatcher rd = request.getRequestDispatcher("resvTimeList.jsp");
 		rd.forward(request, response);
 		
-
 	}
 
 
@@ -67,22 +60,6 @@ public class SearchByNoDateServlet extends HttpServlet {
 		Date insertDateVal = Date.valueOf(request.getParameter("insertDateVal")); 
 		String[] s_insertTimeArr = request.getParameterValues("resvChk");
 		
-		System.out.println("------날짜 넘버-----");
-			System.out.println(insertRoomNoVal);
-		    System.out.println(insertDateVal);
-			System.out.println(s_insertTimeArr.length);
-		   
-		System.out.println("-----test-------");
-		for(String a : s_insertTimeArr) {
-			System.out.println(a);
-		}
-		System.out.println("------------");
-		for(String insertTimeArr : s_insertTimeArr) {
-			System.out.println(insertTimeArr);
-		}
-		
-		
-		System.out.println("------------");
 		StudioResDAO dao = new StudioResDAO();
 		
 		for(String insertTimeArr : s_insertTimeArr) {

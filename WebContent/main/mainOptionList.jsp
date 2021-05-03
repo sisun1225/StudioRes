@@ -1,43 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-상세검색</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 #card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-  border : 1px solid #b3b3b3;
-  width: 350px;
-  height: 350px;
-  display: inline-block;
-  transition: 0.3s;
-  padding:0;  
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+border : 1px solid #b3b3b3;
+width: 350px;
+height: 350px;
+display: inline-block;
+transition: 0.3s;
+padding:0;  
 }
 
 #card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 #textContainer {
-  padding: 10px;
-  width: 320px;
-  
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  overflow:hidden;
-  word-break:break-all;
+display:block;
+word-break:break-all;
+}
 
-    margin: 0;
+#studioDescClamp{
+display:block;
+margin: 0;
+padding: 0;
+white-space:nowrap;
+width: 300px;
+text-overflow: ellipsis;
+overflow:hidden;
 }
 	
 #studioimage{
-  width: 350px;
-  height: 180px;
-  object-fit: cover;
+width: 350px;
+height: 180px;
+object-fit: cover;
 }
 
 p{
@@ -61,22 +64,21 @@ padding :50px;
 }
 
 #topSearchIn{
-/* border : 1px solid #b3b3b3; */
 margin: 0 auto;
 display: inline-block;
 }
 
 #ajaxWrap{
-/* width:1000px; */
- height: 100%;
-       padding: 0;
-    margin: 0;
+height: 100%;
+padding: 0;
+margin: 0;
 }
 
+#searchTextB{
+color:grey;
+}
 
 </style>
-
-
 
 </head>
 
@@ -85,13 +87,19 @@ display: inline-block;
 <div id="ajaxWrap">
 
 			<c:forEach var="listall" items="${studioOption}">
-				<div id="card" onclick="location.href='roomDetail?studioid=${listall.studio_no}';">
-				  <img src="http://www.w-photogroup.com/default/img/mobilen/images/sub1/sub11-slide1.jpg" id="studioimage">
+				<div id="card" onclick="location.href='${pageContext.request.contextPath}/main/roomDetail?studioid=${listall.studio_no}';">
+				
+						<c:set var="pPath" value="${pageContext.request.contextPath}" />
+						<img src="${pPath}/imageUpload/${listall.studio_picture}" id="studioimage">
+				  
 				  <div id="textContainer">
 				    <span id="searchTextA">${listall.studio_name}</span>
-				    <p>${listall.studio_subway}</p> 
-				    <p>${listall.studio_desc}</p> 
-				    
+					    <span id="searchTextB">
+					    <p><img src ="images/subwayicon.png"> ${listall.studio_subway}</p> 
+					    <div id="studioDescClamp">
+					    <span>${listall.studio_desc}</span>
+					    </div>
+				    </span>
 				  </div>
 				</div>
 			</c:forEach>

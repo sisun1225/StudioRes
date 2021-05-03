@@ -15,9 +15,7 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 import model.StudioResDAO;
 import model.StudioVO;
 
-/**
- * Servlet implementation class SearchAll
- */
+
 @WebServlet("/main/searchByOption")
 public class SearchByOptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,11 +37,5 @@ public class SearchByOptionServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("mainOptionList.jsp");
 		rd.forward(request, response);
 	}
-		
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
 

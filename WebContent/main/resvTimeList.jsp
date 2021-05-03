@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시간확인 예약하기 페이지</title>
+<title>SPACESTORE-${studio.studio_name}</title>
 
 <style>
 * {

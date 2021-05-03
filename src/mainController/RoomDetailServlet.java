@@ -16,9 +16,6 @@ import model.RoomVO;
 import model.StudioResDAO;
 import model.StudioVO;
 
-/**
- * Servlet implementation class RoomDetailServlet
- */
 @WebServlet("/main/roomDetail")
 public class RoomDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,7 +31,6 @@ public class RoomDetailServlet extends HttpServlet {
 	    studio.setStudio_address(simpleAddress[0].trim());
 		request.setAttribute("studio", studio);
 		
-		
 		HostVO host	= dao.selectHostById(studio.getHost_id());
 		request.setAttribute("host", host);
 		
@@ -43,18 +39,9 @@ public class RoomDetailServlet extends HttpServlet {
 		
 		List<RoomVO> room = dao.selectRoomById(studio.getStudio_no());
 		request.setAttribute("room", room);
-		System.out.println(room);
 	
 		RequestDispatcher rd = request.getRequestDispatcher("roomDetail.jsp");
 		rd.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
