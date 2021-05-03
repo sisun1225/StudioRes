@@ -6,7 +6,7 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-admin-roomReservation</title>
 <style>
 #admintitle{
 	text-align: center;
