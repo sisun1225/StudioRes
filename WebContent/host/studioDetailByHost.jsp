@@ -21,7 +21,7 @@
 #titlename{
   font-size: 50px;
 }
-#h2{
+.h2{
 font-size: 40px;
 display:block;
 }
@@ -112,7 +112,6 @@ display:inline-block;
   margin-left:20px;
   margin-right:20px;
 }
-
 .mySlides {display:none;}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -147,17 +146,18 @@ display:inline-block;
   
     <div id="infoBox" style="width:100%; height:100%;">
       <div id=leftInfo>  
-        <span id="h2">[공간소개]</span>
+        <span class="h2">[공간소개]</span>
           <div id="studioDesc">${studio.studio_desc}</div>
       </div>
       <div id="rightInfo">
-        <span id="h2">[주의사항]</span>
+        <span class="h2">[주의사항]</span>
           <div id="studioNotice">${studio.studio_notice}</div>
       </div>
     </div>
-    <div id="linedivRight"></div>
+    <div id="linedivRight" style="float:left;"></div>
     <div id="wrap">
-    <span id="h2">[시설안내]</span>
+    
+    <span id="lineYong" class="h2">[시설안내]</span>
       <ul id="facility">
         <c:forEach var="studio" items="${studiooption}">
           <li>${studio}</li>
@@ -165,7 +165,7 @@ display:inline-block;
       </ul>
     </div>
 	<div id="linedivRight"></div>
-    <span id="h2">[연습실 정보]</span>
+    <span class="h2">[연습실 정보]</span>
     <ul>
       <li>주소 : ${studio.studio_address }</li>
       <li>전화번호 : ${host.host_phone }</li>  
