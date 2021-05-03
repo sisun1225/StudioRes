@@ -6,12 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!-- 사진슬라이드 -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>상세페이지-왼쪽</title>
 <style>
-#map {
-	border: 1px solid red;
+#container{
+  border-radius: 10px 10px 10px 10px;
+  background-color : #f6f6f6;
+  width: 80%;
+  height: 100%;
+  padding : 8px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#titlename{
+  font-size: 50px;
+}
+#h2{
+font-size: 40px;
+display:block;
+}
+#linedivRight{
+/* border : 1px solid red; */
+background-color : white;
+width: 100%;
+height: 8px;
+padding:0;
+margin: 5px;
+}
+#map{
+  width:800px;
+  height:400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#map *{
+  padding: 6px 0;
 }
 #studioInfo
 {
@@ -22,127 +51,119 @@
   width:40%;
   float:right;
 }
+#roomNoChk{
+width:30px;
+height:30px;
+border:1px;
+margin: 10px;
+}
+
+#roomNoChkTitle{
+font-size: 30px;
+}
+
+#roomNoChkTitle2{
+font-size: 15px;
+text-align: center;
+margin: 2px;
+}
+#buttonIcon{
+border-radius: 30px 30px 30px 30px;
+background-color:white;
+width:280px;
+border: 5px solid white;
+margin: 5px 5px 5px 5px;
+transition: 0.3s;
+display:inline-block;
+text-align: center;
+}
+#buttonIcon:hover{
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 #deleteRoom{
-  display:block-line;
+  width:100px;
 }
+#imagesizeDiv img{
+width: 800px;
+display:inline-block;
+}
+#studioDesc{
+font-size: 30px;
+font-weight: lighter;
+}
+#wrap{
+  text-align: center;
+}
+#facility{
+  list-style-type: disc;
+  display:inline-block;
+  align-content: center;
+}
+#facility li{
+  float:left;
+  font-size: 25px;
+  margin-left:20px;
+  margin-right:20px;
+}
+
 .mySlides {display:none;}
-#imageContainer{
- width:600px;
- padding:0px;
- margin:0px;
-}
-#imageContainer button{
- opacity: 20%;
-}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=806e8091967ec917e3572fad97eb1b9a&libraries=services"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script> 
-	$.datepicker.setDefaults({
-		dateFormat : 'yy-mm-dd',
-		prevText : '이전 달',
-		nextText : '다음 달',
-		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월',
-				'10월', '11월', '12월' ],
-		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-				'9월', '10월', '11월', '12월' ],
-		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-		showMonthAfterYear : true,
-		yearSuffix : '년',
-		minDate : '0',
-		maxDate : '+1M'
-	});
-
-	var radioVal;
-	var dateVal;
-	var studioNo = ${studio.studio_no};
-	function radioChk() {
-		radioVal = $("input[name='roomno']:checked").val();
-	}
-	
-	$(function() {
-		$("#datepicker").datepicker({
-			onSelect : function(dateText, inst) {
-				dateVal = dateText;
-				$.ajax({
-					url : "hostSearchResByStudio",
-					data : {
-						"radioVal" : radioVal,
-						"dateVal" : dateVal,
-						"studio_no": studioNo
-					},
-					type : "get",
-					success : function(responseData) {
-						$("#resvSearch").html(responseData);
-
-					}
-				});
-			}
-		});
-
-	});
-</script>
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>
-  
-  <div id="container">
-    <div id="studioInfo">
-      <h2>스튜디오 이름1 : ${studio.studio_name}</h2>
-  
-      ${studio.studio_picture}
-      <div id="imageContainer" class="w3-content w3-display-container">
-        <c:set var="pPath" value="${pageContext.request.contextPath }" />
-        <img class="mySlides" src="${pPath }/imageUpload/${studio.studio_picture}" style="width:600px">
-        <c:forEach var="room" items="${room }">
-          <c:if test="${room.room_picture ne '이미지 없음'}">
-            <img class="mySlides" src="${pPath }/imageUpload/${room.room_picture}" style="width:600px">
-          </c:if>
-        </c:forEach>
-        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-      </div>
-      공간소개<br>
-      <div id="studioDesc">
-      <pre>${studio.studio_desc}</pre>
-      </div>
-      <br> 시설안내<br>
-      <ul>
-       <c:forEach var="studio" items="${studiooption}">
+  <div id= "container">
+    <span id="titlename">${studio.studio_name}</span>
+    <div id="linedivRight"></div>
+    <c:set var="number" value="1"/>
+    <c:forEach var="room" items="${room}">
+        <div id="buttonIcon">
+          <input type="radio" value="${room.room_no}" name="room_no" id="roomNoChk" onclick="radioChk();">
+          <span id="roomNoChkTitle">${room.room_no}호실 </span><br>
+          <span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span>
+          <form id="deletRoom" action="roomDelete" style="display:inline-block">
+            <input type="hidden" name=room_no value=${room.room_no }>
+            <input type="hidden" name="studio_no" value="${studio.studio_no }">
+            <input type="submit" value="방삭제">
+          </form>
+        </div>
+    </c:forEach>
+     
+    <!-- 라인 만들기용 div -->
+	<div id="linedivRight"></div>
+	<!-- 라인 만들기용 div -->
+    <div id="imagesizeDiv">
+	  <c:set var="pPath" value="${pageContext.request.contextPath}" />
+	  <img src="${pPath}/imageUpload/${studio.studio_picture}">
+	</div>
+	<div id="linedivRight"></div>
+    <span id="h2">[공간소개]</span>
+    <pre id="studioDesc">${studio.studio_desc}</pre>
+    
+    <div id="linedivRight"></div>
+    <span id="h2">[시설안내]</span>
+    <div id="wrap">
+      <ul id="facility">
+        <c:forEach var="studio" items="${studiooption}">
           <li>${studio}</li>
         </c:forEach>
       </ul>
-      주소 : ${studio.studio_address }<br>
-      전화번호 : ${host.host_phone }  
-      이메일 : ${host.host_email }  
-      <div id="map" style="width:100%;height:400px;"></div>
     </div>
-    <div id="roomInfo">
-      <c:set var="number" value="1"/>
-      <c:forEach var="room" items="${room}">
-        <input type="radio" value="${room.room_no}" name="room_no" id="roomNoChk" onclick="radioChk();">
-        방이름 : ${room.room_name} | 수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간
-        <form id="deletRoom" action="roomDelete">
-          <input type="hidden" name=room_no value=${room.room_no }>
-          <input type="hidden" name="studio_no" value="${studio.studio_no }">
-          <input type="submit" value="방삭제">
-        </form>
-        <br>
-      </c:forEach>
-      <div id="datepicker"></div>
-       <p> 예약시간 최소 1시간부터</p>
+	<div id="linedivRight"></div>
+    <span id="h2">[연습실 정보]</span>
+    <ul>
+      <li>주소 : ${studio.studio_address }</li>
+      <li>전화번호 : ${host.host_phone }</li>  
+      <li>이메일 : ${host.host_email }</li>
+    </ul>
+    <div id="map"></div>
+    
       <form id="studioUpdate" action="studioUpdatePage" method="post">
         <input type="hidden" name="studio_no" value="${studio.studio_no}">
         <input type="submit" value="수정하기">
       </form>
-      </div>
-      <div id="resvSearch"></div>    
-</div>
+  </div>
 <script>
 var slideIndex = 1;
 showDivs(slideIndex);
