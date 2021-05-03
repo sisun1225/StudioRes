@@ -42,15 +42,6 @@ margin: 5px;
 #map *{
   padding: 6px 0;
 }
-#studioInfo
-{
-  float: left;
-  width:50%;
-}
-#roomInfo{
-  width:40%;
-  float:right;
-}
 #roomNoChk{
 width:30px;
 height:30px;
@@ -88,10 +79,25 @@ width: 800px;
 height:400px;
 display:inline-block;
 }
-#studioDesc{
-font-size: 30px;
-font-weight: lighter;
+#infoBox{
+  width:100%;
+  height:100%;
+  float:left;
 }
+#leftInfo,
+#rightInfo{
+  width:45%;
+  display:inline-block;
+  white-space:pre-line;
+  text-align: left;
+  height:100%;
+  float:left;
+}
+#rightInfo{
+  display:inline-block;
+  float: left
+}
+
 #wrap{
   text-align: center;
 }
@@ -138,12 +144,20 @@ font-weight: lighter;
 	  <img src="${pPath}/imageUpload/${studio.studio_picture}">
 	</div>
 	<div id="linedivRight"></div>
-    <span id="h2">[공간소개]</span>
-    <pre id="studioDesc">${studio.studio_desc}</pre>
-    
+  
+    <div id="infoBox" style="width:100%; height:100%;">
+      <div id=leftInfo>  
+        <span id="h2">[공간소개]</span>
+          <div id="studioDesc">${studio.studio_desc}</div>
+      </div>
+      <div id="rightInfo">
+        <span id="h2">[주의사항]</span>
+          <div id="studioNotice">${studio.studio_notice}</div>
+      </div>
+    </div>
     <div id="linedivRight"></div>
-    <span id="h2">[시설안내]</span>
     <div id="wrap">
+    <span id="h2">[시설안내]</span>
       <ul id="facility">
         <c:forEach var="studio" items="${studiooption}">
           <li>${studio}</li>
@@ -164,25 +178,6 @@ font-weight: lighter;
         <input type="submit" value="수정하기">
       </form>
   </div>
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>    
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {

@@ -85,6 +85,10 @@ $(.input).on('keydown', function(e){
 textarea,
 .input{
   width:95.7%;
+  resize: none;
+}
+textarea{
+  height: 300px;
 }
 #address{
   width:457px;

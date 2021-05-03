@@ -49,6 +49,7 @@ tr td:last-child {
     text-align: center;
 	width:400px;
     border:none;
+    border-left: 1px solid black;
 }
 .fstTd{
   padding-top:15px;
