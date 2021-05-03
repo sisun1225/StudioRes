@@ -31,8 +31,15 @@
 		  });
 	  }
 </script>
+<style>
+#admintitle{
+	text-align: center;
+	font-size: 30px;
+}
+</style>
 </head>
 <body>
+<div id="admintitle" style>연습실 전체</div>
 <table id="tables">
 	<tr>
 		<td>번호</td>
@@ -53,14 +60,14 @@
 		 <td><a href="javascript:hostDetail('${studio.host_id}')">${studio.host_id}</a></td>
 		 <c:choose>
 			<c:when test="${studio.studio_check==0}">
-			 <td>신청중</td>
+			 <td style="color:red;">신청중</td>
 			</c:when>
 			<c:when test="${studio.studio_check==1}">
 			 <td>승인완료</td>
 			</c:when>
 		 </c:choose>
 		 <td><button onclick='approve("${studio.studio_no}");'>승인</button></td>
-		 <td><button onclick='disapprove("${studio.studio_no}");'>승인거부</button></td>
+		 <td><button onclick='disapprove("${studio.studio_no}");'>연습실삭제</button></td>
 		</tr>
 		</c:forEach>
 	</table>

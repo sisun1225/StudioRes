@@ -7,8 +7,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#admintitle{
+	text-align: center;
+	font-size: 30px;
+}
+</style>
 </head>
 <body>
+<div id="admintitle" style>방 전체</div>
 <table id="tables">
 	<tr>
 		<td>방번호</td>

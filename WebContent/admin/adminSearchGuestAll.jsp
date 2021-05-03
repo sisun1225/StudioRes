@@ -7,9 +7,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
+<style>
+#admintitle{
+	text-align: center;
+	font-size: 30px;
+}
+</style>
 </head>
+<div id="admintitle" style>게스트 전체</div>
 <body>
 	<table id="tables">
 	<tr>

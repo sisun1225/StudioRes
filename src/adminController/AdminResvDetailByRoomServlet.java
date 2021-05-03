@@ -32,7 +32,7 @@ public class AdminResvDetailByRoomServlet extends HttpServlet {
 		}
 		request.setAttribute("reservationlist", filteredReslist);
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("adminSearchResAll.jsp");
+		rd = request.getRequestDispatcher("adminRoomResDetail.jsp");
 		rd.forward(request, response);
 	}
 
