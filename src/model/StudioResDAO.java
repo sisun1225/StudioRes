@@ -55,7 +55,7 @@ public class StudioResDAO {
 		PreparedStatement st = null; 
 		ResultSet rs = null;
 
-		String sqlResult ="select * from studios join hosts using (host_no) where 1=1";
+		String sqlResult ="select * from studios join hosts using (host_no) where 1=1 and studio_check = '1'";
 		String sqlLoc="";
 		String sqlSub="";
 		String sqlopt="";
@@ -453,7 +453,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) order by resv_no desc";
+				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) order by resv_date, resv_time";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
