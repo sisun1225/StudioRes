@@ -24,8 +24,14 @@ public class GuestLoginServlet extends HttpServlet {
 		String before_address = request.getHeader("Referer");
 		session.setAttribute("before", before_address);
 		
+		String scheme = request.getScheme(); 
+		String server = request.getServerName();
+		String port = request.getServerPort() + "";
+
+		String url = scheme + "://" + server + ":" + port;
+	
 		if(session.getAttribute("guest_id")!=null) {
-			if(before_address.equals("http://localhost:9090/StudioRes/guest/login")) {
+			if(before_address.equals(url + "/StudioRes/guest/login")) {
 				response.sendRedirect("main");
 				return;
 			}
@@ -48,12 +54,12 @@ public class GuestLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String before = (String)session.getAttribute("before");
 		
-		session.removeAttribute("before");
 		if(guest != null) {
 			session.setAttribute("guest_id", guest_id);
 			session.setAttribute("guest_pw", guest_pw);
 			session.setAttribute("guest_name", guest.getGuest_name());
 			session.setAttribute("guest_no", guest.getGuest_no());
+			session.removeAttribute("before");
 			response.sendRedirect(before);
 			return;
 		}
