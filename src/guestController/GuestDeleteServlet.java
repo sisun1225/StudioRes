@@ -19,10 +19,8 @@ public class GuestDeleteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String guest_id = (String)request.getParameter("guest_id");
-		System.out.println(guest_id);
 		StudioResDAO dao = new StudioResDAO();
 		GuestVO guest = dao.selectGuestById(guest_id);
-		System.out.println(guest);
 		int result = dao.deleteGuest(guest_id, guest.getGuest_pw());
 		
 		response.sendRedirect("logout");
