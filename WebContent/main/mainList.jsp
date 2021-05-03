@@ -5,30 +5,32 @@
 <html>
 <head>
 <meta charset="UTF-8" >
-<title>SPACESTORE</title>
+
+
+<title>SPACESTORE-당신의 열정을 응원합니다.</title>
 <style>
 
 #herecontainer{
-	margin:0 auto;
+margin:0 auto;
 }
 
 #here{
-  height: 100%;
-  margin: 0 auto;
-  padding : 0px;
-  width :1120px;
+height: 100%;
+margin: 0 auto;
+padding : 0px;
+width :1120px;
 }
 
 #card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-  border : 1px solid #b3b3b3;
-  width: 350px;
-  height: 350px;
-  display: inline-block;
-  transition: 0.3s;
-  padding:0;
-  margin:10px;
-  float:left;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+border : 1px solid #b3b3b3;
+width: 350px;
+height: 350px;
+display: inline-block;
+transition: 0.3s;
+padding:0;
+margin:10px;
+float:left;
 }
 
 #card img{
@@ -39,26 +41,38 @@ margin: 0;
 }
 
 #card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 
 #textContainer {
-  padding: 10px;
-  width: 320px;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  overflow:hidden;
-  word-break:break-all;
-  margin: 0;
+display:block;
+word-break:break-all;
 }
+
+#studioDescClamp{
+display:block;
+margin: 0;
+padding: 0;
+white-space:nowrap;
+width: 300px;
+text-overflow: ellipsis;
+overflow:hidden;
+}
+
+
+#textContainer img{
+width:20px;
+height:20px;
+}
+
 	
 #studioimage{
-  width: 350px;
-  height: 180px;
-  object-fit: cover;
-  padding: 0;
-  margin: 0;
+width: 350px;
+height: 180px;
+object-fit: cover;
+padding: 0;
+margin: 0;
 }
 
 p{
@@ -68,11 +82,14 @@ line-height : 10px;
 #searchTextA{
 font-size: 32px;
 text-align: left;
+
 }
+
 
 #searchTextB label{
 font-size: 20px;
 margin : 2px;
+color :black;
 }
 
 #topSearch{
@@ -112,6 +129,10 @@ height: 20px;
    padding:0;
 }
 
+#searchTextB{
+color:grey;
+}
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -128,7 +149,7 @@ $(function(){
 		    });
 		
 		$.ajax({
-			url:"searchByOption",
+			url:"${pageContext.request.contextPath}/main/searchByOption",
 			data:{"loc":$("#loc").val(),"subway":$("#subway").val(), "chkArr":chkArr},
 			type:"get",
 			success:function(responseData){
@@ -140,7 +161,7 @@ $(function(){
 
  $(function(){
 	$("#btn2").on("click", function() {
-		location.href='searchAll';
+		location.href='${pageContext.request.contextPath}/main/searchAll';
 		
 		
 	});
@@ -248,8 +269,12 @@ $(function(){
 					
 						  <div id="textContainer">
 						    <span id="searchTextA">${listall.studio_name}</span>
-						    <p>${listall.studio_subway}</p> 
-						    <p>${listall.studio_desc}</p> 
+						    	<span id="searchTextB">
+								    <p><img src ="images/subwayicon.png"> ${listall.studio_subway}</p> 
+								    <div id="studioDescClamp">
+								    <span>${listall.studio_desc}</span> 
+								    </div>
+							    </span>
 						    
 						  </div>
 					</div>

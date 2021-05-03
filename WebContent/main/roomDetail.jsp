@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SPACESTORE</title>
+<title>SPACESTORE-${studio.studio_name}</title>
 <style>
 * {
 	font-family: 배달의민족 주아;
@@ -19,7 +19,7 @@ p{
 #row{
 width: 100%;
 height:100%;
-margin:20px 0 0 0;
+margin:80px 0 0 0;
 display: flex;
 justify-content:  center;
 }
@@ -73,20 +73,23 @@ border: 5px solid white;
 
 #imagesizeDiv img{
 width: 550px;
+height:400px;
 display:inline-block;
 }
 
 li{
-	margin: 5px;
+margin: 5px;
 }
 
 #studioDesc{
 font-size: 18px;
+color:grey;
 
 }
 
 #h2{
 font-size: 25px;
+line-height: 70px;
 }
 
 #roomNoChk{
@@ -200,6 +203,24 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 
 /*footer를 위한 Css끝  */
 
+#studiDesclinealign{
+/* border : 1px solid red; */
+width:100%;
+line-height: 20px;
+white-space:pre-line;
+}
+
+#studioOptionStyle{
+color:grey;
+}
+
+#studioNameStyle{
+color:grey;
+}
+
+#resvTextStyle{
+color:grey;
+}
 </style>
 
 
@@ -227,9 +248,23 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   	var radioVal;
   	var dateVal;
   	
+  	function ajax(){
+		 $.ajax({
+				url:"searchByNoDate",
+				data:{"radioVal":radioVal,"dateVal":dateVal},
+				type:"get",
+				success:function(responseData){
+					$("#resvTime").html(responseData);
+
+				}
+			});
+  		
+  	}
+  	
 	function radioChk(){
 		 radioVal = $("input[name='roomno']:checked").val();
-		console.log(radioVal);
+		 console.log(radioVal);
+		 ajax();
 	}
 	
   
@@ -237,18 +272,14 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     $( "#datepicker" ).datepicker({
     	onSelect: function(dateText, inst) {
     	     dateVal = dateText;
-    		console.log(dateText);
-    		console.log("---------------");
+    		 console.log(dateText);
+    		 console.log("---------------");
+/*     		 if(radioVal==null){
+    			 alert("방을 선택하세요")
+    			 } */
     		
-    		 $.ajax({
- 				url:"searchByNoDate",
- 				data:{"radioVal":radioVal,"dateVal":dateVal},
- 				type:"get",
- 				success:function(responseData){
- 					$("#resvTime").html(responseData);
-
- 				}
- 			});
+    		 ajax();
+    			 
     	} 		
     });  
 
@@ -296,13 +327,24 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 		  <c:set var="pPath" value="${pageContext.request.contextPath}" />
 		  <img src="${pPath}/imageUpload/${studio.studio_picture}">
 		</div>
+		
+		<!-- 라인 만들기용 div -->
+		<div id="linedivLeft"></div>
+		<!-- 라인 만들기용 div -->
+
     <span id="h2">공간소개</span>
-     	<span id="studioDesc"><pre>${studio.studio_desc}</pre></span>
+    <div id="studiDesclinealign">
+     	<span id="studioDesc">${studio.studio_desc}</span>
+    </div>
+    
+    <!-- 라인 만들기용 div -->
+	<div id="linedivLeft"></div>
+	<!-- 라인 만들기용 div -->
     
     <span id="h2">시설안내</span>
 	    <ul>
 	    	<c:forEach var="studio" items="${studiooption}">
-				<li>${studio}</li>
+				<span id="studioOptionStyle"><li>${studio}</li></span>
 			</c:forEach>
 	    </ul>
 	    
@@ -312,8 +354,10 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 		
    	    <span id="h2">${studio.studio_name}</span>
    	    <ul>
+   	    <span id="studioNameStyle">
 	    <li>주소:${studio.studio_address}</li>
 	    <li>연락처:${host.host_phone}</li>
+	    </span>
 	    </ul>
 	    <br>
 	    <!-- 지도 출력 용 div -->
@@ -330,7 +374,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
  
    
     <p> 예약을 하시려면 호스트의 승인이 필요합니다.</p>
-	<p>	승인 후에 온라인 결제가 가능합니다!</p>
+	<p>	승인 후에 예약 정보 확인 가능합니다.</p>
 	
 		<!-- 라인 만들기용 div -->
 		<div id="linedivRight"></div>
@@ -340,7 +384,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	<c:forEach var="room" items="${room}">
 	<label>
 	<div id="buttonIcon">
-	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();"><span id="roomNoChkTitle">${room.room_no}호실 </span><span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span><br>
+	<input type="radio" value="${room.room_no}" name="roomno" id="roomNoChk" onclick="radioChk();"><span id="roomNoChkTitle">${room.room_name} </span><span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span><br>
 	</div>
 	</label>
 	</c:forEach>
@@ -350,9 +394,9 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 		<div id="linedivRight"></div>
 		<!-- 라인 만들기용 div -->
     
-    <!-- 달력 -->
-    <div id="datepicker"></div>
-    <!-- 달력 끝 -->
+	    <!-- 달력 -->
+	    <div id="datepicker"></div>
+	    <!-- 달력 끝 -->
 
     
 		<!-- 라인 만들기용 div -->
@@ -361,8 +405,10 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     
     <p> 예약시간 최소 1시간부터</p>
     <div id="resvTime">
+    <span id="resvTextStyle">
     <p>방번호와 날짜를 선택하시면</p>
     <p>예약 가능한 시간 확인 가능합니다.</p>
+    </span>
     </div>
   
 </div>
