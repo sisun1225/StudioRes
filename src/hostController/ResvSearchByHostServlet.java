@@ -28,9 +28,9 @@ public class ResvSearchByHostServlet extends HttpServlet {
 			return;
 		}
 		StudioResDAO dao = new StudioResDAO();
-		System.out.println("예약리리스트 서블릿 : "+request.getParameter("studio_no"));
-		
 		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
+		String studio_name= request.getParameter("studio_name");
+		request.setAttribute("studio_name", studio_name);
 		List<ReservationsVO> originReslist = dao.selectReservationsAll();
 		List<ReservationsVO> filteredReslist = new ArrayList<ReservationsVO>();
 		for(ReservationsVO vo:originReslist) {
@@ -38,7 +38,6 @@ public class ResvSearchByHostServlet extends HttpServlet {
 				filteredReslist.add(vo);
 			}
 		}
-		System.out.println("등록??");
 		request.setAttribute("reservationlist", filteredReslist);
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("resvSearchByHost.jsp");

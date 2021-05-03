@@ -39,7 +39,6 @@ public class StudioUpdateServlet extends HttpServlet {
 		Enumeration files = mutipartRequest.getFileNames();
 		String str = (String)files.nextElement();
 		String originalFileName = mutipartRequest.getOriginalFileName(str);
-		System.out.println(originalFileName);
 		//사진을 업데이트 안했을때 기존 파일명 저장
 		if(originalFileName==null) {
 			originalFileName = mutipartRequest.getParameter("hidden_studio_picture");

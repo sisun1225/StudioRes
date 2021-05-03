@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-연습실등록</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!--  <script language="javascript">
 
@@ -85,6 +85,10 @@ $(.input).on('keydown', function(e){
 textarea,
 .input{
   width:95.7%;
+  resize: none;
+}
+textarea{
+  height: 300px;
 }
 #address{
   width:457px;

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-호스트센터</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(function(){
@@ -49,6 +49,7 @@ tr td:last-child {
     text-align: center;
 	width:400px;
     border:none;
+    border-left: 1px solid black;
 }
 .fstTd{
   padding-top:15px;

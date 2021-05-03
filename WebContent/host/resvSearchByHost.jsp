@@ -6,7 +6,12 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-${studio_name}_예약현황</title>
+<style>
+.studioPay{
+  display:none;
+}
+</style>
 <script>
 $(function(){
 	$("table,td").css({
@@ -53,7 +58,7 @@ $(function(){
         </c:choose>
         <td>
           <button onclick="javascript:document.getElementById('studioPay${number}').submit()">결제</button>
-          <form id="studioPay${number}" action="resvPayByHost" method="get">
+          <form id="studioPay${number}" class="studioPay" action="resvPayByHost" method="get">
             <input type="hidden" name="resv_no" value="${reservation.resv_no}">
             <input type="hidden" name="studio_no" value="${reservation.studio_no }">
           </form>

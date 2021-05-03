@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-방추가</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 #roomfrm{

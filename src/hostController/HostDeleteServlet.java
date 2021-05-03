@@ -26,11 +26,9 @@ public class HostDeleteServlet extends HttpServlet {
 			return;
 		}
 		String host_id = request.getParameter("host_id");
-		System.out.println(host_id);
 		if(host_id==null||host_id=="") throw new ServletException("아이디를 찾을 수 없습니다");
 		StudioResDAO dao = new StudioResDAO();
-		int result = dao.deleteHost(host_id);
-		System.out.println(result>0?"삭제성공":"삭제실패");
+		dao.deleteHost(host_id);
 		RequestDispatcher rd = request.getRequestDispatcher("hostLogout");
 		rd.forward(request, response);
 	}

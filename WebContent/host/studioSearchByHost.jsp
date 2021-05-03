@@ -6,7 +6,7 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-연습실조회</title>
 <style>
 input[type="hidden"],
 .hiddenfrm{
@@ -15,7 +15,17 @@ input[type="hidden"],
 .studio_approve{
   color:#ac0d0d;
 }
-  
+table{
+  width:1400px;
+}
+.centerPosition,
+th
+{
+  text-align: center;
+}
+#address{
+  padding-left:15px;
+}
 </style>
 <script>
 $(function(){
@@ -31,25 +41,25 @@ $(function(){
   <div id="container"> 
     <table>
       <tr>
-        <td>연습실번호</td>
-        <td>연습실이름</td>
-        <td>영업요일</td>
-        <td>주소</td>
-        <td>승인여부</td>
-        <td>방개수</td>
+        <th>연습실번호</th>
+        <th>연습실이름</th>
+        <th>주소</th>
+        <th>승인여부</th>
+        <th>방개수</th>
+        <th></th>
+        <th></th>
       </tr>
     	<c:set var="number" value="1"/>
       <c:forEach var="studio" items="${studiolist}">
       <tr>
-        <td>${studio.studio_no}</td>
+        <td class="centerPosition">${studio.studio_no}</td>
         <td>
           <a href="javascript:document.getElementById('studiodetail${number}').submit()">${studio.studio_name}</a>
           <form id="studiodetail${number}" class="hiddenfrm" action="studioDetail" method="get">
             <input type="hidden" name="studio_no" value="${studio.studio_no}">
           </form>
         </td>
-        <td>${studio.studio_days}</td>
-        <td>${studio.studio_address}</td>
+        <td id="address">${studio.studio_address}</td>
         <c:choose>
           <c:when test="${studio.studio_check==0}">
            <td><span class="studio_approve">신청중</span></td>
@@ -58,16 +68,18 @@ $(function(){
             <td><span class="studio_approve">승인완료</span></td>
           </c:when>
           </c:choose>
-        <td>${studio.room_count }</td>
+        <td class="centerPosition">${studio.room_count }</td>
         <td>
           <button onclick="javascript:document.getElementById('roominsert${number}').submit()">방추가</button>
           <form id="roominsert${number}" class="hiddenfrm" action="roomInsert" method="get">
             <input type="hidden" name="studio_no" value="${studio.studio_no}">
           </form>
         </td>
-        <td><button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
+        <td>
+          <button onclick="javascript:document.getElementById('searchres${number}').submit()">예약현황</button>
           <form id="searchres${number}" class="hiddenfrm" action="resvSearchByHost" method="post">
            <input type="hidden" name="studio_no" value="${studio.studio_no}">
+           <input type="hidden" name="studio_name" value="${studio.studio_name }">
           </form>
         </td>
       </tr>

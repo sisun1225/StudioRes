@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SPACESTORE-호스트_로그인</title>
 </head>
 <body>
   <jsp:include page="../common/hostHeader.jsp"></jsp:include>

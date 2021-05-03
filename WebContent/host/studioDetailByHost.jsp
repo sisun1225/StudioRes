@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<title>상세페이지-왼쪽</title>
+<title>SPACESTORE-연습실상세정보</title>
 <style>
 #container{
   border-radius: 10px 10px 10px 10px;
@@ -42,15 +42,6 @@ margin: 5px;
 #map *{
   padding: 6px 0;
 }
-#studioInfo
-{
-  float: left;
-  width:50%;
-}
-#roomInfo{
-  width:40%;
-  float:right;
-}
 #roomNoChk{
 width:30px;
 height:30px;
@@ -85,12 +76,28 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 #imagesizeDiv img{
 width: 800px;
+height:400px;
 display:inline-block;
 }
-#studioDesc{
-font-size: 30px;
-font-weight: lighter;
+#infoBox{
+  width:100%;
+  height:100%;
+  float:left;
 }
+#leftInfo,
+#rightInfo{
+  width:45%;
+  display:inline-block;
+  white-space:pre-line;
+  text-align: left;
+  height:100%;
+  float:left;
+}
+#rightInfo{
+  display:inline-block;
+  float: left
+}
+
 #wrap{
   text-align: center;
 }
@@ -119,8 +126,7 @@ font-weight: lighter;
     <c:set var="number" value="1"/>
     <c:forEach var="room" items="${room}">
         <div id="buttonIcon">
-          <input type="radio" value="${room.room_no}" name="room_no" id="roomNoChk" onclick="radioChk();">
-          <span id="roomNoChkTitle">${room.room_no}호실 </span><br>
+          <span id="roomNoChkTitle">${room.room_name} </span><br>
           <span id="roomNoChkTitle2">수용인원 : ${room.room_capacity} | 가격 : ${room.room_price} /시간</span>
           <form id="deletRoom" action="roomDelete" style="display:inline-block">
             <input type="hidden" name=room_no value=${room.room_no }>
@@ -138,12 +144,20 @@ font-weight: lighter;
 	  <img src="${pPath}/imageUpload/${studio.studio_picture}">
 	</div>
 	<div id="linedivRight"></div>
-    <span id="h2">[공간소개]</span>
-    <pre id="studioDesc">${studio.studio_desc}</pre>
-    
+  
+    <div id="infoBox" style="width:100%; height:100%;">
+      <div id=leftInfo>  
+        <span id="h2">[공간소개]</span>
+          <div id="studioDesc">${studio.studio_desc}</div>
+      </div>
+      <div id="rightInfo">
+        <span id="h2">[주의사항]</span>
+          <div id="studioNotice">${studio.studio_notice}</div>
+      </div>
+    </div>
     <div id="linedivRight"></div>
-    <span id="h2">[시설안내]</span>
     <div id="wrap">
+    <span id="h2">[시설안내]</span>
       <ul id="facility">
         <c:forEach var="studio" items="${studiooption}">
           <li>${studio}</li>
@@ -164,25 +178,6 @@ font-weight: lighter;
         <input type="submit" value="수정하기">
       </form>
   </div>
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>    
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
