@@ -23,11 +23,6 @@ public class AdminStudioApproveServlet extends HttpServlet {
 		StudioResDAO dao = new StudioResDAO();
 		int studio_no = Integer.parseInt(request.getParameter("studio_no"));
 		dao.updateStudioChkByNo(studio_no);
-		HttpSession session = request.getSession();
-		session.setAttribute("work", "approve"); 
-		response.sendRedirect("adminMain");
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

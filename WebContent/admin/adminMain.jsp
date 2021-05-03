@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="UTF-8">
 <title>SPACESTORE-admin-main</title>
+
 <script>
 $(function(){
 	$("#hostAll").on("click",function(){
@@ -32,7 +33,10 @@ $(function(){
 	
 });
 </script>
+
 </head>
+
+
 <body>
 <jsp:include page="../common/adminHeader.jsp"></jsp:include>
 
@@ -50,4 +54,6 @@ $(function(){
 <div id="content"></div>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
+
+
 </html>
