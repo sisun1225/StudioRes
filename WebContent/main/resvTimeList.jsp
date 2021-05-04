@@ -8,8 +8,9 @@
 <title>SPACESTORE-${studio.studio_name}</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 * {
-	font-family: 배달의민족 주아;
+	font-family: 'Jua', sans-serif;
 	font-size:20px;
 }
 
