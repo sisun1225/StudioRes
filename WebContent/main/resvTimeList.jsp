@@ -15,57 +15,57 @@
 }
 
 checkbox{
-width:30px;
-height:30px;
-border:1px;
-margin: 10px;
+	width:30px;
+	height:30px;
+	border:1px;
+	margin: 10px;
 }
 
 input[type=checkbox]{
-width: 20px; 
-height: 20px;
+	width: 20px; 
+	height: 20px;
 }
 
 #buttonIconTime{
-border-radius: 10px 10px 10px 10px;
-background-color:white;
-width:85px;
-height:30px;
-border: 1px solid  #b3b3b3;
-margin: 1px 1px 1px 1px;
-transition: 0.3s;
-float: left;
+	border-radius: 10px 10px 10px 10px;
+	background-color:white;
+	width:85px;
+	height:30px;
+	border: 1px solid  #b3b3b3;
+	margin: 1px 1px 1px 1px;
+	transition: 0.3s;
+	float: left;
 }
 
 #buttonIconTime:hover{
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 #buttonIconTime:checked{
-border-radius: 10px 10px 10px 10px;
-background-color:lightgrey;
-width:80px;
-height:30px;
-border: 2px solid  #b3b3b3;
-margin: 3px;
-transition: 0.3s;
-float: left;
+	border-radius: 10px 10px 10px 10px;
+	background-color:lightgrey;
+	width:80px;
+	height:30px;
+	border: 2px solid  #b3b3b3;
+	margin: 3px;
+	transition: 0.3s;
+	float: left;
 }
 
 #buttonWrap{
-padding : 0 15px 0 15px;
-display: inline-block;
-width:390px;
+	padding : 0 15px 0 15px;
+	display: inline-block;
+	width:390px;
 }
 
 #timeTitle{
-font-size: 18px;
+	font-size: 18px;
 }
 
 #btn1{
-border-radius: 10px 10px 10px 10px;
-width : 400px;
-height : 35px;
+	border-radius: 10px 10px 10px 10px;
+	width : 400px;
+	height : 35px;
 }
 </style>
 
@@ -111,14 +111,9 @@ height : 35px;
 	<input type="hidden" name="insertDateVal" value="${d_date}">
 	
 	<br>
-	
-	
 
 	<input type="submit" value="예약하기" id="btn1">
 
-
-	
-	
 	</form>
 
 </body>

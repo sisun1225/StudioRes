@@ -5,114 +5,110 @@
 <html>
 <head>
 <meta charset="UTF-8" >
-
-
 <title>SPACESTORE-당신의 열정을 응원합니다.</title>
 <style>
-
 #herecontainer{
-margin:0 auto;
+	margin:0 auto;
 }
 
 #here{
-height: 100%;
-margin: 0 auto;
-padding : 0px;
-width :1120px;
+	height: 100%;
+	margin: 0 auto;
+	padding : 0px;
+	width :1120px;
 }
 
 #card {
-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-border : 1px solid #b3b3b3;
-width: 350px;
-height: 330px;
-display: inline-block;
-transition: 0.3s;
-padding:0;
-margin:10px;
-float:left;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+	border : 1px solid #b3b3b3;
+	width: 350px;
+	height: 330px;
+	display: inline-block;
+	transition: 0.3s;
+	padding:0;
+	margin:10px;
+	float:left;
 }
 
 #card img{
-width: 100%;
-height: 200px;
-padding :0;
-margin: 0;
+	width: 100%;
+	height: 200px;
+	padding :0;
+	margin: 0;
 }
 
 #card:hover {
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 
 #textContainer {
-display:block;
-word-break:break-all;
+	display:block;
+	word-break:break-all;
 }
 
 #studioDescClamp{
-display:block;
-margin: 0;
-padding: 0;
-white-space:nowrap;
-width: 300px;
-text-overflow: ellipsis;
-overflow:hidden;
+	display:block;
+	margin: 0;
+	padding: 0;
+	white-space:nowrap;
+	width: 300px;
+	text-overflow: ellipsis;
+	overflow:hidden;
 }
 
 
 #textContainer img{
-width:20px;
-height:20px;
+	width:20px;
+	height:20px;
 }
 
 	
 #studioimage{
-width: 350px;
-height: 180px;
-object-fit: cover;
-padding: 0;
-margin: 0;
+	width: 350px;
+	height: 180px;
+	object-fit: cover;
+	padding: 0;
+	margin: 0;
 }
 
 p{
-line-height : 10px;
-font-size: 15px;
+	line-height : 10px;
+	font-size: 15px;
 }
 
 #studioDescStyle{
-font-size: 15px;
+	font-size: 15px;
 }
 
 #searchTextA{
-font-size: 20px;
-text-align: left;
-
+	font-size: 20px;
+	text-align: left;
 }
 
 
 #searchTextB label{
-font-size: 20px;
-margin : 2px;
-color :black;
+	font-size: 20px;
+	margin : 2px;
+	color :black;
 }
 
 #topSearch{
-border : 1px solid #b3b3b3;
-height : 110px;
-text-align: center;
-padding :50px;
-margin: 20px;
+	border : 1px solid #b3b3b3;
+	height : 110px;
+	text-align: center;
+	padding :50px;
+	margin: 20px;
 }
 
 #topSearchIn{
-margin: 0 auto;
-display: inline-block;
+	margin: 0 auto;
+	display: inline-block;
 }
 
 input[type=checkbox]{
-width: 20px; 
-height: 20px;
+	width: 20px; 
+	height: 20px;
 }
 
 .sliderFrame, .sliderContainer{;
@@ -135,7 +131,7 @@ height: 20px;
 }
 
 #searchTextB{
-color:grey;
+	color:grey;
 }
 
 </style>

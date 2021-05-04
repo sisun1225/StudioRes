@@ -18,109 +18,105 @@ p{
 }
 
 #row{
-width: 100%;
-height:100%;
-margin:80px 0 0 0;
-display: flex;
-justify-content:  center;
+	width: 100%;
+	height:100%;
+	margin:80px 0 0 0;
+	display: flex;
+	justify-content:  center;
 }
 
 #columnleft{
-float: left;
-width: 550px;
-height: 100%;
-padding : 10px;
+	float: left;
+	width: 550px;
+	height: 100%;
+	padding : 10px;
 }
 
 #columnright{
-/* border : 1px solid red; */
-border-radius: 10px 10px 10px 10px;
-background-color : #f6f6f6;
-float: left;
-width: 410px;
-height: 100%;
-padding : 8px;
+	border-radius: 10px 10px 10px 10px;
+	background-color : #f6f6f6;
+	float: left;
+	width: 410px;
+	height: 100%;
+	padding : 8px;
 }
 
 
 #titlename{
-font-size: 40px;
+	font-size: 40px;
 }
 
 #linedivLeft{
-/* border : 1px solid red; */
-background-color : #f6f6f6;
-width: 550px;
-height: 8px;
-padding:0;
-margin: 5px 0 5px 0;
+	background-color : #f6f6f6;
+	width: 550px;
+	height: 8px;
+	padding:0;
+	margin: 5px 0 5px 0;
 }
 
 #linedivRight{
-/* border : 1px solid red; */
-background-color : white;
-width: 400px;
-height: 8px;
-padding:0;
-margin: 5px;
+	background-color : white;
+	width: 400px;
+	height: 8px;
+	padding:0;
+	margin: 5px;
 }
 
 #resvTime{
-background-color : white;
-border-radius: 10px 10px 10px 10px;
-padding:0;
-border: 5px solid white;
+	background-color : white;
+	border-radius: 10px 10px 10px 10px;
+	padding:0;
+	border: 5px solid white;
 }
 
 #imagesizeDiv img{
-width: 550px;
-height:400px;
-display:inline-block;
+	width: 550px;
+	height:400px;
+	display:inline-block;
 }
 
 li{
-margin: 5px;
+	margin: 5px;
 }
 
 #studioDesc{
-font-size: 18px;
-color:grey;
-
+	font-size: 18px;
+	color:grey;
 }
 
 #h2{
-font-size: 25px;
-line-height: 70px;
+	font-size: 25px;
+	line-height: 70px;
 }
 
 #roomNoChk{
-width:30px;
-height:30px;
-border:1px;
-margin: 10px;
+	width:30px;
+	height:30px;
+	border:1px;
+	margin: 10px;
 }
 
 #roomNoChkTitle{
-font-size: 30px;
+	font-size: 30px;
 }
 
 #roomNoChkTitle2{
-font-size: 15px;
-text-align: center;
-margin: 2px;
+	font-size: 15px;
+	text-align: center;
+	margin: 2px;
 }
 
 #buttonIcon{
-border-radius: 30px 30px 30px 30px;
-background-color:white;
-width:400px;
-border: 5px solid white;
-margin: 5px 0 0 0;
-transition: 0.3s;
+	border-radius: 30px 30px 30px 30px;
+	background-color:white;
+	width:400px;
+	border: 5px solid white;
+	margin: 5px 0 0 0;
+	transition: 0.3s;
 }
 
 #buttonIcon:hover{
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 /*header를 위한 Css부분  */
@@ -153,8 +149,8 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 	top:0px;
 }
 #center ul li {
-   display: inline-block;
-   border-radius: 10px;
+    display: inline-block;
+    border-radius: 10px;
     border: 1px solid gray;
     width:120px;
     text-align: center;
@@ -205,22 +201,21 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 /*footer를 위한 Css끝  */
 
 #studiDesclinealign{
-/* border : 1px solid red; */
-width:100%;
-line-height: 20px;
-white-space:pre-line;
+	width:100%;
+	line-height: 20px;
+	white-space:pre-line;
 }
 
 #studioOptionStyle{
-color:grey;
+	color:grey;
 }
 
 #studioNameStyle{
-color:grey;
+	color:grey;
 }
 
 #resvTextStyle{
-color:grey;
+	color:grey;
 }
 </style>
 
@@ -249,38 +244,28 @@ color:grey;
   	var radioVal;
   	var dateVal;
   	
-  	function ajax(){
+  	function ajaxFn(){
 		 $.ajax({
-				url:"searchByNoDate",
-				data:{"radioVal":radioVal,"dateVal":dateVal},
-				type:"get",
-				success:function(responseData){
-					$("#resvTime").html(responseData);
-
+			url:"searchByNoDate",
+			data:{"radioVal":radioVal,"dateVal":dateVal},
+			type:"get",
+			success:function(responseData){
+			$("#resvTime").html(responseData);
 				}
 			});
-  		
   	}
   	
 	function radioChk(){
 		 radioVal = $("input[name='roomno']:checked").val();
-		 console.log(radioVal);
-		 ajax();
+		 ajaxFn();
 	}
 	
   
   $( function() {
     $( "#datepicker" ).datepicker({
     	onSelect: function(dateText, inst) {
-    	     dateVal = dateText;
-    		 console.log(dateText);
-    		 console.log("---------------");
-/*     		 if(radioVal==null){
-    			 alert("방을 선택하세요")
-    			 } */
-    		
-    		 ajax();
-    			 
+        dateVal = dateText;
+    	ajaxFn();	 
     	} 		
     });  
 

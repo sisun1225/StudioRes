@@ -30,8 +30,7 @@ public class SearchByOptionServlet extends HttpServlet {
 		StudioResDAO dao = new StudioResDAO();
 
 		List<StudioVO> studio = dao.selectStudioByOption(subway, loc, arr);
-		
-		
+				
 		request.setAttribute("studioOption", studio); 
 
 		RequestDispatcher rd = request.getRequestDispatcher("mainOptionList.jsp");

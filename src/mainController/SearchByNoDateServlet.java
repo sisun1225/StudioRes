@@ -38,16 +38,11 @@ public class SearchByNoDateServlet extends HttpServlet {
 		 request.setAttribute("resvList", resvList);
 		 request.setAttribute("i_radio", i_radio);
 		 request.setAttribute("d_date", d_date);
-		 
-		  
+		 	  
 		RequestDispatcher rd = request.getRequestDispatcher("resvTimeList.jsp");
 		rd.forward(request, response);
-		
 	}
-
-
-
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("guest_no") == null) {
@@ -71,7 +66,6 @@ public class SearchByNoDateServlet extends HttpServlet {
 			int result = dao.insertReservation(reservation);
 		}
 
-		
 		RequestDispatcher rd = request.getRequestDispatcher("searchAll");
 		rd.forward(request, response);
 		
