@@ -100,7 +100,7 @@ height : 35px;
 		 <label>
 		<div id="buttonIconTime">
 		<span id="checkmark"></span>
-		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} ><span id="timeTitle">${cnt} : 00</span>
+		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} ><span id="timeTitle">${cnt}:00</span>
 		</div>
 		</label>	 
 	</c:forEach>
