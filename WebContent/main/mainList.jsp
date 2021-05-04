@@ -275,7 +275,7 @@ $(function(){
 						  <div id="textContainer">
 						    <span id="searchTextA">${listall.studio_name}</span>
 						    	<span id="searchTextB">
-								    <p><img src ="images/subwayicon.png"> ${listall.studio_subway}</p> 
+								    <p><img src ="${pPath}/main/images/subwayicon.png"> ${listall.studio_subway}</p> 
 								    <div id="studioDescClamp">
 								    <span id="studioDescStyle">${listall.studio_desc}</span> 
 								    </div>
