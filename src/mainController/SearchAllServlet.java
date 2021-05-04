@@ -16,22 +16,14 @@ import model.StudioVO;
 @WebServlet("/main/searchAll")
 public class SearchAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StudioResDAO dao = new StudioResDAO();
 		List<StudioVO> slist = dao.selectStudioByOption("","",new String[0]);
 		request.setAttribute("searchAll", slist); 
 		
-
 		RequestDispatcher rd = request.getRequestDispatcher("mainList.jsp");
 		rd.forward(request, response);
 	}
-		
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
 
