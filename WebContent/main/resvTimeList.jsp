@@ -8,8 +8,9 @@
 <title>SPACESTORE-${studio.studio_name}</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 * {
-	font-family: 배달의민족 주아;
+	font-family: 'Jua', sans-serif;
 	font-size:20px;
 }
 
@@ -99,7 +100,7 @@ height : 35px;
 		 <label>
 		<div id="buttonIconTime">
 		<span id="checkmark"></span>
-		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} ><span id="timeTitle">${cnt} : 00</span>
+		<input type="checkbox" name="resvChk" value="${cnt}" id="${cnt}" ${chk} ${dis} ><span id="timeTitle">${cnt}:00</span>
 		</div>
 		</label>	 
 	</c:forEach>

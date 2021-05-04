@@ -453,7 +453,7 @@ public class StudioResDAO {
 		Statement st = null;
 		ResultSet rs = null;
 		String sql = 
-				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) order by resv_date, resv_time";
+				" select * from reservations join guests using (guest_no) join rooms using (room_no) join studios using (studio_no) join hosts using (host_no) order by resv_date, room_no, resv_time";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
