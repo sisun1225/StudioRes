@@ -14,7 +14,9 @@
 3. AdminPage 기능
 4. MainPage 기능
 ## GuestPage 기능
-guestpage기능을 작성해주세요.
+홈페이지 로그인, 회원 가입
+게스트 정보 수정, 회원 탈퇴
+게스트 예약 정보 조회
 ## HostPage 기능
 Hostpage기능을 작성해주세요.
 ## AdminPage 기능
