@@ -32,8 +32,6 @@ public class SearchByNoDateServlet extends HttpServlet {
 		 StudioResDAO dao = new StudioResDAO();
 		 
 		 List<ReservationsVO> resvList = dao.selectResvByRoomNoDate(d_date, i_radio);
-		
-		 System.out.println(resvList.size());
 		 
 		 request.setAttribute("resvList", resvList);
 		 request.setAttribute("i_radio", i_radio);
@@ -65,10 +63,10 @@ public class SearchByNoDateServlet extends HttpServlet {
 			reservation.setResv_time(Integer.parseInt(insertTimeArr));	
 			int result = dao.insertReservation(reservation);
 		}
-
-		RequestDispatcher rd = request.getRequestDispatcher("searchAll");
-		rd.forward(request, response);
+		
+		response.sendRedirect("searchAll");
 		
 	}
 }
+
 
