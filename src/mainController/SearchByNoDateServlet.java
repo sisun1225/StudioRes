@@ -64,8 +64,8 @@ public class SearchByNoDateServlet extends HttpServlet {
 			int result = dao.insertReservation(reservation);
 		}
 		
-		response.sendRedirect("searchAll");
-		
+		RequestDispatcher rd = request.getRequestDispatcher("searchAll");
+		rd.forward(request, response);
 	}
 }
 
