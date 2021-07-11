@@ -71,7 +71,7 @@
   <img src="https://user-images.githubusercontent.com/73854927/125119446-17db7100-e12c-11eb-803e-b567d59df317.png" width="800px" height="400px"/>
 </p>
 <p align="center">
-  <b><내 연습실 조회></b> 
+  <b><마이페이지 내 연습실></b> 
 </p>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119468-1c078e80-e12c-11eb-8dac-2fdcf5fb5112.png" width="800px" height="400px"/>
@@ -89,7 +89,7 @@
   <img src="https://user-images.githubusercontent.com/73854927/125119473-1ca02500-e12c-11eb-95b8-ede5a69f8524.png" width="800px" height="400px"/>
 </p>
 <p align="center">
-  <b><게스트 예약 내역 조회></b> 
+  <b><연습실 조회></b> 
 </p>
 
 
