@@ -16,7 +16,7 @@
 
 
 ## 목차
-1. MainPage[#1.MainPage]
+1. MainPage(#1.MainPage)
 2. GuestPage 기능  
 3. HostPage 기능  
 4. AdminPage 기능  
