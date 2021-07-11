@@ -17,7 +17,7 @@
 
 ## 목차
 1. [MainPage](#1.MainPage)
-2. GuestPage 기능  
+2. [GuestPage 기능](#2.GuestPage-기능)
 3. HostPage 기능  
 4. AdminPage 기능  
 5. MainPage 기능  
@@ -32,7 +32,7 @@
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-## GuestPage 기능
+## 2.GuestPage 기능
 홈페이지 로그인, 회원 가입  
 게스트 정보 수정, 회원 탈퇴  
 게스트 예약 정보 조회  
