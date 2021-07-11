@@ -45,9 +45,10 @@
 </p>
   
 ## GuestPage
-홈페이지 로그인, 회원 가입  
-게스트 정보 수정, 회원 탈퇴  
-게스트 예약 정보 조회  
+* 홈페이지 로그인, 회원 가입 
+* 게스트 정보 수정, 회원 탈퇴  
+* 게스트 예약 정보 조회
+
 <div>
 <img src="https://user-images.githubusercontent.com/73854927/125119481-1dd15200-e12c-11eb-8906-70c628e1799f.png" width="380px" height="200px"/>
 </div>
