@@ -39,6 +39,9 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119459-1a3dcb00-e12c-11eb-810c-dca2acae64c5.png" width="800px" height="300px"/>
 </p>
+<p align="center">
+<b><지역 이름으로 검색></b> 
+</p>
 ## GuestPage 기능
 홈페이지 로그인, 회원 가입  
 게스트 정보 수정, 회원 탈퇴  
