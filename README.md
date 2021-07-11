@@ -63,9 +63,9 @@
 </p>
 
 ## HostPage
-* 홈페이지 로그인, 회원 가입 
-* 게스트 정보 수정, 회원 탈퇴  
-* 게스트 예약 내역 조회
+* 연습실 등록, 삭제, 수정
+* 방등록, 삭제, 수정
+* 연습실 예약내역 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119446-17db7100-e12c-11eb-803e-b567d59df317.png" width="800px" height="400px"/>
