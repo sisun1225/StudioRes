@@ -55,9 +55,9 @@
 * 게스트 정보 수정, 회원 탈퇴  
 * 게스트 예약 정보 조회
 
-<div>
-<img src="https://user-images.githubusercontent.com/73854927/125119481-1dd15200-e12c-11eb-8906-70c628e1799f.png" width="380px" height="200px"/>
-</div>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/73854927/125119481-1dd15200-e12c-11eb-8906-70c628e1799f.png" width="800px" height="400px"/>
+</p>
 
 ## HostPage
 Hostpage기능을 작성해주세요.
