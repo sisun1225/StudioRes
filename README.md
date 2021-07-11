@@ -23,6 +23,8 @@
 5. [MainPage 기능](#MainPage-기능)
 
 ## MainPage
+* 연습실 조회(지하철 역별, 지역별)  
+* 연습실 예약
 <p align="center">
   <img src="https://user-images.githubusercontent.com/82932127/125186867-aaccf600-e267-11eb-8723-7919be9d96cc.jpg" width="800" height="700">
 </p>
