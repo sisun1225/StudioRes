@@ -103,3 +103,6 @@
 <p align="center">
 <img src="https://user-images.githubusercontent.com/73854927/125119479-1d38bb80-e12c-11eb-97fc-4456324c7e6a.png" width="800px" height="400px"/>
 </p>
+<p align="center">
+  <b><연습실 조회, 연습실 승인, 삭제(승인거부)></b> 
+</p>
