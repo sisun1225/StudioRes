@@ -44,7 +44,7 @@
 <b><지역 이름으로 검색></b> 
 </p>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/82932127/125188811-2df24a00-e270-11eb-969d-3d5cf9ab1efc.jpg" width="800px" height="700px"/>
+  <img src="https://user-images.githubusercontent.com/82932127/125188811-2df24a00-e270-11eb-969d-3d5cf9ab1efc.jpg" width="800px" height="1200px"/>
 </p>
 <b><연습실 예약></b> 
 ## GuestPage
