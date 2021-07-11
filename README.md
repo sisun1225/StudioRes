@@ -16,13 +16,13 @@
 
 
 ## 목차
-1. MainPage
-1. GuestPage 기능  
-2. HostPage 기능  
-3. AdminPage 기능  
-4. MainPage 기능  
+1. MainPage[#1.MainPage]
+2. GuestPage 기능  
+3. HostPage 기능  
+4. AdminPage 기능  
+5. MainPage 기능  
 
-## MainPage
+## 1.MainPage
 <div>
 <img src="https://user-images.githubusercontent.com/73854927/125119452-190c9e00-e12c-11eb-93f4-7ef367fc0799.png" width="380px" height="200px" align="left" />
 <img src="https://user-images.githubusercontent.com/73854927/125119455-19a53480-e12c-11eb-8f8d-80e8010122f1.png" width="380px" height="200px" align="left" />
