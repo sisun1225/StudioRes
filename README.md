@@ -26,7 +26,7 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/82932127/125186867-aaccf600-e267-11eb-8723-7919be9d96cc.jpg" width="800" height="700">
 </p>
-<center>__메인페이지__</center>  
+<b>메인페이지</b>  
 
 
 <img src="https://user-images.githubusercontent.com/73854927/125119455-19a53480-e12c-11eb-8f8d-80e8010122f1.png" width="600px" height="300px"/>
