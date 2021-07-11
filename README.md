@@ -8,8 +8,8 @@
 * 자료공유:GitHub
 * front-End : JQuery
 * back-End : JDBC
-## 개발환경
-* 개발기간 : 2021-04-20~2021-05-04
+## 개발기간
+* 2021-04-20~2021-05-04
 ## 목차
 1. GuestPage 기능
 2. HostPage 기능
