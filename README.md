@@ -100,6 +100,6 @@
 * 전체연습실 조회
 * 전체예약 조회
 * 연습실 승인, 연습실 삭제(승인거부)
-<div>
-<img src="https://user-images.githubusercontent.com/73854927/125119479-1d38bb80-e12c-11eb-97fc-4456324c7e6a.png" width="380px" height="200px"/>
-</div>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/73854927/125119479-1d38bb80-e12c-11eb-97fc-4456324c7e6a.png" width="800px" height="400px"/>
+</p>
