@@ -77,13 +77,21 @@
   <img src="https://user-images.githubusercontent.com/73854927/125119468-1c078e80-e12c-11eb-8dac-2fdcf5fb5112.png" width="380px" height="200px" align="left" />
 </p>
 <p align="center">
+  <b><게스트 예약 내역 조회></b> 
+</p>
+<p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119470-1ca02500-e12c-11eb-90c6-f6cfa3f94cea.png" width="380px" height="200px" align="left" />
+</p>
+<p align="center">
+  <b><게스트 예약 내역 조회></b> 
 </p>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119473-1ca02500-e12c-11eb-95b8-ede5a69f8524.png" width="380px" height="200px" align="left" />
 </p>
+<p align="center">
+  <b><게스트 예약 내역 조회></b> 
+</p>
 
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 ## AdminPage
 관리자 연습실 등록  
