@@ -64,20 +64,20 @@
 
 ## HostPage
 * 내 연습실 조회, 연습실 등록, 삭제, 수정
-* 방조회, 방등록, 삭제, 수정
+* 연습실 방조회, 방등록, 삭제, 수정
 * 연습실 예약내역 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119446-17db7100-e12c-11eb-803e-b567d59df317.png" width="800px" height="400px"/>
 </p>
 <p align="center">
-  <b><게스트 예약 내역 조회></b> 
+  <b><내 연습실 조회></b> 
 </p>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119468-1c078e80-e12c-11eb-8dac-2fdcf5fb5112.png" width="800px" height="400px"/>
 </p>
 <p align="center">
-  <b><게스트 예약 내역 조회></b> 
+  <b><연습실 방 조회></b> 
 </p>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73854927/125119470-1ca02500-e12c-11eb-90c6-f6cfa3f94cea.png" width="800px" height="400px"/>
