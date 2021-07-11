@@ -46,7 +46,9 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/82932127/125188811-2df24a00-e270-11eb-969d-3d5cf9ab1efc.jpg" width="800px" height="1200px"/>
 </p>
+<p align="center">
 <b><연습실 예약></b> 
+</p>
   
 ## GuestPage
 * 홈페이지 로그인, 회원 가입 
