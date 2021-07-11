@@ -31,13 +31,14 @@
 </p>
  
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/82932127/125187808-6c860580-e26c-11eb-998b-95b69f75ba65.png" width="800px" height="400px"/>
+  
+  <img src="https://user-images.githubusercontent.com/82932127/125187805-63953400-e26c-11eb-9f4a-1283cc281c31.png" width="800px" height="400px"/>
 </p>
 <p align="center">
 <b><지하철 역이름으로 검색></b> 
 </p>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/82932127/125187805-63953400-e26c-11eb-9f4a-1283cc281c31.png" width="800px" height="400px"/>
+  <img src="https://user-images.githubusercontent.com/82932127/125187808-6c860580-e26c-11eb-998b-95b69f75ba65.png" width="800px" height="400px"/>
 </p>
 <p align="center">
 <b><지역 이름으로 검색></b> 
