@@ -29,11 +29,16 @@
 <p align="center">
 <b><메인페이지></b>  
 </p>
-
-<img src="https://user-images.githubusercontent.com/73854927/125119455-19a53480-e12c-11eb-8f8d-80e8010122f1.png" width="600px" height="300px"/>
-<img src="https://user-images.githubusercontent.com/73854927/125119458-1a3dcb00-e12c-11eb-8b0a-fec73138c5a7.png" width="600px" height="300px"/>
-<img src="https://user-images.githubusercontent.com/73854927/125119459-1a3dcb00-e12c-11eb-810c-dca2acae64c5.png" width="600px" height="300px"/>
-
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73854927/125119455-19a53480-e12c-11eb-8f8d-80e8010122f1.png" width="800px" height="300px"/>
+</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73854927/125119458-1a3dcb00-e12c-11eb-8b0a-fec73138c5a7.png" width="800px" height="300px"/>
+</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/73854927/125119459-1a3dcb00-e12c-11eb-810c-dca2acae64c5.png" width="800px" height="300px"/>
+</p>
 ## GuestPage 기능
 홈페이지 로그인, 회원 가입  
 게스트 정보 수정, 회원 탈퇴  
