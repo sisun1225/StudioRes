@@ -17,9 +17,9 @@
 
 ## 목차
 1. [MainPage](#MainPage)
-2. [GuestPage](#GuestPage-기능)
-3. [HostPage](#HostPage-기능)
-4. [AdminPage](#AdminPage-기능)  
+2. [GuestPage](#GuestPage)
+3. [HostPage](#HostPage)
+4. [AdminPage](#AdminPage)  
 
 ## MainPage
 * 연습실 조회(지하철 역별, 지역별)  
@@ -44,7 +44,7 @@
 <b><지역 이름으로 검색></b> 
 </p>
   
-## GuestPage 기능
+## GuestPage
 홈페이지 로그인, 회원 가입  
 게스트 정보 수정, 회원 탈퇴  
 게스트 예약 정보 조회  
